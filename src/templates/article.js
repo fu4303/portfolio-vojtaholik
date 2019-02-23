@@ -18,9 +18,6 @@ class ArticleTemplate extends React.Component {
             letter-spacing: 1px;
             margin-bottom: 40px;
             opacity: 0.7;
-            ${bpMinLG} {
-              ${article.frontmatter.title && 'margin-top: -10px;'}
-            }
             margin-top: 20px;
           `}>
           <Link to='/'>HOME</Link> /

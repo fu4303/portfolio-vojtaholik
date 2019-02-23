@@ -22,7 +22,16 @@ export default function Screenshots({ data: { images } }) {
   var result = regex.test(str)
   return (
     <Main>
-      <h1>Screenshots Index</h1>
+      <h1
+        css={css`
+          font-size: 15px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          opacity: 0.7;
+          margin-top: 20px;
+        `}>
+        <Link to='/'>HOME</Link> / Screenshots
+      </h1>
       <p>
         Collection of stuff I like and grabbed a screenshot of to remember and
         learn from.
@@ -44,6 +53,7 @@ export default function Screenshots({ data: { images } }) {
             //grid-column-end: span 2;
             //grid-row-end: span 2;
           } */
+  
     
           .image-name {
             position: absolute;
@@ -54,12 +64,15 @@ export default function Screenshots({ data: { images } }) {
             opacity: 0.2;
             padding: 3px 6px;
           }
+          
+          
           .grid-item {
-            margin: 15px;
             width: 100%;
-            ${bpMinMD} {
-              width: 30%;
-            }
+            max-width: 33.33333%;
+        
+          padding: 10px;
+         
+       
             :hover {
               .image-name {
                 opacity: 0.8;
@@ -78,8 +91,6 @@ export default function Screenshots({ data: { images } }) {
               <Link to={data.childImageSharp.fluid.src}>
                 <Img alt={data.name} sizes={data.childImageSharp.fluid} />
               </Link>
-              <p>{data.childImageSharp.fluid.src}</p>
-
               {data.name.match('-') ? (
                 <span className='image-name'>
                   {data.name.split('-').map((name, author) => (
@@ -102,8 +113,12 @@ export default function Screenshots({ data: { images } }) {
 
 const Main = styled.main`
   margin: 0 auto;
-  max-width: 1340px;
-  padding: 50px 50px;
+  max-width: 1180px;
+  padding: 30px;
+  ${bpMinSM} {
+    padding: 20px;
+  }
+
   h2 {
     margin-top: 2em;
   }
