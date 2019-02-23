@@ -23,48 +23,38 @@ export default function Screenshots({ data: { images } }) {
       <div
         css={css`
           display: grid;
-          grid-gap: 30px;
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          grid-auto-rows: auto;
+          grid-gap: 33px;
+          grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
+          ${bpMaxSM} {
+            grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
+          }
+           
+    grid-auto-flow: dense;
           text-align: center;
           ${bpMaxSM} {
             grid-auto-rows: auto;
           }
-          .grid-item:nth-child(2n) {
-            //opacity: 0.5;
-            ${bpMaxSM} {
-              grid-column: auto;
-              grid-row-end: span 1;
-            }
-            grid-column: span 2;
-            grid-row-end: span 2;
+        
+            //grid-column-end: span 2;
+            //grid-row-end: span 2;
           }
-          div:hover {
-            .image-name {
-              opacity: 1;
-            }
-          }
+          
           .image-name {
             //position: absolute;
-            font-size: 15px;
+            font-size: 13px;
             opacity: 0.3;
           }
         `}>
         {images.edges.map(({ node: data }) => (
-          <div className='grid-item'>
-            <Img
-              key={data.id}
-              title={data.name}
-              alt={data.name}
-              sizes={data.childImageSharp.sizes}
-            />
+          <div className='grid-item' key={data.id}>
+            <Img alt={data.name} sizes={data.childImageSharp.fluid} />
 
             {data.name.match('-') ? (
               <span className='image-name'>
                 {data.name.split('-').map((name, author) => (
-                  <span>
+                  <span key={data.index}>
                     {name}
-                    {author <= 0 && '. for: '}
+                    {author <= 0 && '. '}
                   </span>
                 ))}
               </span>
@@ -80,7 +70,7 @@ export default function Screenshots({ data: { images } }) {
 
 const Main = styled.main`
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 1066px;
   padding: 50px 50px;
   h2 {
     margin-top: 2em;
@@ -100,7 +90,7 @@ export const pageQuery = graphql`
     }
     images: allFile(
       filter: {
-        extension: { regex: "/(jpeg|jpg|gif|png)/" }
+        extension: { regex: "/(jpeg|jpg|png)/" }
         sourceInstanceName: { eq: "screenshots" }
       }
       sort: { order: ASC, fields: name }
@@ -109,8 +99,8 @@ export const pageQuery = graphql`
         node {
           name
           childImageSharp {
-            sizes(maxWidth: 800) {
-              ...GatsbyImageSharpSizes
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }
