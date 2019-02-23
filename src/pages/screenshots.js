@@ -4,7 +4,15 @@ import styled from '@emotion/styled'
 import Link from '../components/link'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
-import { bpMaxSM } from '../utils/breakpoints'
+import {
+  bpMaxSM,
+  bpMinSM,
+  bpMaxMD,
+  bpMinMD,
+  bpMaxLG,
+  bpMinLG,
+} from '../utils/breakpoints'
+import Masonry from 'react-masonry-component'
 
 // pouzit grid, zvazit jine jmeno - je to prace jinych??...
 
@@ -20,49 +28,61 @@ export default function Screenshots({ data: { images } }) {
         learn from.
       </p>
       <h2>Images</h2>
+
       <div
         css={css`
-          display: grid;
+          /* display: grid;
           grid-gap: 33px;
-          grid-template-columns: repeat(auto-fill, minmax(15vw, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
           ${bpMaxSM} {
             grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
           }
-           
-    grid-auto-flow: dense;
+          grid-auto-flow: dense;
           text-align: center;
           ${bpMaxSM} {
             grid-auto-rows: auto;
           }
-        
             //grid-column-end: span 2;
             //grid-row-end: span 2;
-          }
-          
+          } */
           .image-name {
             //position: absolute;
             font-size: 13px;
             opacity: 0.3;
           }
-        `}>
-        {images.edges.map(({ node: data }) => (
-          <div className='grid-item' key={data.id}>
-            <Img alt={data.name} sizes={data.childImageSharp.fluid} />
+          .grid-item {
+            margin: 15px;
+            width: 100%;
+            ${bpMinMD} {
+              width: 30%;
+            }
 
-            {data.name.match('-') ? (
-              <span className='image-name'>
-                {data.name.split('-').map((name, author) => (
-                  <span key={data.index}>
-                    {name}
-                    {author <= 0 && '. '}
-                  </span>
-                ))}
-              </span>
-            ) : (
-              <span className='image-name'>{data.name}</span>
-            )}
-          </div>
-        ))}
+          }
+          .masonry-item {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+          }
+        `}>
+        <Masonry className={'masonry-item'}>
+          {images.edges.map(({ node: data }) => (
+            <div className='grid-item' key={data.id}>
+              <Img alt={data.name} sizes={data.childImageSharp.fluid} />
+
+              {data.name.match('-') ? (
+                <span className='image-name'>
+                  {data.name.split('-').map((name, author) => (
+                    <span key={data.index}>
+                      {name}
+                      {author <= 0 && '. '}
+                    </span>
+                  ))}
+                </span>
+              ) : (
+                <span className='image-name'>{data.name}</span>
+              )}
+            </div>
+          ))}
+        </Masonry>
       </div>
     </Main>
   )
@@ -70,7 +90,7 @@ export default function Screenshots({ data: { images } }) {
 
 const Main = styled.main`
   margin: 0 auto;
-  max-width: 1066px;
+  max-width: 1340px;
   padding: 50px 50px;
   h2 {
     margin-top: 2em;

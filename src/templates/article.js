@@ -23,8 +23,22 @@ class ArticleTemplate extends React.Component {
             }
             margin-top: 20px;
           `}>
-          <Link to='/'>HOME</Link> /{' '}
-          <Link to={`/${article.fields.collection}`}>
+          <Link to='/'>HOME</Link> /
+          <div
+            css={css`
+              position: absolute;
+              background: rgba(0, 0, 0, 0.08);
+              padding: 5px 10px;
+              margin-left: 50px;
+            `}>
+            <Link to='/projects'>Projects</Link> -{' '}
+            <Link to='/screenshots'>Screenshots</Link> -{' '}
+          </div>
+          <Link
+            to={`/${article.fields.collection}`}
+            css={css`
+              font-weight: bold;
+            `}>
             {article.fields.collection}
           </Link>{' '}
           / {article.frontmatter.title && article.frontmatter.title}
