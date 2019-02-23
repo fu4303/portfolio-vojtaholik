@@ -28,7 +28,6 @@ export default function Screenshots({ data: { images } }) {
         learn from.
       </p>
       <h2>Images</h2>
-
       <div
         css={css`
           /* display: grid;
@@ -45,10 +44,15 @@ export default function Screenshots({ data: { images } }) {
             //grid-column-end: span 2;
             //grid-row-end: span 2;
           } */
+    
           .image-name {
-            //position: absolute;
+            position: absolute;
+            margin-top: -25px;
+            color: white;
+            margin-left: 10px;
             font-size: 13px;
-            opacity: 0.3;
+            opacity: 0.2;
+            padding: 3px 6px;
           }
           .grid-item {
             margin: 15px;
@@ -56,7 +60,12 @@ export default function Screenshots({ data: { images } }) {
             ${bpMinMD} {
               width: 30%;
             }
-
+            :hover {
+              .image-name {
+                opacity: 0.8;
+                background: rgba(0,0,0,0.8);
+              }
+            }
           }
           .masonry-item {
             display: grid;
@@ -66,8 +75,9 @@ export default function Screenshots({ data: { images } }) {
         <Masonry className={'masonry-item'}>
           {images.edges.map(({ node: data }) => (
             <div className='grid-item' key={data.id}>
-              <Img alt={data.name} sizes={data.childImageSharp.fluid} />
-
+              <Link to={`${data.childImageSharp.fluid.src}`}>
+                <Img alt={data.name} sizes={data.childImageSharp.fluid} />
+              </Link>
               {data.name.match('-') ? (
                 <span className='image-name'>
                   {data.name.split('-').map((name, author) => (
@@ -118,9 +128,13 @@ export const pageQuery = graphql`
       edges {
         node {
           name
+          relativePath
+          relativeDirectory
+          sourceInstanceName
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid_tracedSVG
+              src
             }
           }
         }
