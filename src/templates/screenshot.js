@@ -22,6 +22,7 @@ class ScreenshotTemplate extends React.Component {
             }
             margin-top: 20px;
           `}>
+          <Link to='/'>HOME</Link> /{' '}
           <Link to={`/${screenshot.fields.collection}`}>
             {screenshot.fields.collection}
           </Link>{' '}

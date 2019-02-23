@@ -9,6 +9,7 @@ import Link from '../components/link'
 class ProjectTemplate extends React.Component {
   render() {
     const project = this.props.data.mdx
+    const { previous } = this.props.pageContext
     return (
       <ProjectLayout>
         <h1
@@ -22,12 +23,23 @@ class ProjectTemplate extends React.Component {
             }
             margin-top: 20px;
           `}>
+          <Link to='/'>HOME</Link> /{' '}
           <Link to={`/${project.fields.collection}`}>
             {project.fields.collection}
           </Link>{' '}
           / {project.frontmatter.title && project.frontmatter.title}
         </h1>
         <MDXRenderer>{project.code.body}</MDXRenderer>
+        {previous && (
+          <Link to={`/${previous.fields.slug}`} rel='previous'>
+            <div>
+              <h5>next</h5>
+              <h4>
+                {previous.frontmatter.title} <span>→</span>
+              </h4>
+            </div>
+          </Link>
+        )}
       </ProjectLayout>
     )
   }
@@ -41,6 +53,7 @@ export const pageQuery = graphql`
         title
       }
       fields {
+        slug
         collection
       }
       code {

@@ -11,22 +11,26 @@ class ArticleTemplate extends React.Component {
     const article = this.props.data.mdx
     return (
       <ArticleLayout>
-        <h1
+        <div
           css={css`
             font-size: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 40px;
             opacity: 0.7;
             ${bpMinLG} {
               ${article.frontmatter.title && 'margin-top: -10px;'}
             }
             margin-top: 20px;
           `}>
+          <Link to='/'>HOME</Link> /{' '}
           <Link to={`/${article.fields.collection}`}>
             {article.fields.collection}
           </Link>{' '}
           / {article.frontmatter.title && article.frontmatter.title}
-        </h1>
+        </div>
+        <h2>{article.frontmatter.description}</h2>
+        <hr />
         <MDXRenderer>{article.code.body}</MDXRenderer>
       </ArticleLayout>
     )
@@ -39,6 +43,7 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
+        description
       }
       fields {
         collection

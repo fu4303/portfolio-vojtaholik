@@ -26,6 +26,9 @@ module.exports = {
               maxWidth: 960,
               sizeByPixelDensity: true,
               linkImagesToOriginal: false,
+              wrapperStyle: {
+                float: 'left',
+              },
             },
           },
         ],
