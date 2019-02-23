@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import Link from '../components/link'
 
-export default function Index({ data: { projects, articles } }) {
+export default function Index({ data: { projects, articles, screenshots } }) {
   return (
     <Main>
       <h1>Index page</h1>
@@ -17,6 +17,14 @@ export default function Index({ data: { projects, articles } }) {
       ))}
       <h2>Articles</h2>
       {articles.edges.map(({ node: data }) => (
+        <div>
+          <h3>
+            <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
+          </h3>
+        </div>
+      ))}
+      <h2>Screenshots</h2>
+      {screenshots.edges.map(({ node: data }) => (
         <div>
           <h3>
             <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
@@ -41,7 +49,7 @@ const Main = styled.main`
 `
 
 export const pageQuery = graphql`
-  query IndexPage {
+  query IndexPageQuery {
     projects: allMdx(
       sort: { order: ASC, fields: fields___slug }
       filter: { fields: { collection: { eq: "projects" } } }
@@ -67,6 +75,28 @@ export const pageQuery = graphql`
     articles: allMdx(
       sort: { order: ASC, fields: fields___slug }
       filter: { fields: { collection: { eq: "articles" } } }
+    ) {
+      edges {
+        node {
+          id
+          parent {
+            ... on File {
+              sourceInstanceName
+            }
+          }
+          fields {
+            collection
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+      }
+    }
+    screenshots: allMdx(
+      sort: { order: ASC, fields: fields___slug }
+      filter: { fields: { collection: { eq: "screenshots" } } }
     ) {
       edges {
         node {

@@ -80,6 +80,30 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
+            screenshots: allMdx(
+              sort: { order: ASC, fields: fields___slug }
+              filter: { fields: { collection: { eq: "screenshots" } } }
+            ) {
+              edges {
+                node {
+                  id
+                  parent {
+                    ... on File {
+                      name
+                      sourceInstanceName
+                    }
+                  }
+                  excerpt(pruneLength: 250)
+                  fields {
+                    collection
+                    slug
+                  }
+                  frontmatter {
+                    title
+                  }
+                }
+              }
+            }
           }
         `
       ).then(result => {
@@ -96,10 +120,22 @@ exports.createPages = ({ graphql, actions }) => {
           return e.node.parent.sourceInstanceName === 'projects'
         })
 
+        const screenshots = result.data.screenshots.edges.filter(e => {
+          return e.node.parent.sourceInstanceName === 'screenshots'
+        })
+
         articles.forEach(({ node }) => {
           createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/article.js`),
+            context: { id: node.id },
+          })
+        })
+
+        screenshots.forEach(({ node }) => {
+          createPage({
+            path: node.fields.slug,
+            component: path.resolve(`./src/templates/screenshot.js`),
             context: { id: node.id },
           })
         })

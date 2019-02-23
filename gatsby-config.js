@@ -59,6 +59,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/screenshots/`,
+        name: 'screenshots',
+        ignore: [`**/\.*`], // ignore files starting with a dot,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
