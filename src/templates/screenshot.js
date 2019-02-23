@@ -4,10 +4,11 @@ import { css } from '@emotion/core'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import ArticleLayout from '../components/article-layout'
 import { bpMinLG } from '../utils/breakpoints'
+import Link from '../components/link'
 
 class ScreenshotTemplate extends React.Component {
   render() {
-    const article = this.props.data.mdx
+    const screenshot = this.props.data.mdx
     return (
       <ArticleLayout>
         <h1
@@ -17,13 +18,16 @@ class ScreenshotTemplate extends React.Component {
             letter-spacing: 1px;
             opacity: 0.7;
             ${bpMinLG} {
-              ${article.frontmatter.title && 'margin-top: -10px;'}
+              ${screenshot.frontmatter.title && 'margin-top: -10px;'}
             }
             margin-top: 20px;
           `}>
-          <h1>SCREENSHOT TEMPLATE</h1>
+          <Link to={`/${screenshot.fields.collection}`}>
+            {screenshot.fields.collection}
+          </Link>{' '}
+          / {screenshot.frontmatter.title && screenshot.frontmatter.title}
         </h1>
-        <MDXRenderer>{article.code.body}</MDXRenderer>
+        <MDXRenderer>{screenshot.code.body}</MDXRenderer>
       </ArticleLayout>
     )
   }
@@ -35,6 +39,9 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
+      }
+      fields {
+        collection
       }
       code {
         body

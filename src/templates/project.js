@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import ProjectLayout from '../components/project-layout'
 import { bpMinLG } from '../utils/breakpoints'
+import Link from '../components/link'
 
 class ProjectTemplate extends React.Component {
   render() {
@@ -21,8 +22,10 @@ class ProjectTemplate extends React.Component {
             }
             margin-top: 20px;
           `}>
-          PROJECT TEMPLATE
-          {project.frontmatter.title && project.frontmatter.title}
+          <Link to={`/${project.fields.collection}`}>
+            {project.fields.collection}
+          </Link>{' '}
+          / {project.frontmatter.title && project.frontmatter.title}
         </h1>
         <MDXRenderer>{project.code.body}</MDXRenderer>
       </ProjectLayout>
@@ -36,6 +39,9 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
+      }
+      fields {
+        collection
       }
       code {
         body

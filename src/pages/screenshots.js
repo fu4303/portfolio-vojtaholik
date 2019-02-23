@@ -3,6 +3,8 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import Link from '../components/link'
 import Img from 'gatsby-image'
+import { css } from '@emotion/core'
+import { bpMaxSM } from '../utils/breakpoints'
 
 // pouzit grid, zvazit jine jmeno - je to prace jinych??...
 
@@ -18,36 +20,68 @@ export default function Screenshots({ data: { images } }) {
         learn from.
       </p>
       <h2>Images</h2>
-      {images.edges.map(({ node: data }) => (
-        <div>
-          <Img
-            key={data.id}
-            title={data.name}
-            alt={data.name}
-            sizes={data.childImageSharp.sizes}
-          />
+      <div
+        css={css`
+          display: grid;
+          grid-gap: 30px;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          grid-auto-rows: auto;
+          text-align: center;
+          ${bpMaxSM} {
+            grid-auto-rows: auto;
+          }
+          .grid-item:nth-child(2n) {
+            //opacity: 0.5;
+            ${bpMaxSM} {
+              grid-column: auto;
+              grid-row-end: span 1;
+            }
+            grid-column: span 2;
+            grid-row-end: span 2;
+          }
+          div:hover {
+            .image-name {
+              opacity: 1;
+            }
+          }
+          .image-name {
+            //position: absolute;
+            font-size: 15px;
+            opacity: 0.3;
+          }
+        `}>
+        {images.edges.map(({ node: data }) => (
+          <div className='grid-item'>
+            <Img
+              key={data.id}
+              title={data.name}
+              alt={data.name}
+              sizes={data.childImageSharp.sizes}
+            />
 
-          {data.name.match('-') ? (
-            <div>
-              {data.name.split('-').map((name, author) => (
-                <span>
-                  {name} {author <= 0 && '| author: '}
-                </span>
-              ))}
-            </div>
-          ) : (
-            <div>{data.name}</div>
-          )}
-        </div>
-      ))}
+            {data.name.match('-') ? (
+              <span className='image-name'>
+                {data.name.split('-').map((name, author) => (
+                  <span>
+                    {name}
+                    {author <= 0 && '. for: '}
+                  </span>
+                ))}
+              </span>
+            ) : (
+              <span className='image-name'>{data.name}</span>
+            )}
+          </div>
+        ))}
+      </div>
     </Main>
   )
 }
 
 const Main = styled.main`
   margin: 0 auto;
-  max-width: 500px;
-  padding: 50px 10px;
+  max-width: 1280px;
+  padding: 50px 50px;
   h2 {
     margin-top: 2em;
   }
@@ -75,7 +109,7 @@ export const pageQuery = graphql`
         node {
           name
           childImageSharp {
-            sizes(maxWidth: 2000) {
+            sizes(maxWidth: 800) {
               ...GatsbyImageSharpSizes
             }
           }

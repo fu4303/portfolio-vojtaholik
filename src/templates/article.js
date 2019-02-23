@@ -4,6 +4,7 @@ import { css } from '@emotion/core'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import ArticleLayout from '../components/article-layout'
 import { bpMinLG } from '../utils/breakpoints'
+import Link from '../components/link'
 
 class ArticleTemplate extends React.Component {
   render() {
@@ -21,8 +22,10 @@ class ArticleTemplate extends React.Component {
             }
             margin-top: 20px;
           `}>
-          ARTICLE TEMPLATE
-          {article.frontmatter.title && article.frontmatter.title}
+          <Link to={`/${article.fields.collection}`}>
+            {article.fields.collection}
+          </Link>{' '}
+          / {article.frontmatter.title && article.frontmatter.title}
         </h1>
         <MDXRenderer>{article.code.body}</MDXRenderer>
       </ArticleLayout>
@@ -36,6 +39,9 @@ export const pageQuery = graphql`
       id
       frontmatter {
         title
+      }
+      fields {
+        collection
       }
       code {
         body
