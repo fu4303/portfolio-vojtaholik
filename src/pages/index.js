@@ -13,6 +13,7 @@ export default function Index({ data: { projects, articles, screenshots } }) {
           <h3>
             <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
           </h3>
+          <p>{data.excerpt}</p>
         </div>
       ))}
       <h2>Articles</h2>
@@ -21,14 +22,19 @@ export default function Index({ data: { projects, articles, screenshots } }) {
           <h3>
             <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
           </h3>
+          <p>{data.excerpt}</p>
         </div>
       ))}
-      <h2>Screenshots</h2>
+
+      <h2>
+        <Link to='/screenshots'>Screenshots</Link>
+      </h2>
       {screenshots.edges.map(({ node: data }) => (
         <div>
           <h3>
             <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
           </h3>
+          <p>{data.excerpt}</p>
         </div>
       ))}
     </Main>
@@ -39,17 +45,30 @@ const Main = styled.main`
   margin: 0 auto;
   max-width: 500px;
   padding: 50px 10px;
+
   h2 {
     margin-top: 2em;
   }
-  h3 {
-    font-size: 24px;
-    line-height: 1;
+  div {
+    margin: 20px 0;
+    h3 {
+      font-size: 24px;
+      line-height: 1;
+      margin: 0;
+    }
+    p {
+      margin-top: 10px;
+    }
   }
 `
 
 export const pageQuery = graphql`
   query IndexPageQuery {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     projects: allMdx(
       sort: { order: ASC, fields: fields___slug }
       filter: { fields: { collection: { eq: "projects" } } }
@@ -66,6 +85,7 @@ export const pageQuery = graphql`
             collection
             slug
           }
+          excerpt(pruneLength: 50)
           frontmatter {
             title
           }
@@ -88,6 +108,7 @@ export const pageQuery = graphql`
             collection
             slug
           }
+          excerpt(pruneLength: 50)
           frontmatter {
             title
           }
@@ -110,6 +131,7 @@ export const pageQuery = graphql`
             collection
             slug
           }
+          excerpt(pruneLength: 50)
           frontmatter {
             title
           }

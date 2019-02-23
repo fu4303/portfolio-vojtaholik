@@ -22,7 +22,6 @@ class ScreenshotTemplate extends React.Component {
             margin-top: 20px;
           `}>
           <h1>SCREENSHOT TEMPLATE</h1>
-          {article.frontmatter.title && article.frontmatter.title}
         </h1>
         <MDXRenderer>{article.code.body}</MDXRenderer>
       </ArticleLayout>
