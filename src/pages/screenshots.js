@@ -75,9 +75,11 @@ export default function Screenshots({ data: { images } }) {
         <Masonry className={'masonry-item'}>
           {images.edges.map(({ node: data }) => (
             <div className='grid-item' key={data.id}>
-              <Link to={`${data.childImageSharp.fluid.src}`}>
+              <Link to={data.childImageSharp.fluid.src}>
                 <Img alt={data.name} sizes={data.childImageSharp.fluid} />
               </Link>
+              <p>{data.childImageSharp.fluid.src}</p>
+
               {data.name.match('-') ? (
                 <span className='image-name'>
                   {data.name.split('-').map((name, author) => (
@@ -134,6 +136,9 @@ export const pageQuery = graphql`
           childImageSharp {
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid_tracedSVG
+            }
+            fixed(width: 800, height: 800) {
+              ...GatsbyImageSharpFixed
               src
             }
           }
