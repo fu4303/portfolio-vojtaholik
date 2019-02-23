@@ -13,7 +13,6 @@ module.exports = {
         globalScope: `
           import ResponsiveEmbed from "react-responsive-embed";
           import { TwitterTweetEmbed } from "react-twitter-embed";
-
           export default { ResponsiveEmbed, TwitterTweetEmbed };
         `,
         defaultLayouts: {
@@ -25,7 +24,7 @@ module.exports = {
             options: {
               maxWidth: 960,
               sizeByPixelDensity: false,
-              linkImagesToOriginal: false,
+              linkImagesToOriginal: true,
               wrapperStyle: {
                 float: 'left',
               },
