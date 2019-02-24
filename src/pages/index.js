@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import Link from '../components/link'
 
-export default function Index({ data: { projects, articles, screenshots } }) {
+export default function Index({ data: { projects, articles, drawer } }) {
   return (
     <Main>
       <h1>Index page</h1>
@@ -29,7 +29,7 @@ export default function Index({ data: { projects, articles, screenshots } }) {
       <h2>
         <Link to='/drawer'>Drawer</Link>
       </h2>
-      {screenshots.edges.map(({ node: data }) => (
+      {drawer.edges.map(({ node: data }) => (
         <div>
           <h3>
             <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
@@ -115,9 +115,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    screenshots: allMdx(
+    drawer: allMdx(
       sort: { order: ASC, fields: fields___slug }
-      filter: { fields: { collection: { eq: "screenshots" } } }
+      filter: { fields: { collection: { eq: "drawer" } } }
     ) {
       edges {
         node {

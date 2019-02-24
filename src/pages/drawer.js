@@ -4,6 +4,8 @@ import styled from '@emotion/styled'
 import Link from '../components/link'
 import Img from 'gatsby-image'
 import { css } from '@emotion/core'
+import { get } from 'lodash'
+
 import {
   bpMaxSM,
   bpMinSM,
@@ -14,7 +16,12 @@ import {
 } from '../utils/breakpoints'
 import Masonry from 'react-masonry-component'
 
-export default function Drawer({ data: { images } }) {
+//gifs
+import gif6d from '../../content/drawer/gifs/6DIntro.gif'
+import confirmGif from '../../content/drawer/gifs/confirm.gif'
+import welcomeGif from '../../content/drawer/gifs/welcome.gif'
+import unsubscribedGif from '../../content/drawer/gifs/unsubscribed.gif'
+export default function Drawer({ data: { images, gifs } }) {
   return (
     <Main>
       <div
@@ -98,7 +105,27 @@ export default function Drawer({ data: { images } }) {
               )}
             </div>
           ))}
-          <div className='grid-item'>heyyy I want a gif support</div>
+          <div className='grid-item'>
+            <img src={gif6d} />
+          </div>
+          {get(gifs, 'edges', []).map(({ node: data }) => (
+            <div>
+              <img src={`/${data.relativePath}`} />
+              <a href={`/drawer/${data.relativePath}`}>hey</a>
+              {data.relativePath}
+            </div>
+          ))}
+          {/*{' '}
+          <div className='grid-item'>
+            <img src={unsubscribedGif} />
+          </div>
+          <div className='grid-item'>
+            <img src={confirmGif} />
+          </div>
+          <div className='grid-item'>
+            <img src={welcomeGif} />
+          </div>{' '}
+          */}
         </Masonry>
       </div>
     </Main>
@@ -126,6 +153,23 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    gifs: allFile(
+      filter: {
+        extension: { regex: "/gif/" }
+        sourceInstanceName: { eq: "drawer" }
+      }
+      sort: { order: DESC, fields: relativePath }
+    ) {
+      edges {
+        node {
+          name
+          absolutePath
+          relativePath
+          relativeDirectory
+          sourceInstanceName
+        }
       }
     }
     images: allFile(
