@@ -68,11 +68,12 @@ export default function Screenshots({ data: { images } }) {
           
           .grid-item {
             width: 100%;
+            ${bpMinMD} {
             max-width: 33.33333%;
-        
-          padding: 10px;
-         
-       
+            padding: 10px;
+          }
+          max-width: 50%;
+            padding: 5px;
             :hover {
               .image-name {
                 opacity: 0.8;
@@ -114,11 +115,10 @@ export default function Screenshots({ data: { images } }) {
 const Main = styled.main`
   margin: 0 auto;
   max-width: 1180px;
-  padding: 30px;
-  ${bpMinSM} {
-    padding: 20px;
+  ${bpMinLG} {
+    padding: 30px;
   }
-
+  padding: 20px;
   h2 {
     margin-top: 2em;
   }
