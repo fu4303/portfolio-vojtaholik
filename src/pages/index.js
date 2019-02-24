@@ -53,9 +53,10 @@ export default function Index({ data: { images, site } }) {
               marginTop: '15px',
               color: 'hsla(0, 0%, 0%, 0.7)',
             }}>
-            Mostly screenshots. Stuff fromy my drawer. /* Sometimes I put images
+            Mostly screenshots. Stuff from my drawer.{' '}
+            {/* Sometimes I put images
             of stuff I've worked on inside a special folder and they magically
-            appear here. I call it a Drawer. */
+            appear here. I call it a Drawer. */}
           </p>
         </div>
         <div
