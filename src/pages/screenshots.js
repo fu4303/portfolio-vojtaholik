@@ -17,9 +17,6 @@ import Masonry from 'react-masonry-component'
 // pouzit grid, zvazit jine jmeno - je to prace jinych??...
 
 export default function Screenshots({ data: { images } }) {
-  var regex = /hello/
-  var str = 'hello world'
-  var result = regex.test(str)
   return (
     <Main>
       <h1
@@ -39,22 +36,6 @@ export default function Screenshots({ data: { images } }) {
       <h2>Images</h2>
       <div
         css={css`
-          /* display: grid;
-          grid-gap: 33px;
-          grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
-          ${bpMaxSM} {
-            grid-template-columns: repeat(auto-fill, minmax(30vw, 1fr));
-          }
-          grid-auto-flow: dense;
-          text-align: center;
-          ${bpMaxSM} {
-            grid-auto-rows: auto;
-          }
-            //grid-column-end: span 2;
-            //grid-row-end: span 2;
-          } */
-  
-    
           .image-name {
             position: absolute;
             margin-top: -25px;
@@ -64,20 +45,18 @@ export default function Screenshots({ data: { images } }) {
             opacity: 0.2;
             padding: 3px 6px;
           }
-          
-          
           .grid-item {
             width: 100%;
             ${bpMinMD} {
-            max-width: 33.33333%;
-            padding: 10px;
-          }
-          max-width: 50%;
+              max-width: 33.33333%;
+              padding: 10px;
+            }
+            max-width: 50%;
             padding: 5px;
             :hover {
               .image-name {
                 opacity: 0.8;
-                background: rgba(0,0,0,0.8);
+                background: rgba(0, 0, 0, 0.8);
               }
             }
           }
@@ -89,9 +68,9 @@ export default function Screenshots({ data: { images } }) {
         <Masonry className={'masonry-item'}>
           {images.edges.map(({ node: data }) => (
             <div className='grid-item' key={data.id}>
-              <Link to={data.childImageSharp.fluid.src}>
+              <a href={data.childImageSharp.fluid.originalImg}>
                 <Img alt={data.name} sizes={data.childImageSharp.fluid} />
-              </Link>
+              </a>
               {data.name.match('-') ? (
                 <span className='image-name'>
                   {data.name.split('-').map((name, author) => (
@@ -152,6 +131,7 @@ export const pageQuery = graphql`
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid_tracedSVG
               src
+              originalImg
             }
             fixed(width: 800, height: 800) {
               ...GatsbyImageSharpFixed
