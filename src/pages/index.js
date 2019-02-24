@@ -65,6 +65,7 @@ export default function Index({ data: { images, site } }) {
               color: 'hsla(0, 0%, 0%, 0.7)',
             }}>
             Screenshots of stuff I've worked on.
+            {/* Screenshots of stuff I've either designed, developed, animated,... */}
             {/* Sometimes I put images
             of stuff I've worked on inside a special folder and they magically
             appear here. I call it a Drawer. */}
