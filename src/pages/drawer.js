@@ -16,24 +16,26 @@ import Masonry from 'react-masonry-component'
 
 // pouzit grid, zvazit jine jmeno - je to prace jinych??...
 
-export default function Screenshots({ data: { images } }) {
+export default function Drawer({ data: { images } }) {
   return (
     <Main>
-      <h1
+      <div
         css={css`
-          font-size: 15px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          opacity: 0.7;
-          margin-top: 20px;
+          padding: 0 12px;
         `}>
-        <Link to='/'>HOME</Link> / Screenshots
-      </h1>
-      <p>
-        Collection of stuff I like and grabbed a screenshot of to remember and
-        learn from.
-      </p>
-      <h2>Images</h2>
+        <h1
+          css={css`
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-top: 20px;
+          `}>
+          <Link to='/'>HOME</Link> / Drawer
+        </h1>
+        <h1>Drawer</h1>
+        <p>Some of the stuff I worked on.</p>
+      </div>
       <div
         css={css`
           .image-name {
@@ -45,11 +47,21 @@ export default function Screenshots({ data: { images } }) {
             opacity: 0.2;
             padding: 3px 6px;
           }
+          /* funk is turned off
+           .grid-item:nth-of-type(2n) {
+            ${bpMinMD} {
+              max-width: 66%;
+              width: 100%;
+              padding: 10px;
+            }
+            width: 50%;
+          } */
+            /* .gatsby-image-wrapper {box-shadow: 0 10px 50px -15px rgba(0,0,0,0.25);} */
           .grid-item {
             width: 100%;
             ${bpMinMD} {
               max-width: 33.33333%;
-              padding: 10px;
+              padding: 15px;
             }
             max-width: 50%;
             padding: 5px;
@@ -60,25 +72,28 @@ export default function Screenshots({ data: { images } }) {
               }
             }
           }
-          .masonry-item {
+          /* .masonry-item {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
-          }
+          } */
         `}>
         <Masonry className={'masonry-item'}>
           {images.edges.map(({ node: data }) => (
             <div className='grid-item' key={data.id}>
-              <a href={data.childImageSharp.fluid.originalImg}>
+              <a href={data.childImageSharp.fluid.originalImg} target='_blank'>
                 <Img alt={data.name} sizes={data.childImageSharp.fluid} />
               </a>
               {data.name.match('-') ? (
                 <span className='image-name'>
-                  {data.name.split('-').map((name, author) => (
-                    <span key={data.index}>
-                      {name}
-                      {author <= 0 && '. '}
-                    </span>
-                  ))}
+                  {data.name
+                    .substring(4)
+                    .split('-')
+                    .map((name, author) => (
+                      <span key={data.index}>
+                        {name}
+                        {author <= 1 && '. '}
+                      </span>
+                    ))}
                 </span>
               ) : (
                 <span className='image-name'>{data.name}</span>
@@ -93,7 +108,7 @@ export default function Screenshots({ data: { images } }) {
 
 const Main = styled.main`
   margin: 0 auto;
-  max-width: 1180px;
+  //max-width: 1440px;
   ${bpMinLG} {
     padding: 30px;
   }
