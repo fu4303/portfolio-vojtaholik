@@ -28,10 +28,13 @@ export default function Index({ data: { images, site } }) {
             align-items: center;
             justify-content: space-between;
 
-            ${bpMinMD} {
+            ${bpMinLG} {
               padding: 15px 20px 0 20px;
               display: flex;
               flex-direction: row;
+            }
+            ${bpMinMD} {
+              padding: 20px 20px 0 20px;
             }
             padding: 20px 10px 0 10px;
           `}>
@@ -50,12 +53,10 @@ export default function Index({ data: { images, site } }) {
           <p
             css={{
               [bpMinMD]: {
-                maxWidth: '50%',
                 fontSize: '17px',
               },
               [bpMinLG]: {
-                maxWidth: '30%',
-                marginBottom: 0,
+                marginBottom: '10px',
               },
               marginBottom: '5px',
               fontSize: '14px',
