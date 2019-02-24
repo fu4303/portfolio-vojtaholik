@@ -129,7 +129,7 @@ export default function Index({ data: { images, site } }) {
                         .substring(4)
                         .split('-')
                         .map((name, dash) => (
-                          <span key={data.index}>
+                          <span key={name}>
                             {name}
                             {dash >= 0 && ' '}
                             {/* Curation is key */}
@@ -267,6 +267,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          id
           name
           relativePath
           relativeDirectory
