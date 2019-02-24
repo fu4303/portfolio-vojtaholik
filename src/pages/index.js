@@ -63,6 +63,9 @@ export default function Index({ data: { images, site } }) {
             position: absolute;
             color: white;
             margin-left: 0px;
+            a {
+              color: #3C55E4;
+            }
             ${bpMinMD} {
             margin-top: 8px;
             font-size: 13px;
