@@ -196,7 +196,7 @@ export default function Index({ data: { images, site } }) {
               text-decoration: none;
             }
           `}>
-          👋 <a href='mailto:vojta@egghead.io'>vojta@egghead.io</a>
+          👋 <a href='mailto:vojta@8am.design'>vojta@8am.design</a>
         </h2>
       </Main>
     </>
