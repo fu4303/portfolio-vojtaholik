@@ -14,8 +14,6 @@ import {
 } from '../utils/breakpoints'
 import Masonry from 'react-masonry-component'
 
-// pouzit grid, zvazit jine jmeno - je to prace jinych??...
-
 export default function Drawer({ data: { images } }) {
   return (
     <Main>
