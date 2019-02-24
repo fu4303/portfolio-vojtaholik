@@ -6,6 +6,7 @@ import Img from 'gatsby-image'
 import { css } from '@emotion/core'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Masonry from 'react-masonry-component'
+import SEO from '../components/seo'
 import {
   bpMaxSM,
   bpMinSM,
@@ -17,56 +18,47 @@ import {
 
 import gif6d from '../../content/drawer/gifs/6DIntro.gif'
 
-export default function Index({ data: { images, gifs, text } }) {
-  function isURL() {
-    var pattern = new RegExp(
-      '^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-        '(\\#[-a-z\\d_]*)?$',
-      'i'
-    ) // fragment locator
-  }
+export default function Index({ data: { images, site } }) {
   return (
-    <Main>
-      <div
-        css={css`
-          align-items: center;
-          justify-content: space-between;
+    <>
+      <SEO title={site.siteMetadata.title} />
+      <Main>
+        <div
+          css={css`
+            align-items: center;
+            justify-content: space-between;
 
-          ${bpMinMD} {
-            padding: 0 20px;
-            display: flex;
-            flex-direction: row;
-          }
-          padding: 20px 10px 0 10px;
-        `}>
-        <h1
-          css={{
-            marginBottom: '15px',
-          }}>
-          Vojta's Drawer
-        </h1>
-        <p
-          css={{
-            [bpMinMD]: {
-              maxWidth: '50%',
-            },
-            [bpMinLG]: {
-              maxWidth: '30%',
-            },
-            fontSize: '17px',
-            marginTop: '15px',
-            color: 'hsla(0, 0%, 0%, 0.7)',
-          }}>
-          Sometimes I put images of stuff I've worked on inside a special folder
-          and they magically appear here. I call it a Drawer.
-        </p>
-      </div>
-      <div
-        css={css`
+            ${bpMinMD} {
+              padding: 0 20px;
+              display: flex;
+              flex-direction: row;
+            }
+            padding: 20px 10px 0 10px;
+          `}>
+          <h1
+            css={{
+              marginBottom: '15px',
+            }}>
+            Vojta's Drawer
+          </h1>
+          <p
+            css={{
+              [bpMinMD]: {
+                maxWidth: '50%',
+              },
+              [bpMinLG]: {
+                maxWidth: '30%',
+              },
+              fontSize: '17px',
+              marginTop: '15px',
+              color: 'hsla(0, 0%, 0%, 0.7)',
+            }}>
+            Sometimes I put images of stuff I've worked on inside a special
+            folder and they magically appear here. I call it a Drawer.
+          </p>
+        </div>
+        <div
+          css={css`
           .image-name {
             position: absolute;
             color: white;
@@ -119,56 +111,58 @@ export default function Index({ data: { images, gifs, text } }) {
             grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
           } */
         `}>
-        <Masonry className={'masonry-item'}>
-          {images.edges.map(({ node: data }) => (
-            <div className='grid-item' key={data.id}>
-              <div className='grid-item-inner'>
-                <a
-                  href={data.childImageSharp.fluid.originalImg}
-                  target='_blank'>
-                  <Img alt={data.name} sizes={data.childImageSharp.fluid} />
-                </a>
-                {data.name.match('-') ? (
-                  <span className='image-name'>
-                    {data.name
-                      .substring(4)
-                      .split('-')
-                      .map((name, dash) => (
-                        <span key={data.index}>
-                          {name}
-                          {dash >= 0 && ' '}
-                          {/* Curation is key */}
-                          {name === 'howtoegghead.com' && (
-                            <a href='https://howtoegghead.com'>visit</a>
-                          )}
-                          {name === 'kentcdodds.com' && (
-                            <a href='https://kentcdodds.com'>visit</a>
-                          )}
-                          {name === 'moonhighway.com' && (
-                            <a href='https://moonhighway.com'>visit</a>
-                          )}
-                          {name === 'moonhighway.com:articles' && (
-                            <a href='https://moonhighway.com/articles'>visit</a>
-                          )}
-                          {name === 'gatsby starter egghead blog' && (
-                            <a href='https://github.com/eggheadio/gatsby-starter-egghead-blog'>
-                              visit
-                            </a>
-                          )}
-                        </span>
-                      ))}
-                  </span>
-                ) : (
-                  <span className='image-name'>{data.name}</span>
-                )}
+          <Masonry className={'masonry-item'}>
+            {images.edges.map(({ node: data }) => (
+              <div className='grid-item' key={data.id}>
+                <div className='grid-item-inner'>
+                  <a
+                    href={data.childImageSharp.fluid.originalImg}
+                    target='_blank'>
+                    <Img alt={data.name} sizes={data.childImageSharp.fluid} />
+                  </a>
+                  {data.name.match('-') ? (
+                    <span className='image-name'>
+                      {data.name
+                        .substring(4)
+                        .split('-')
+                        .map((name, dash) => (
+                          <span key={data.index}>
+                            {name}
+                            {dash >= 0 && ' '}
+                            {/* Curation is key */}
+                            {name === 'howtoegghead.com' && (
+                              <a href='https://howtoegghead.com'>visit</a>
+                            )}
+                            {name === 'kentcdodds.com' && (
+                              <a href='https://kentcdodds.com'>visit</a>
+                            )}
+                            {name === 'moonhighway.com' && (
+                              <a href='https://moonhighway.com'>visit</a>
+                            )}
+                            {name === 'moonhighway.com:articles' && (
+                              <a href='https://moonhighway.com/articles'>
+                                visit
+                              </a>
+                            )}
+                            {name === 'gatsby starter egghead blog' && (
+                              <a href='https://github.com/eggheadio/gatsby-starter-egghead-blog'>
+                                visit
+                              </a>
+                            )}
+                          </span>
+                        ))}
+                    </span>
+                  ) : (
+                    <span className='image-name'>{data.name}</span>
+                  )}
+                </div>
               </div>
+            ))}
+            <div className='grid-item'>
+              <img src={gif6d} />
             </div>
-          ))}
-          <div className='grid-item'>
-            <img src={gif6d} />
-          </div>
-        </Masonry>
-        {/* <div>
+          </Masonry>
+          {/* <div>
           {text.edges.map(({ node: data }) => (
             <div
               key={data.id}
@@ -184,24 +178,25 @@ export default function Index({ data: { images, gifs, text } }) {
             </div>
           ))}
         </div> */}
-      </div>
-      <h2
-        css={css`
-          font-size: 15px;
+        </div>
+        <h2
+          css={css`
+            font-size: 15px;
 
-          ${bpMinLG} {
-            padding-top: 50px;
-          }
-          padding-top: 20px;
-          text-align: center;
-          a {
-            color: hsla(0, 0%, 0%, 0.8);
-            text-decoration: none;
-          }
-        `}>
-        👋 <a href='mailto:vojta@egghead.io'>vojta@egghead.io</a>
-      </h2>
-    </Main>
+            ${bpMinLG} {
+              padding-top: 50px;
+            }
+            padding-top: 20px;
+            text-align: center;
+            a {
+              color: hsla(0, 0%, 0%, 0.8);
+              text-decoration: none;
+            }
+          `}>
+          👋 <a href='mailto:vojta@egghead.io'>vojta@egghead.io</a>
+        </h2>
+      </Main>
+    </>
   )
 }
 

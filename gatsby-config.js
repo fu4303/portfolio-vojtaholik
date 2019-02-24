@@ -2,8 +2,9 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: 'Digital Mass',
-    description: 'Unknown.',
+    title: `Vojta's digital drawer`,
+    description: `Sometimes I put images of stuff I've worked on inside a special
+    folder and they magically appear here. I call it a Drawer.`,
     author: '@vjthlk',
   },
   plugins: [
@@ -87,12 +88,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'how-to-egghead',
-        short_name: 'egghead',
+        name: 'Vojta - Designer',
+        short_name: 'Vojta',
         background_color: '#3852E4',
         theme_color: '#3852E4',
         display: 'minimal-ui',
-        icon: 'src/images/egghead-icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
