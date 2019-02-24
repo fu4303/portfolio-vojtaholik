@@ -37,7 +37,13 @@ export default function Index({ data: { images, site } }) {
           `}>
           <h1
             css={{
-              marginBottom: '15px',
+              lineHeight: 1,
+              [bpMinMD]: {
+                fontSize: '2em',
+                marginBottom: '15px',
+              },
+              fontSize: '1.4em',
+              marginBottom: '7px',
             }}>
             Vojta's Digital Drawer
           </h1>
@@ -45,12 +51,14 @@ export default function Index({ data: { images, site } }) {
             css={{
               [bpMinMD]: {
                 maxWidth: '50%',
+                fontSize: '17px',
               },
               [bpMinLG]: {
                 maxWidth: '30%',
+                marginBottom: 0,
               },
-              fontSize: '17px',
-              marginTop: '15px',
+              marginBottom: '5px',
+              fontSize: '14px',
               color: 'hsla(0, 0%, 0%, 0.7)',
             }}>
             Mostly screenshots. Stuff from my drawer.
