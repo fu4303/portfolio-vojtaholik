@@ -2,63 +2,204 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import Link from '../components/link'
+import Img from 'gatsby-image'
+import { css } from '@emotion/core'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import Masonry from 'react-masonry-component'
+import {
+  bpMaxSM,
+  bpMinSM,
+  bpMaxMD,
+  bpMinMD,
+  bpMaxLG,
+  bpMinLG,
+} from '../utils/breakpoints'
 
-export default function Index({ data: { projects, articles, drawer } }) {
+import gif6d from '../../content/drawer/gifs/6DIntro.gif'
+
+export default function Index({ data: { images, gifs, text } }) {
+  function isURL() {
+    var pattern = new RegExp(
+      '^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+        '(\\#[-a-z\\d_]*)?$',
+      'i'
+    ) // fragment locator
+  }
   return (
     <Main>
-      <h1>Index page</h1>
-      <h2>Projects</h2>
-      {projects.edges.map(({ node: data }) => (
-        <div>
-          <h3>
-            <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
-          </h3>
-          <p>{data.excerpt}</p>
-        </div>
-      ))}
-      <h2>Articles</h2>
-      {articles.edges.map(({ node: data }) => (
-        <div>
-          <h3>
-            <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
-          </h3>
-          <p>{data.excerpt}</p>
-        </div>
-      ))}
+      <div
+        css={css`
+          padding: 0 20px;
+        `}>
+        <h1
+          css={css`
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-top: 20px;
+          `}>
+          vojta@8am.design
+        </h1>
+        <h1
+          css={{
+            marginBottom: '15px',
+          }}>
+          Vojta's Drawer
+        </h1>
+        <p
+          css={{
+            [bpMinMD]: {
+              maxWidth: '50%',
+            },
+            [bpMinLG]: {
+              maxWidth: '30%',
+            },
+            fontSize: '17px',
+            marginTop: 0,
+            color: 'hsla(0, 0%, 0%, 0.7)',
+          }}>
+          Sometimes I put images of stuff I've worked on inside a special folder
+          and they magically appear here. I call it a Drawer.
+        </p>
+      </div>
+      <div
+        css={css`
+          .image-name {
+            position: absolute;
+            margin-top: 8px;
+            color: white;
+            margin-left: 0px;
+            font-size: 13px;
+            opacity: 0.2;
+            //padding: 4px 6px 3px 6px;
+            color: black;
+          }
+          /* funk is turned off
+           .grid-item:nth-of-type(2n) {
+            ${bpMinMD} {
+              max-width: 66%;
+              width: 100%;
+              padding: 10px;
+            }
+            width: 50%;
+          } */
+             .gatsby-image-wrapper {box-shadow: 0 30px 80px -20px hsla(0,0%,0%,0.2); cursor: zoom-in;} 
+          .grid-item {
+            width: 100%;
+            
+            ${bpMinMD} {
+              max-width: 33.33333%;
+              padding: 25px;
+              
+            }
+            max-width: 50%;
+            padding: 8px;
+            
+          }
+          .grid-item-inner {
+            
+            :hover {
+              .image-name {
+                opacity: 0.8;
+                //background: rgba(0, 0, 0, 0.8);
+                color: hsla(0, 0%, 0%, 0.5);
+              }
+            }
+          }
+          /* .masonry-item {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+          } */
+        `}>
+        <Masonry className={'masonry-item'}>
+          {images.edges.map(({ node: data }) => (
+            <div className='grid-item' key={data.id}>
+              <div className='grid-item-inner'>
+                <a
+                  href={data.childImageSharp.fluid.originalImg}
+                  target='_blank'>
+                  <Img alt={data.name} sizes={data.childImageSharp.fluid} />
+                </a>
+                {data.name.match('-') ? (
+                  <span className='image-name'>
+                    {data.name
+                      .substring(4)
+                      .split('-')
+                      .map((name, dash) => (
+                        <span key={data.index}>
+                          {name}
+                          {dash >= 0 && ' '}
+                          {/* Curation is key */}
+                          {name === 'howtoegghead.com' && (
+                            <a href='https://howtoegghead.com'>visit</a>
+                          )}
+                          {name === 'kentcdodds.com' && (
+                            <a href='https://kentcdodds.com'>visit</a>
+                          )}
+                          {name === 'moonhighway.com' && (
+                            <a href='https://moonhighway.com'>visit</a>
+                          )}
+                          {name === 'moonhighway.com:articles' && (
+                            <a href='https://moonhighway.com/articles'>visit</a>
+                          )}
+                          {name === 'gatsby starter egghead blog' && (
+                            <a href='https://github.com/eggheadio/gatsby-starter-egghead-blog'>
+                              visit
+                            </a>
+                          )}
+                        </span>
+                      ))}
+                  </span>
+                ) : (
+                  <span className='image-name'>{data.name}</span>
+                )}
+              </div>
+            </div>
+          ))}
+          <div className='grid-item'>
+            <img src={gif6d} />
+          </div>
+        </Masonry>
+        {/* <div>
+          {text.edges.map(({ node: data }) => (
+            <div
+              key={data.id}
+              className='grid-item'
+              css={css`
+                width: 100%;
 
-      <h2>
-        <Link to='/drawer'>Drawer</Link>
-      </h2>
-      {drawer.edges.map(({ node: data }) => (
-        <div>
-          <h3>
-            <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
-          </h3>
-          <p>{data.excerpt}</p>
-        </div>
-      ))}
+                background: yellow;
+                padding: 40px;
+                background: #fafafa;
+              `}>
+              <Link to={`/${data.fields.slug}`}>{data.frontmatter.title}</Link>
+            </div>
+          ))}
+        </div> */}
+      </div>
     </Main>
   )
 }
 
 const Main = styled.main`
   margin: 0 auto;
-  max-width: 500px;
-  padding: 50px 10px;
-
+  //max-width: 1440px;
+  background: #fafafa;
+  ${bpMinLG} {
+    padding: 20px;
+  }
+  padding: 5px;
   h2 {
     margin-top: 2em;
   }
-  div {
-    margin: 20px 0;
-    h3 {
-      font-size: 24px;
-      line-height: 1;
-      margin: 0;
-    }
-    p {
-      margin-top: 10px;
-    }
+  h3 {
+    font-size: 24px;
+    line-height: 1;
   }
 `
 
@@ -69,71 +210,60 @@ export const pageQuery = graphql`
         title
       }
     }
-    projects: allMdx(
-      sort: { order: ASC, fields: fields___slug }
-      filter: { fields: { collection: { eq: "projects" } } }
-    ) {
+    text: allMdx(filter: { fields: { collection: { eq: "drawer" } } }) {
       edges {
         node {
           id
-          parent {
-            ... on File {
-              sourceInstanceName
-            }
-          }
           fields {
-            collection
             slug
+            collection
           }
-          excerpt(pruneLength: 50)
           frontmatter {
             title
           }
         }
       }
     }
-    articles: allMdx(
-      sort: { order: ASC, fields: fields___slug }
-      filter: { fields: { collection: { eq: "articles" } } }
+    gifs: allFile(
+      filter: {
+        extension: { regex: "/gif/" }
+        sourceInstanceName: { eq: "drawer" }
+      }
+      sort: { order: DESC, fields: relativePath }
     ) {
       edges {
         node {
-          id
-          parent {
-            ... on File {
-              sourceInstanceName
-            }
-          }
-          fields {
-            collection
-            slug
-          }
-          excerpt(pruneLength: 50)
-          frontmatter {
-            title
-          }
+          name
+          absolutePath
+          relativePath
+          relativeDirectory
+          sourceInstanceName
         }
       }
     }
-    drawer: allMdx(
-      sort: { order: ASC, fields: fields___slug }
-      filter: { fields: { collection: { eq: "drawer" } } }
+    images: allFile(
+      filter: {
+        extension: { regex: "/(jpeg|jpg|png)/" }
+        sourceInstanceName: { eq: "drawer" }
+      }
+      sort: { order: DESC, fields: relativePath }
     ) {
       edges {
         node {
-          id
-          parent {
-            ... on File {
-              sourceInstanceName
+          name
+          relativePath
+          relativeDirectory
+          sourceInstanceName
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid_tracedSVG
+              src
+              originalImg
             }
-          }
-          fields {
-            collection
-            slug
-          }
-          excerpt(pruneLength: 50)
-          frontmatter {
-            title
+            fixed(width: 800, height: 800) {
+              ...GatsbyImageSharpFixed
+              src
+            }
           }
         }
       }

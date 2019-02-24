@@ -42,6 +42,7 @@ h3 {
     font-style: normal;
     padding: 0;
     margin: 0; 
+    background: #fafafa;
   }
   html {
     text-rendering: optimizeLegibility;
@@ -52,9 +53,7 @@ h3 {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     //scroll-behavior: smooth;
   }
-  body {
-    background-color: white;
-  }
+  
   ::selection {
   }
   a {
