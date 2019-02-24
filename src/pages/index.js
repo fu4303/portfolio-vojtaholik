@@ -29,12 +29,14 @@ export default function Index({ data: { images, site } }) {
             justify-content: space-between;
 
             ${bpMinLG} {
-              padding: 15px 20px 0 20px;
+              //padding: 15px 20px 0 20px;
+              padding: 40px 20px;
               display: flex;
               flex-direction: row;
             }
             ${bpMinMD} {
-              padding: 20px 20px 0 20px;
+              //padding: 20px 20px 0 20px;
+              padding: 30px 20px 20px 20px;
             }
             padding: 20px 10px 0 10px;
           `}>
@@ -62,7 +64,7 @@ export default function Index({ data: { images, site } }) {
               fontSize: '14px',
               color: 'hsla(0, 0%, 0%, 0.7)',
             }}>
-            Mostly screenshots. Stuff from my drawer.
+            Screenshots of stuff I've worked on.
             {/* Sometimes I put images
             of stuff I've worked on inside a special folder and they magically
             appear here. I call it a Drawer. */}
@@ -240,7 +242,7 @@ const Main = styled.main`
   //max-width: 1440px;
   //background: #181818;
   //color: white;
-  background: #fafafa;
+  background: #f1f1f1;
   ${bpMinLG} {
     padding: 20px;
   }
