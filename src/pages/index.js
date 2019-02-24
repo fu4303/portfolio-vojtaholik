@@ -33,18 +33,16 @@ export default function Index({ data: { images, gifs, text } }) {
     <Main>
       <div
         css={css`
-          padding: 0 20px;
+          align-items: center;
+          justify-content: space-between;
+
+          ${bpMinMD} {
+            padding: 0 20px;
+            display: flex;
+            flex-direction: row;
+          }
+          padding: 20px 10px 0 10px;
         `}>
-        <h1
-          css={css`
-            font-size: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.7;
-            margin-top: 20px;
-          `}>
-          vojta@8am.design
-        </h1>
         <h1
           css={{
             marginBottom: '15px',
@@ -60,7 +58,7 @@ export default function Index({ data: { images, gifs, text } }) {
               maxWidth: '30%',
             },
             fontSize: '17px',
-            marginTop: 0,
+            marginTop: '15px',
             color: 'hsla(0, 0%, 0%, 0.7)',
           }}>
           Sometimes I put images of stuff I've worked on inside a special folder
@@ -71,10 +69,15 @@ export default function Index({ data: { images, gifs, text } }) {
         css={css`
           .image-name {
             position: absolute;
-            margin-top: 8px;
             color: white;
             margin-left: 0px;
+            ${bpMinMD} {
+            margin-top: 8px;
             font-size: 13px;
+          }
+          margin-top: 5px;
+          font-size: 12px;
+            line-height: 1.2;
             opacity: 0.2;
             //padding: 4px 6px 3px 6px;
             color: black;
@@ -98,7 +101,7 @@ export default function Index({ data: { images, gifs, text } }) {
               
             }
             max-width: 50%;
-            padding: 8px;
+            padding: 20px 8px;
             
           }
           .grid-item-inner {
@@ -182,6 +185,22 @@ export default function Index({ data: { images, gifs, text } }) {
           ))}
         </div> */}
       </div>
+      <h2
+        css={css`
+          font-size: 15px;
+
+          ${bpMinLG} {
+            padding-top: 50px;
+          }
+          padding-top: 20px;
+          text-align: center;
+          a {
+            color: hsla(0, 0%, 0%, 0.8);
+            text-decoration: none;
+          }
+        `}>
+        👋 <a href='mailto:vojta@egghead.io'>vojta@egghead.io</a>
+      </h2>
     </Main>
   )
 }
