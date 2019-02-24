@@ -27,7 +27,7 @@ export default function Index({ data: { projects, articles, screenshots } }) {
       ))}
 
       <h2>
-        <Link to='/screenshots'>Screenshots</Link>
+        <Link to='/drawer'>Drawer</Link>
       </h2>
       {screenshots.edges.map(({ node: data }) => (
         <div>

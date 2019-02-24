@@ -80,9 +80,9 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-            screenshots: allMdx(
+            drawer: allMdx(
               sort: { order: ASC, fields: fields___slug }
-              filter: { fields: { collection: { eq: "screenshots" } } }
+              filter: { fields: { collection: { eq: "drawer" } } }
             ) {
               edges {
                 node {
@@ -120,8 +120,8 @@ exports.createPages = ({ graphql, actions }) => {
           return e.node.parent.sourceInstanceName === 'projects'
         })
 
-        const screenshots = result.data.screenshots.edges.filter(e => {
-          return e.node.parent.sourceInstanceName === 'screenshots'
+        const drawer = result.data.drawer.edges.filter(e => {
+          return e.node.parent.sourceInstanceName === 'drawer'
         })
 
         articles.forEach(({ node }) => {
@@ -132,10 +132,10 @@ exports.createPages = ({ graphql, actions }) => {
           })
         })
 
-        screenshots.forEach(({ node }) => {
+        drawer.forEach(({ node }) => {
           createPage({
             path: node.fields.slug,
-            component: path.resolve(`./src/templates/screenshot.js`),
+            component: path.resolve(`./src/templates/drawer-template.js`),
             context: { id: node.id },
           })
         })

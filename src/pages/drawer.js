@@ -33,7 +33,7 @@ export default function Drawer({ data: { images } }) {
           `}>
           <Link to='/'>HOME</Link> / Drawer
         </h1>
-        <h1>Drawer</h1>
+        <h1>Vojta's Drawer</h1>
         <p>Some of the stuff I worked on.</p>
       </div>
       <div
@@ -100,6 +100,7 @@ export default function Drawer({ data: { images } }) {
               )}
             </div>
           ))}
+          <div className='grid-item'>heyyy I want a gif support</div>
         </Masonry>
       </div>
     </Main>
@@ -132,9 +133,9 @@ export const pageQuery = graphql`
     images: allFile(
       filter: {
         extension: { regex: "/(jpeg|jpg|png)/" }
-        sourceInstanceName: { eq: "screenshots" }
+        sourceInstanceName: { eq: "drawer" }
       }
-      sort: { order: ASC, fields: name }
+      sort: { order: DESC, fields: relativePath }
     ) {
       edges {
         node {
