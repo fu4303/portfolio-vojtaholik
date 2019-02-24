@@ -29,7 +29,7 @@ export default function Index({ data: { images, site } }) {
             justify-content: space-between;
 
             ${bpMinMD} {
-              padding: 0 20px;
+              padding: 15px 20px 0 20px;
               display: flex;
               flex-direction: row;
             }
@@ -39,7 +39,7 @@ export default function Index({ data: { images, site } }) {
             css={{
               marginBottom: '15px',
             }}>
-            Vojta's Drawer
+            Vojta's Digital Drawer
           </h1>
           <p
             css={{
@@ -53,18 +53,17 @@ export default function Index({ data: { images, site } }) {
               marginTop: '15px',
               color: 'hsla(0, 0%, 0%, 0.7)',
             }}>
-            Sometimes I put images of stuff I've worked on inside a special
-            folder and they magically appear here. I call it a Drawer.
+            Mostly screenshots. Stuff fromy my drawer.
           </p>
         </div>
         <div
           css={css`
           .image-name {
             position: absolute;
-            color: white;
+            
             margin-left: 0px;
             a {
-              color: #3C55E4;
+              color: hsla(231, 76%, 56%, 0.6);
             }
             ${bpMinMD} {
             margin-top: 8px;
@@ -73,9 +72,9 @@ export default function Index({ data: { images, site } }) {
           margin-top: 5px;
           font-size: 12px;
             line-height: 1.2;
-            opacity: 0.2;
+            color: hsla(0,0%, 0%, 0.5);
             //padding: 4px 6px 3px 6px;
-            color: black;
+            
           }
           /* funk is turned off
            .grid-item:nth-of-type(2n) {
@@ -103,9 +102,11 @@ export default function Index({ data: { images, site } }) {
             
             :hover {
               .image-name {
-                opacity: 0.8;
+                a {
+              color: hsla(231, 76%, 56%, 0.9);
+            }
                 //background: rgba(0, 0, 0, 0.8);
-                color: hsla(0, 0%, 0%, 0.5);
+                color: hsla(0, 0%, 0%, 0.8);
               }
             }
           }
@@ -120,8 +121,12 @@ export default function Index({ data: { images, site } }) {
                 <div className='grid-item-inner'>
                   <a
                     href={data.childImageSharp.fluid.originalImg}
-                    target='_blank'>
-                    <Img alt={data.name} sizes={data.childImageSharp.fluid} />
+                    target='_blank'
+                    rel='noopener noreferrer'>
+                    <Img
+                      alt={`${data.name}`}
+                      sizes={data.childImageSharp.fluid}
+                    />
                   </a>
                   {data.name.match('-') ? (
                     <span className='image-name'>
@@ -134,23 +139,35 @@ export default function Index({ data: { images, site } }) {
                             {dash >= 0 && ' '}
                             {/* Curation is key */}
                             {name === 'howtoegghead.com' && (
-                              <a href='https://howtoegghead.com'>visit</a>
-                            )}
+                              <span>
+                                | <a href='https://howtoegghead.com'>visit</a>
+                              </span>
+                            )}{' '}
                             {name === 'kentcdodds.com' && (
-                              <a href='https://kentcdodds.com'>visit</a>
+                              <span>
+                                | <a href='https://kentcdodds.com'>visit</a>
+                              </span>
                             )}
                             {name === 'moonhighway.com' && (
-                              <a href='https://moonhighway.com'>visit</a>
+                              <span>
+                                | <a href='https://moonhighway.com'>visit</a>
+                              </span>
                             )}
                             {name === 'moonhighway.com:articles' && (
-                              <a href='https://moonhighway.com/articles'>
-                                visit
-                              </a>
+                              <span>
+                                |{' '}
+                                <a href='https://moonhighway.com/articles'>
+                                  visit
+                                </a>
+                              </span>
                             )}
                             {name === 'gatsby starter egghead blog' && (
-                              <a href='https://github.com/eggheadio/gatsby-starter-egghead-blog'>
-                                visit
-                              </a>
+                              <span>
+                                |{' '}
+                                <a href='https://github.com/eggheadio/gatsby-starter-egghead-blog'>
+                                  repo
+                                </a>
+                              </span>
                             )}
                           </span>
                         ))}
@@ -162,7 +179,7 @@ export default function Index({ data: { images, site } }) {
               </div>
             ))}
             <div className='grid-item'>
-              <img src={gif6d} />
+              <img alt='6d gif' src={gif6d} />
             </div>
           </Masonry>
           {/* <div>
@@ -196,7 +213,10 @@ export default function Index({ data: { images, site } }) {
               text-decoration: none;
             }
           `}>
-          👋 <a href='mailto:vojta@8am.design'>vojta@8am.design</a>
+          <span role='img' aria-label='wave emoji'>
+            👋
+          </span>{' '}
+          <a href='mailto:vojta@8am.design'>vojta@8am.design</a>
         </h2>
       </Main>
     </>
