@@ -53,7 +53,7 @@ export default function Index({ data: { images, site } }) {
               marginTop: '15px',
               color: 'hsla(0, 0%, 0%, 0.7)',
             }}>
-            Mostly screenshots. Stuff from my drawer.{' '}
+            Mostly screenshots. Stuff from my drawer.
             {/* Sometimes I put images
             of stuff I've worked on inside a special folder and they magically
             appear here. I call it a Drawer. */}
@@ -229,6 +229,8 @@ export default function Index({ data: { images, site } }) {
 const Main = styled.main`
   margin: 0 auto;
   //max-width: 1440px;
+  //background: #181818;
+  //color: white;
   background: #fafafa;
   ${bpMinLG} {
     padding: 20px;
