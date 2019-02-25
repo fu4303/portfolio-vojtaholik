@@ -50,8 +50,9 @@ export default function Index({ data: { images, site } }) {
               fontSize: '1.4em',
               marginBottom: '7px',
             }}>
-            Vojta's Digital Drawer
+            Drawer
           </h1>
+
           <p
             css={{
               [bpMinMD]: {
@@ -64,7 +65,8 @@ export default function Index({ data: { images, site } }) {
               fontSize: '14px',
               color: 'hsla(0, 0%, 0%, 0.7)',
             }}>
-            Screenshots of stuff I've worked on.
+            Things I've worked on, screenshoted.
+            {/*Screenshots of stuff I've worked on.*/}
             {/* Screenshots of stuff I've either designed, developed, animated,... */}
             {/* Sometimes I put images
             of stuff I've worked on inside a special folder and they magically
@@ -214,7 +216,7 @@ export default function Index({ data: { images, site } }) {
           ))}
         </div> */}
         </div>
-        {/* <em>Man we would be all totally lost without screenshots.</em>
+        {/* <em>Man we would be all totally lost wi}thout screenshots.</em>
         Vojta
         <br />
         <p>it's all about showing process.</p> */}
