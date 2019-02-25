@@ -128,6 +128,14 @@ export default function Index({ data: { images, site } }) {
                                 </a>
                               </span>
                             )}
+                            {name === 'disruptive' && (
+                              <span>
+                                |{' '}
+                                <a href='https://6dacademy.com/disruptive/'>
+                                  visit
+                                </a>
+                              </span>
+                            )}
                           </span>
                         ))}
                     </span>
