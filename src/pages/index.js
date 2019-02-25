@@ -214,6 +214,10 @@ export default function Index({ data: { images, site } }) {
           ))}
         </div> */}
         </div>
+        {/* <em>Man we would be all totally lost without screenshots.</em>
+        Vojta
+        <br />
+        <p>it's all about showing process.</p> */}
         <h2
           css={css`
             font-size: 15px;
