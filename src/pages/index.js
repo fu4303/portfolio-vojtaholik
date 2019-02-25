@@ -64,8 +64,11 @@ export default function Index({ data: { images, site } }) {
               marginBottom: '5px',
               fontSize: '14px',
               color: 'hsla(0, 0%, 0%, 0.7)',
+              //textAlign: 'right',
             }}>
             Stuff I've worked on, in screenshots.
+            {/* Screenshots of projects I've worked on. */}
+            {/* Vojta's (work) life in screenshots. */}
             {/*Screenshots of stuff I've worked on.*/}
             {/* Screenshots of stuff I've either designed, developed, animated,... */}
             {/* Sometimes I put images
