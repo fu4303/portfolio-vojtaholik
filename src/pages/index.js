@@ -136,6 +136,14 @@ export default function Index({ data: { images, site } }) {
                                 </a>
                               </span>
                             )}
+                            {name === 'Mix' && (
+                              <span>
+                                |{' '}
+                                <a href='https://soundcloud.com/komox/kmx-mini-mix'>
+                                  listen
+                                </a>
+                              </span>
+                            )}
                           </span>
                         ))}
                     </span>
