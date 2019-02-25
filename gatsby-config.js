@@ -3,8 +3,8 @@ const path = require('path')
 module.exports = {
   siteMetadata: {
     title: `Vojta's digital drawer`,
-    description: `Sometimes I put images of stuff I've worked on inside a special
-    folder and they magically appear here. :]`,
+    description: `Sometimes I put screenshots of stuff I've worked on inside a special
+    folder and they magically appear here. I call it a Drawer.`,
     author: '@vjthlk',
   },
   plugins: [
