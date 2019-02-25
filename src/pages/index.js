@@ -30,15 +30,15 @@ export default function Index({ data: { images, site } }) {
 
             ${bpMinLG} {
               //padding: 15px 20px 0 20px;
-              padding: 40px 20px;
+              //padding: 40px 20px;
               display: flex;
               flex-direction: row;
             }
             ${bpMinMD} {
               //padding: 20px 20px 0 20px;
-              padding: 30px 20px 20px 20px;
+              //padding: 30px 20px 20px 20px;
             }
-            padding: 20px 10px 0 10px;
+            //padding: 20px 10px 0 10px;
           `}>
           <h1
             css={{
@@ -50,7 +50,7 @@ export default function Index({ data: { images, site } }) {
               fontSize: '1.4em',
               marginBottom: '7px',
             }}>
-            Drawer
+            {/* Drawer */}
           </h1>
 
           <p
@@ -66,7 +66,7 @@ export default function Index({ data: { images, site } }) {
               color: 'hsla(0, 0%, 0%, 0.7)',
               //textAlign: 'right',
             }}>
-            Stuff I've worked on, in screenshots.
+            {/* Stuff I've worked on, in screenshots. */}
             {/* Screenshots of projects I've worked on. */}
             {/* Vojta's (work) life in screenshots. */}
             {/*Screenshots of stuff I've worked on.*/}
