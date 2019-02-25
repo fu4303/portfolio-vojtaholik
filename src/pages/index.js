@@ -117,7 +117,7 @@ export default function Index({ data: { images, site } }) {
                             )}
                             {name === 'moonhighway.com' && (
                               <span>
-                                | <a href='https://moonhighway.com'>visit</a>
+                                | <a href='https://moonhighway.com'>visit</a> |{' '}
                               </span>
                             )}
                             {name === 'gatsby starter egghead blog' && (
