@@ -32,7 +32,7 @@ export default function ToC({ data: { projects, articles, drawer } }) {
       {drawer.edges.map(({ node: data }) => (
         <div>
           <h3>
-            <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
+            <Link to={`/${data.fields.slug}`}>{data.frontmatter.title}</Link>
           </h3>
           <p>{data.excerpt}</p>
         </div>
