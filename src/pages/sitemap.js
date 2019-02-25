@@ -3,33 +3,32 @@ import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
 import Link from '../components/link'
 
-export default function ToC({ data: { projects, articles, drawer } }) {
+export default function SiteMap({ data: { projects, articles, drawer } }) {
   return (
     <Main>
       <h1>Table of Contents</h1>
+      <h2>
+        <Link to='/'>Drawer (Home)</Link>
+      </h2>
+      {drawer.edges.map(({ node: data }) => (
+        <div>
+          <h3>
+            <Link to={`/${data.fields.slug}`}>{data.frontmatter.title}</Link>
+          </h3>
+          <p>{data.excerpt}</p>
+        </div>
+      ))}
       <h2>Projects</h2>
       {projects.edges.map(({ node: data }) => (
         <div>
           <h3>
-            <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
+            <Link to={`/${data.fields.slug}`}>{data.frontmatter.title}</Link>
           </h3>
           <p>{data.excerpt}</p>
         </div>
       ))}
       <h2>Articles</h2>
       {articles.edges.map(({ node: data }) => (
-        <div>
-          <h3>
-            <Link to={data.fields.slug}>{data.frontmatter.title}</Link>
-          </h3>
-          <p>{data.excerpt}</p>
-        </div>
-      ))}
-
-      <h2>
-        <Link to='/'>Drawer</Link>
-      </h2>
-      {drawer.edges.map(({ node: data }) => (
         <div>
           <h3>
             <Link to={`/${data.fields.slug}`}>{data.frontmatter.title}</Link>
