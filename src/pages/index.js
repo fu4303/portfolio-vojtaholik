@@ -25,59 +25,6 @@ export default function Index({ data: { images, site } }) {
       <Main>
         <div
           css={css`
-            align-items: center;
-            justify-content: space-between;
-
-            ${bpMinLG} {
-              //padding: 15px 20px 0 20px;
-              //padding: 40px 20px;
-              display: flex;
-              flex-direction: row;
-            }
-            ${bpMinMD} {
-              //padding: 20px 20px 0 20px;
-              //padding: 30px 20px 20px 20px;
-            }
-            //padding: 20px 10px 0 10px;
-          `}>
-          <h1
-            css={{
-              lineHeight: 1,
-              [bpMinMD]: {
-                fontSize: '2em',
-                marginBottom: '15px',
-              },
-              fontSize: '1.4em',
-              marginBottom: '7px',
-            }}>
-            {/* Drawer */}
-          </h1>
-
-          <p
-            css={{
-              [bpMinMD]: {
-                fontSize: '17px',
-              },
-              [bpMinLG]: {
-                marginBottom: '10px',
-              },
-              marginBottom: '5px',
-              fontSize: '14px',
-              color: 'hsla(0, 0%, 0%, 0.7)',
-              //textAlign: 'right',
-            }}>
-            {/* Stuff I've worked on, in screenshots. */}
-            {/* Screenshots of projects I've worked on. */}
-            {/* Vojta's (work) life in screenshots. */}
-            {/*Screenshots of stuff I've worked on.*/}
-            {/* Screenshots of stuff I've either designed, developed, animated,... */}
-            {/* Sometimes I put images
-            of stuff I've worked on inside a special folder and they magically
-            appear here. I call it a Drawer. */}
-          </p>
-        </div>
-        <div
-          css={css`
           .image-name {
             position: absolute;
             
