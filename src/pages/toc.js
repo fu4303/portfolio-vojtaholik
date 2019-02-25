@@ -6,7 +6,7 @@ import Link from '../components/link'
 export default function ToC({ data: { projects, articles, drawer } }) {
   return (
     <Main>
-      <h1>Index page</h1>
+      <h1>Table of Contents</h1>
       <h2>Projects</h2>
       {projects.edges.map(({ node: data }) => (
         <div>
@@ -27,7 +27,7 @@ export default function ToC({ data: { projects, articles, drawer } }) {
       ))}
 
       <h2>
-        <Link to='/drawer'>Drawer</Link>
+        <Link to='/'>Drawer</Link>
       </h2>
       {drawer.edges.map(({ node: data }) => (
         <div>
