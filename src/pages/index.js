@@ -65,7 +65,7 @@ export default function Index({ data: { images, site } }) {
               fontSize: '14px',
               color: 'hsla(0, 0%, 0%, 0.7)',
             }}>
-            Things I've worked on, screenshoted.
+            Stuff I've worked on, in screenshots.
             {/*Screenshots of stuff I've worked on.*/}
             {/* Screenshots of stuff I've either designed, developed, animated,... */}
             {/* Sometimes I put images
