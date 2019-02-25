@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `Vojta's digital drawer`,
     description: `Sometimes I put images of stuff I've worked on inside a special
-    folder and they magically appear here. I call it a Drawer.`,
+    folder and they magically appear here. :]`,
     author: '@vjthlk',
   },
   plugins: [
