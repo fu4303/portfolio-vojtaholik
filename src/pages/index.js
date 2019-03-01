@@ -84,19 +84,19 @@ export default function Index({ data: { images, site } }) {
         `}>
           <Masonry className={'masonry-item'}>
             {images.edges.map(({ node: data }) => (
-              <div className='grid-item' key={data.id}>
-                <div className='grid-item-inner'>
+              <div className="grid-item" key={data.id}>
+                <div className="grid-item-inner">
                   <a
                     href={data.childImageSharp.fluid.originalImg}
-                    target='_blank'
-                    rel='noopener noreferrer'>
+                    target="_blank"
+                    rel="noopener noreferrer">
                     <Img
                       alt={`${data.name}`}
                       sizes={data.childImageSharp.fluid}
                     />
                   </a>
                   {data.name.match('-') ? (
-                    <span className='image-name'>
+                    <span className="image-name">
                       {data.name
                         .substring(4)
                         .split('-')
@@ -107,23 +107,23 @@ export default function Index({ data: { images, site } }) {
                             {/* Curation is key */}
                             {name === 'howtoegghead.com' && (
                               <span>
-                                | <a href='https://howtoegghead.com'>visit</a>
+                                | <a href="https://howtoegghead.com">visit</a>
                               </span>
                             )}{' '}
                             {name === 'kentcdodds.com' && (
                               <span>
-                                | <a href='https://kentcdodds.com'>visit</a>
+                                | <a href="https://kentcdodds.com">visit</a>
                               </span>
                             )}
                             {name === 'moonhighway.com' && (
                               <span>
-                                | <a href='https://moonhighway.com'>visit</a> |{' '}
+                                | <a href="https://moonhighway.com">visit</a> |{' '}
                               </span>
                             )}
                             {name === 'gatsby starter egghead blog' && (
                               <span>
                                 |{' '}
-                                <a href='https://github.com/eggheadio/gatsby-starter-egghead-blog'>
+                                <a href="https://github.com/eggheadio/gatsby-starter-egghead-blog">
                                   repo
                                 </a>
                               </span>
@@ -131,7 +131,7 @@ export default function Index({ data: { images, site } }) {
                             {name === 'disruptive' && (
                               <span>
                                 |{' '}
-                                <a href='https://6dacademy.com/disruptive/'>
+                                <a href="https://6dacademy.com/disruptive/">
                                   visit
                                 </a>
                               </span>
@@ -139,7 +139,7 @@ export default function Index({ data: { images, site } }) {
                             {name === 'track' && (
                               <span>
                                 |{' '}
-                                <a href='https://soundcloud.com/komox/kmx-day-of-the-riff'>
+                                <a href="https://soundcloud.com/komox/kmx-day-of-the-riff">
                                   listen
                                 </a>
                               </span>
@@ -148,13 +148,13 @@ export default function Index({ data: { images, site } }) {
                         ))}
                     </span>
                   ) : (
-                    <span className='image-name'>{data.name}</span>
+                    <span className="image-name">{data.name}</span>
                   )}
                 </div>
               </div>
             ))}
-            <div className='grid-item'>
-              <img alt='6d gif' src={gif6d} />
+            <div className="grid-item">
+              <img alt="6d gif" src={gif6d} />
             </div>
           </Masonry>
           {/* <div>
@@ -192,10 +192,10 @@ export default function Index({ data: { images, site } }) {
               text-decoration: none;
             }
           `}>
-          <span role='img' aria-label='wave emoji'>
+          <span role="img" aria-label="wave emoji">
             👋
           </span>{' '}
-          <a href='mailto:vojta@8am.design'>vojta@8am.design</a>
+          <a href="mailto:vojta@8am.design">vojta@8am.design</a>
         </h2>
       </Main>
     </>
