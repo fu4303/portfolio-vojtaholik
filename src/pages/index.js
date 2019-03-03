@@ -8,8 +8,7 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Masonry from 'react-masonry-component'
 import SEO from '../components/seo'
 import ReactGA from 'react-ga'
-// ReactGA.initialize('UA-135029522-1')
-// ReactGA.pageview(window.location.pathname + window.location.search)
+
 import {
   bpMaxSM,
   bpMinSM,
@@ -20,6 +19,9 @@ import {
 } from '../utils/breakpoints'
 
 import gif6d from '../../content/drawer/gifs/6DIntro.gif'
+
+// ReactGA.pageview(window.location.pathname + window.location.search)
+ReactGA.initialize('UA-135029522-1')
 
 export default function Index({ data: { images, site } }) {
   return (
