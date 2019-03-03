@@ -20,8 +20,8 @@ import {
 
 import gif6d from '../../content/drawer/gifs/6DIntro.gif'
 
-// ReactGA.pageview(window.location.pathname + window.location.search)
 ReactGA.initialize('UA-135029522-1')
+ReactGA.pageview(window.location.pathname)
 
 export default function Index({ data: { images, site } }) {
   return (
