@@ -95,7 +95,10 @@ export default function Index({ data: { images, site } }) {
                     href={data.childImageSharp.fluid.originalImg}
                     target="_blank"
                     onClick={() =>
-                      ReactGA.event({ action: `clicked ${data.name}` })
+                      ReactGA.event({
+                        action: `clicked ${data.name}`,
+                        category: 'drawer images',
+                      })
                     }
                     rel="noopener noreferrer">
                     <Img
