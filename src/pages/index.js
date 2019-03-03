@@ -96,7 +96,7 @@ export default function Index({ data: { images, site } }) {
                     target="_blank"
                     onClick={() =>
                       ReactGA.event({
-                        action: `clicked ${data.name}`,
+                        action: `clicked ${data.name.substring(4)}`,
                         category: 'drawer images',
                       })
                     }
