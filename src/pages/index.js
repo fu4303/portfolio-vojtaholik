@@ -7,6 +7,9 @@ import { css } from '@emotion/core'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Masonry from 'react-masonry-component'
 import SEO from '../components/seo'
+import ReactGA from 'react-ga'
+// ReactGA.initialize('UA-135029522-1')
+// ReactGA.pageview(window.location.pathname + window.location.search)
 import {
   bpMaxSM,
   bpMinSM,
@@ -89,6 +92,9 @@ export default function Index({ data: { images, site } }) {
                   <a
                     href={data.childImageSharp.fluid.originalImg}
                     target="_blank"
+                    onClick={() =>
+                      ReactGA.event({ action: `clicked ${data.name}` })
+                    }
                     rel="noopener noreferrer">
                     <Img
                       alt={`${data.name}`}
