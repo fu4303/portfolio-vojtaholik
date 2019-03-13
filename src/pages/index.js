@@ -79,7 +79,7 @@ export default function Index({ data: { images, site } }) {
               <div className="grid-item" key={data.id}>
                 <div className="grid-item-inner">
                   <a
-                    href={data.childImageSharp.fluid.originalImg}
+                    href={data.childImageSharp.original.src}
                     target="_blank"
                     onClick={() =>
                       ReactGA.event({
@@ -278,14 +278,11 @@ export const pageQuery = graphql`
           relativeDirectory
           sourceInstanceName
           childImageSharp {
+            original {
+              src
+            }
             fluid(maxWidth: 800) {
               ...GatsbyImageSharpFluid_tracedSVG
-              src
-              originalImg
-            }
-            fixed(width: 800, height: 800) {
-              ...GatsbyImageSharpFixed
-              src
             }
           }
         }
