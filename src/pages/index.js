@@ -9,6 +9,11 @@ import Masonry from 'react-masonry-component'
 import SEO from '../components/seo'
 import ReactGA from 'react-ga'
 
+// looks like I can use allImageSharp query instead of allFile and regex...
+// https://github.com/gatsbyjs/gatsby/issues/4843
+// lightbox: https://416serg.me/building-a-custom-accessible-image-lightbox-in-gatsbyjs/
+// lightbox component: https://github.com/416serg/gatsby-starter-lightbox/blob/master/src/components/Lightbox.js
+
 import {
   bpMaxSM,
   bpMinSM,
@@ -29,63 +34,46 @@ export default function Index({ data: { images, site } }) {
       <Main>
         <div
           css={css`
-          .image-name {
-            position: absolute;
-            
-            margin-left: 0px;
-            a {
-              color: hsla(231, 76%, 56%, 0.6);
+            .image-name {
+              position: absolute;
+              margin-left: 0px;
+              a {
+                color: hsla(231, 76%, 56%, 0.6);
+              }
+              ${bpMinMD} {
+                margin-top: 8px;
+                font-size: 13px;
+              }
+              margin-top: 5px;
+              font-size: 12px;
+              line-height: 1.2;
+              color: hsla(0, 0%, 0%, 0.5);
             }
-            ${bpMinMD} {
-            margin-top: 8px;
-            font-size: 13px;
-          }
-          margin-top: 5px;
-          font-size: 12px;
-            line-height: 1.2;
-            color: hsla(0,0%, 0%, 0.5);
-            //padding: 4px 6px 3px 6px;
-            
-          }
-          /* funk is turned off
-           .grid-item:nth-of-type(2n) {
-            ${bpMinMD} {
-              max-width: 66%;
+            .gatsby-image-wrapper {
+              box-shadow: 0 30px 80px -20px hsla(0, 0%, 0%, 0.2);
+              cursor: zoom-in;
+            }
+            .grid-item {
               width: 100%;
-              padding: 10px;
+
+              ${bpMinMD} {
+                max-width: 33.33333%;
+                padding: 25px;
+              }
+              max-width: 50%;
+              padding: 20px 8px;
             }
-            width: 50%;
-          } */
-             .gatsby-image-wrapper {box-shadow: 0 30px 80px -20px hsla(0,0%,0%,0.2); cursor: zoom-in;} 
-          .grid-item {
-            width: 100%;
-            
-            ${bpMinMD} {
-              max-width: 33.33333%;
-              padding: 25px;
-              
-            }
-            max-width: 50%;
-            padding: 20px 8px;
-            
-          }
-          .grid-item-inner {
-            
-            :hover {
-              .image-name {
-                a {
-              color: hsla(231, 76%, 56%, 0.9);
-            }
-                //background: rgba(0, 0, 0, 0.8);
-                color: hsla(0, 0%, 0%, 0.8);
+            .grid-item-inner {
+              :hover {
+                .image-name {
+                  a {
+                    color: hsla(231, 76%, 56%, 0.9);
+                  }
+                  color: hsla(0, 0%, 0%, 0.8);
+                }
               }
             }
-          }
-          /* .masonry-item {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
-          } */
-        `}>
+          `}>
           <Masonry className={'masonry-item'}>
             {images.edges.map(({ node: data }) => (
               <div className="grid-item" key={data.id}>
@@ -109,12 +97,18 @@ export default function Index({ data: { images, site } }) {
                     <span className="image-name">
                       {data.name
                         .substring(4)
+                        .replace('@2x', '')
                         .split('-')
                         .map((name, dash) => (
                           <span key={name}>
                             {name}
                             {dash >= 0 && ' '}
                             {/* Curation is key */}
+                            {name === 'illustrated.dev' && (
+                              <span>
+                                | <a href="https://illustrated.dev">visit</a>
+                              </span>
+                            )}{' '}
                             {name === 'howtoegghead.com' && (
                               <span>
                                 | <a href="https://howtoegghead.com">visit</a>
