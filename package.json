@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "author": "vojta",
   "dependencies": {
+    "@brainhubeu/react-carousel": "^1.10.16",
     "@emotion/core": "^10.0.7",
     "@emotion/styled": "^10.0.7",
     "@mdx-js/mdx": "^0.16.6",
