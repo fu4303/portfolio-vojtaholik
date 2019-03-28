@@ -1,14 +1,10 @@
 import React from 'react'
-
 import { useStaticQuery, graphql } from 'gatsby'
-
 import { Global, css } from '@emotion/core'
-
 import reset from '../utils/reset'
 import SEO from './seo'
 import './layout-styles.css'
-
-import { bpMaxSM } from '../utils/breakpoints'
+import { colors, spacing, breakpoints, fonts } from '../utils/styles'
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,16 +23,17 @@ const Layout = ({ children }) => {
       <div
         css={css`
           display: flex;
-          ${bpMaxSM} {
+          @media (min-width: ${breakpoints.mobile}px) {
             flex-direction: column;
           }
         `}>
         <div
           css={{
             margin: '2rem auto',
-            [bpMaxSM]: {
+            ['@media (min-width: ${breakpoints.mobile}px)']: {
               margin: '0 auto',
             },
+
             maxWidth: '960px',
             width: '100%',
             padding: '0 1.0875rem 0 1.0875rem',

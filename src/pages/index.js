@@ -8,20 +8,12 @@ import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Masonry from 'react-masonry-component'
 import SEO from '../components/seo'
 import ReactGA from 'react-ga'
+import { colors, spacing, breakpoints, fonts } from '../utils/styles'
 
 // looks like I can use allImageSharp query instead of allFile and regex...
 // https://github.com/gatsbyjs/gatsby/issues/4843
 // lightbox: https://416serg.me/building-a-custom-accessible-image-lightbox-in-gatsbyjs/
 // lightbox component: https://github.com/416serg/gatsby-starter-lightbox/blob/master/src/components/Lightbox.js
-
-import {
-  bpMaxSM,
-  bpMinSM,
-  bpMaxMD,
-  bpMinMD,
-  bpMaxLG,
-  bpMinLG,
-} from '../utils/breakpoints'
 
 import gif6d from '../../content/drawer/gifs/6DIntro.gif'
 
@@ -40,10 +32,11 @@ export default function Index({ data: { images, site } }) {
               a {
                 color: hsla(231, 76%, 56%, 0.6);
               }
-              ${bpMinMD} {
+              @media (min-width: ${breakpoints.tablet}px) {
                 margin-top: 8px;
                 font-size: 13px;
               }
+
               margin-top: 5px;
               font-size: 12px;
               line-height: 1.2;
@@ -55,11 +48,11 @@ export default function Index({ data: { images, site } }) {
             }
             .grid-item {
               width: 100%;
-
-              ${bpMinMD} {
+              @media (min-width: ${breakpoints.tablet}px) {
                 max-width: 33.33333%;
                 padding: 25px;
               }
+
               max-width: 50%;
               padding: 20px 8px;
             }
@@ -185,8 +178,7 @@ export default function Index({ data: { images, site } }) {
         <h2
           css={css`
             font-size: 15px;
-
-            ${bpMinLG} {
+            @media (min-width: ${breakpoints.desktop}px) {
               padding-top: 50px;
             }
             padding-top: 20px;
@@ -208,11 +200,8 @@ export default function Index({ data: { images, site } }) {
 
 const Main = styled.main`
   margin: 0 auto;
-  //max-width: 1440px;
-  //background: #181818;
-  //color: white;
   background: #f1f1f1;
-  ${bpMinLG} {
+  @media (min-width: ${breakpoints.desktop}px) {
     padding: 20px;
   }
   padding: 5px;

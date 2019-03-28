@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
-import ArticleLayout from '../components/article-layout'
+import Layout from '../components/layout'
 import { bpMinLG } from '../utils/breakpoints'
 import Link from '../components/link'
 
@@ -10,7 +10,7 @@ class ArticleTemplate extends React.Component {
   render() {
     const article = this.props.data.mdx
     return (
-      <ArticleLayout>
+      <Layout>
         <div
           css={css`
             font-size: 15px;
@@ -20,30 +20,12 @@ class ArticleTemplate extends React.Component {
             opacity: 0.7;
             margin-top: 20px;
           `}>
-          <Link to="/">HOME</Link> /
-          <div
-            css={css`
-              position: absolute;
-              background: rgba(0, 0, 0, 0.08);
-              padding: 5px 10px;
-              margin-left: 50px;
-            `}>
-            <Link to="/projects">Projects</Link> -{' '}
-            <Link to="/screenshots">Screenshots</Link> -{' '}
-          </div>
-          <Link
-            to={`/${article.fields.collection}`}
-            css={css`
-              font-weight: bold;
-            `}>
-            {article.fields.collection}
-          </Link>{' '}
-          / {article.frontmatter.title && article.frontmatter.title}
+          <Link to="/">HOME</Link> / ARTICLES /{' '}
+          {article.frontmatter.title && article.frontmatter.title}
         </div>
-        <h2>{article.frontmatter.description}</h2>
         <hr />
         <MDXRenderer>{article.code.body}</MDXRenderer>
-      </ArticleLayout>
+      </Layout>
     )
   }
 }
