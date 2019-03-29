@@ -83,6 +83,23 @@ const Box = styled.div({
   h3: {
     fontSize: '18px',
   },
+  [bpMinLG]: {
+    '.display-on-hover': {
+      opacity: 0,
+    },
+  },
+  ':hover': {
+    '.display-on-hover': {
+      opacity: 0.7,
+    },
+  },
+})
+
+const EditOnGithub = styled.a({
+  fontSize: '12px',
+  position: 'absolute',
+  transform: 'translateY(-5px)',
+  color: 'hsla(0, 0%, 0%, 0.7)',
 })
 
 export default function Cheatsheet({ data: { cheatsheets } }) {
@@ -105,6 +122,14 @@ export default function Cheatsheet({ data: { cheatsheets } }) {
               <MDXRenderer componetns={mdxComponents}>
                 {data.code.body}
               </MDXRenderer>
+              <EditOnGithub
+                className="display-on-hover"
+                href={`https://github.com/vojtaholik/vojta-io/tree/master/content/${data.fields.slug.substring(
+                  0,
+                  data.fields.slug.length - 1
+                )}.mdx`}>
+                Edit on GitHub
+              </EditOnGithub>
             </Box>
           </Block>
         ))}
