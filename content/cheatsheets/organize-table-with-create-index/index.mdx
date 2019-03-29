@@ -21,13 +21,15 @@ create index test1_user_handle on Users (user_handle);
 You can also index on multiple columns that you query together often. For example,
 
 ```sql
-select * from Users where user_handle = val1 and create_date between val2 and val3;
+select * from Users where user_handle = val1 and 
+create_date between val2 and val3;
 ```
 
 can be indexed with:
 
 ```sql
-create index test1_user_handle_and_create_date_index on Users (user_handle, create_date);
+create index test1_user_handle_and_create_date_index 
+on Users (user_handle, create_date);
 ```
 
 `\d Users;` Displays all indexed on the Users table.
