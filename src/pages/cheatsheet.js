@@ -89,11 +89,11 @@ export default function Cheatsheet({ data: { cheatsheets } }) {
   return (
     <Layout>
       <div style={{ textAlign: 'left' }}>
-        <h4>Cheat Sheet</h4>
-        <h2>
+        <h5>Cheat Sheet</h5>
+        <h3>
           SQL Fundamentals{' '}
           <small css={css({ fontSize: '60%' })}>by Tyler Clark</small>
-        </h2>
+        </h3>
       </div>
       <br />
       {/* <Masonry>
