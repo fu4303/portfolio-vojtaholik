@@ -37,7 +37,7 @@ const Layout = ({ children, background }) => {
               margin: '0 auto',
             },
             ['@media screen']: {
-              maxWidth: '960px',
+              maxWidth: '1120px',
               padding: '0 1.0875rem 0 1.0875rem',
             },
             width: '100%',

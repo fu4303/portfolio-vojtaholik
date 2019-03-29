@@ -14,7 +14,8 @@ ${TableB} aliasToB on ${a.column_name} = ${b.column_name};
 ```
 
 ```qsl
-select * from Users u right outer join Purchases p on u.user_handle = p.userhandle;
+select * from Users u right outer join Purchases p 
+on u.user_handle = p.userhandle;
 ```
 
 </CodeWithExample>
