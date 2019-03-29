@@ -1,0 +1,13 @@
+---
+title: Ensure Data is not null [`not null`](https://www.w3schools.com/sql/sql_notnull.asp)
+---
+
+When creating a table, you can make sure data being added is  not null
+
+```sql
+create table Users (  
+  first_name text,
+  user_handle uuid not null,
+  constraint PK_users primary key (user_handle)
+);
+```

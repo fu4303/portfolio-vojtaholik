@@ -6,6 +6,7 @@ import { bpMaxSM, bpMaxMD, bpMinMD, bpMinLG } from '../utils/breakpoints'
 import Layout from '../components/layout'
 import Markdown from 'react-markdown'
 import Masonry from 'react-masonry-component'
+import { isEmpty } from 'lodash'
 
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import { MDXProvider } from '@mdx-js/tag'
@@ -39,14 +40,29 @@ const Block = styled.div({
 })
 
 const Title = styled(Markdown)({
-  p: { fontSize: '21px', fontWeight: 500, color: 'hsla(0, 0%, 0%, 0.85)' },
+  p: {
+    fontSize: '21px',
+    fontWeight: 600,
+    color: 'hsla(0, 0%, 0%, 0.85)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  strong: {
+    fontSize: '60%',
+    color: '#2AB064',
+    textTransform: 'uppercase',
+    //marginLeft: '8px',
+  },
   code: {
-    padding: '3px 5px',
+    fontWeight: 300,
+    padding: '2px 8px',
     borderRadius: '5px',
-    fontSize: '80%',
+    fontSize: '75%',
     color: 'blue',
     background: '#f2f2f2',
-    marginLeft: '5px',
+    //marginLeft: '8px',
   },
 })
 
@@ -72,12 +88,13 @@ const Box = styled.div({
 export default function Cheatsheet({ data: { cheatsheets } }) {
   return (
     <Layout>
-      <h4>Cheat Sheet</h4>
-      <h2>
-        SQL Fundamentals{' '}
-        <small css={css({ fontSize: '60%' })}>by Tyler Clark</small>
-      </h2>
-
+      <div style={{ textAlign: 'left' }}>
+        <h4>Cheat Sheet</h4>
+        <h2>
+          SQL Fundamentals{' '}
+          <small css={css({ fontSize: '60%' })}>by Tyler Clark</small>
+        </h2>
+      </div>
       <br />
       {/* <Masonry>
         <Block>
@@ -100,7 +117,9 @@ export default function Cheatsheet({ data: { cheatsheets } }) {
         {cheatsheets.edges.map(({ node: data }) => (
           <Block>
             <Box>
-              <Title>{data.frontmatter.title}</Title>
+              {!isEmpty(data.frontmatter.title) && (
+                <Title>{data.frontmatter.title}</Title>
+              )}
               <MDXRenderer componetns={mdxComponents}>
                 {data.code.body}
               </MDXRenderer>

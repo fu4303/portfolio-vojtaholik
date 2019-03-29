@@ -1,0 +1,27 @@
+---
+title: Add a Primary Key **best practice**
+---
+
+import CodeWithExample from '../../../src/components/code-with-example'
+
+
+A primary key ensures that a given value is not null and is unique. It is a best practice to add a primary key when creating a table.
+
+When creating a table, use this syntax:
+
+<CodeWithExample>
+
+```sql
+constraint PK_name primary key 
+(${column_name})
+```
+
+```sql
+create table Users (  
+  first_name text,
+  user_handle uuid,
+  constraint PK_users primary key (user_handle)
+);
+```
+
+</CodeWithExample>

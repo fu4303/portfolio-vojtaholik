@@ -192,8 +192,8 @@ pre {
   @media (hover: hover) {
     pre:hover {
       width: 750px !important;
-      position: relative;
       box-shadow: 0 5px 30px -5px hsla(0, 0%, 0%, 0.1);
+      position: relative;
       z-index: 1000;
       transition: all 100ms;
     }

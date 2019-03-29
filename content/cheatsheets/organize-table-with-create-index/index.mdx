@@ -1,0 +1,35 @@
+---
+title: Organize a Table with [`create index`](https://www.w3schools.com/sql/sql_create_index.asp)
+---
+
+import CodeWithExample from '../../../src/components/code-with-example'
+
+Indexes are used to retrieve data faster.
+
+<CodeWithExample>
+
+```sql
+create index ${index_name}  on ${TableName} (#{column_to_index});
+```
+
+```qsl
+create index test1_user_handle on Users (user_handle);
+```
+
+</CodeWithExample>
+
+You can also index on multiple columns that you query together often. For example,
+
+```sql
+select * from Users where user_handle = val1 and create_date between val2 and val3;
+```
+
+can be indexed with:
+
+```sql
+create index test1_user_handle_and_create_date_index on Users (user_handle, create_date);
+```
+
+`\d Users;` Displays all indexed on the Users table.
+
+`drop index index_name;` Removes the `index_name` index.
