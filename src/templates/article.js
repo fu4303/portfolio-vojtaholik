@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import { css } from '@emotion/core'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Layout from '../components/layout'
-import { bpMinLG } from '../utils/breakpoints'
 import Link from '../components/link'
 
 class ArticleTemplate extends React.Component {

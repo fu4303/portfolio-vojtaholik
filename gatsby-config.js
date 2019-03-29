@@ -17,7 +17,7 @@ module.exports = {
           export default { ResponsiveEmbed, TwitterTweetEmbed };
         `,
         defaultLayouts: {
-          default: path.resolve('./src/components/layout.js'),
+          //default: path.resolve('./src/templates/markdown-page.js'),
         },
         gatsbyRemarkPlugins: [
           {
@@ -44,7 +44,14 @@ module.exports = {
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
-
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/cheatsheets/`,
+        name: 'cheatsheets',
+        ignore: [`**/\.*`], // ignore files starting with a dot,
+      },
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -76,6 +83,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+
     {
       resolve: `gatsby-plugin-typography`,
       options: {

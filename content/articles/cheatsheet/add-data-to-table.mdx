@@ -1,0 +1,34 @@
+---
+title: 'Add Data to a Table'
+published: true
+---
+
+import CodeWithExample from '../../../src/components/code-with-example'
+
+# Add Data to a Table `insert`
+
+
+
+<CodeWithExample>
+
+```sql
+insert into ${Name} (${first_column_name}, ${next_column_name}) 
+values ('first_val', 'next_val');
+```
+
+```sql
+insert into Users (create_date, user_handle, last_name, first_name) 
+values ('2018-06-06', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'clark', 'tyler');
+```
+
+</CodeWithExample>
+
+If you are inserting data for every column in your table, you can just pass values, but it’s best practice to use the column names as seen above.
+
+```sql
+insert into Users values ('2018-06-06', 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11', 'clark', 'tyler');
+```
+
+The order of the data you provide after  values needs to match the column order.
+
+

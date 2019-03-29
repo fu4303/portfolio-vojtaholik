@@ -80,6 +80,30 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
+            cheatsheets: allMdx(
+              sort: { order: ASC, fields: fields___slug }
+              filter: { fields: { collection: { eq: "cheatsheets" } } }
+            ) {
+              edges {
+                node {
+                  id
+                  parent {
+                    ... on File {
+                      name
+                      sourceInstanceName
+                    }
+                  }
+                  excerpt(pruneLength: 250)
+                  fields {
+                    collection
+                    slug
+                  }
+                  frontmatter {
+                    title
+                  }
+                }
+              }
+            }
             drawer: allMdx(
               sort: { order: ASC, fields: fields___slug }
               filter: { fields: { collection: { eq: "drawer" } } }
@@ -120,6 +144,10 @@ exports.createPages = ({ graphql, actions }) => {
           return e.node.parent.sourceInstanceName === 'projects'
         })
 
+        const cheatsheets = result.data.projects.edges.filter(e => {
+          return e.node.parent.sourceInstanceName === 'cheatsheets'
+        })
+
         const drawer = result.data.drawer.edges.filter(e => {
           return e.node.parent.sourceInstanceName === 'drawer'
         })
@@ -136,6 +164,14 @@ exports.createPages = ({ graphql, actions }) => {
           createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/drawer-template.js`),
+            context: { id: node.id },
+          })
+        })
+
+        cheatsheets.forEach(({ node }) => {
+          createPage({
+            path: node.fields.slug,
+            component: path.resolve(`./src/templates/article.js`),
             context: { id: node.id },
           })
         })

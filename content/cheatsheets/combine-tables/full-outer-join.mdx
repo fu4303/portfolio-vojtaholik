@@ -1,0 +1,20 @@
+---
+title: Full Outer Join
+---
+
+import CodeWithExample from '../../../src/components/code-with-example'
+
+Joins two tables showing all rows, with null values for missing data.
+<br/><br/>
+
+<CodeWithExample>
+
+<div/>
+
+```qsl
+select * from Users u full outer join Purchases p on u.user_handle = p.userhandle;
+```
+
+</CodeWithExample>
+
+Results in data showing only users who have Purchase records.

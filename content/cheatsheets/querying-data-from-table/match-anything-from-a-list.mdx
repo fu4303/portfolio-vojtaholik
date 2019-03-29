@@ -1,0 +1,19 @@
+---
+title: Match Anything from a List `Li`
+slug: match-anything-from-a-list
+---
+
+import CodeWithExample from '../../../src/components/code-with-example'
+
+<CodeWithExample>
+
+```sql
+select * from ${TableName} where 
+${column_name} in ('value1', 'value2');
+```
+
+```qsl
+select * from Users where last_name  in ('smith', 'jones');
+```
+
+</CodeWithExample>

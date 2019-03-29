@@ -1,0 +1,23 @@
+---
+title: Filter Query Results
+slug: filter-query-results
+---
+
+Use the where `keyword` to add a condition:
+
+```sql
+select * from ${TableName} where 
+${column_name} = 'value';
+```
+
+Logical operators can be added to filter further:
+
+`and` `or` `>` `>=` `<` `=<` `=`  all work as expected.
+
+To find null values, we use `is null` because an <br/> `= null` will return null itself (instead of true or false)
+
+`between` is used as a short hand for:
+
+```sql
+condition 1 < data you want < condition 2 select * from Users where create_date between '2018-05-01' and '2018-09-24';
+```

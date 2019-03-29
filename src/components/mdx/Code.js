@@ -1,6 +1,6 @@
 import React from 'react'
 import { css } from '@emotion/core'
-import theme from 'prism-react-renderer/themes/oceanicNext'
+import theme from './code-theme'
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 
@@ -19,24 +19,22 @@ const Code = ({ codeString, language, ...props }) => {
         {...defaultProps}
         code={codeString}
         language={language}
-        theme={theme}
-      >
+        theme={theme}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre className={className} style={style}>
             {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })}>
-                <span
-                  css={css`
-                    display: inline-block;
-                    width: 2em;
-                    user-select: none;
-                    opacity: 0.3;
-                  `}
-                >
-                  {i + 1}
-                </span>
+              <div
+                css={css({
+                  fontSize: '14px',
+                  lineHeight: '1.5',
+                  ['@media print']: {
+                    fontSize: '12px',
+                  },
+                })}
+                key={i}
+                {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
+                  <span key={key} {...getTokenProps({ token, key })} />
                 ))}
               </div>
             ))}
