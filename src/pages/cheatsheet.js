@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { bpMaxSM, bpMaxMD, bpMinMD, bpMinLG } from '../utils/breakpoints'
 import Layout from '../components/layout'
@@ -72,7 +73,11 @@ export default function Cheatsheet({ data: { cheatsheets } }) {
   return (
     <Layout>
       <h4>Cheat Sheet</h4>
-      <h2>SQL Fundamentals</h2>
+      <h2>
+        SQL Fundamentals{' '}
+        <small css={css({ fontSize: '60%' })}>by Tyler Clark</small>
+      </h2>
+
       <br />
       {/* <Masonry>
         <Block>
