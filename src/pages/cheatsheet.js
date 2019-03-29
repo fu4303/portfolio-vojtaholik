@@ -87,7 +87,7 @@ const Box = styled.div({
 
 export default function Cheatsheet({ data: { cheatsheets } }) {
   return (
-    <Layout>
+    <Layout background="#f1f1f1">
       <div style={{ textAlign: 'left' }}>
         <h5 style={{ margin: 0 }}>Cheat Sheet</h5>
         <h3 style={{ margin: '0 0 20px' }}>

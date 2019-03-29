@@ -8,7 +8,7 @@ import SEO from './seo'
 import './layout-styles.css'
 import { colors, spacing, breakpoints, fonts } from '../utils/styles'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, background }) => {
   const data = useStaticQuery(graphql`
     query LayoutQuery {
       site {
@@ -28,6 +28,7 @@ const Layout = ({ children }) => {
           @media (min-width: ${breakpoints.mobile}px) {
             flex-direction: column;
           }
+          background: ${background ? background : '#fafafa'};
         `}>
         <div
           css={{
