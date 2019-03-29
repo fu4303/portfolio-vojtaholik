@@ -89,30 +89,12 @@ export default function Cheatsheet({ data: { cheatsheets } }) {
   return (
     <Layout>
       <div style={{ textAlign: 'left' }}>
-        <h5>Cheat Sheet</h5>
-        <h3>
+        <h5 style={{ margin: 0 }}>Cheat Sheet</h5>
+        <h3 style={{ margin: '0 0 20px' }}>
           SQL Fundamentals{' '}
           <small css={css({ fontSize: '60%' })}>by Tyler Clark</small>
         </h3>
       </div>
-      <br />
-      {/* <Masonry>
-        <Block>
-          <Box>
-            <AddDataToTable />
-          </Box>
-        </Block>
-        <Block>
-          <Box>
-            <GetColumnData />
-          </Box>
-        </Block>
-        <Block>
-          <Box>
-            <GetSpecificColumnData />
-          </Box>
-        </Block>
-      </Masonry> */}
       <Masonry>
         {cheatsheets.edges.map(({ node: data }) => (
           <Block>
