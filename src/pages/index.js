@@ -97,6 +97,11 @@ export default function Index({ data: { images, site } }) {
                             {name}
                             {dash >= 0 && ' '}
                             {/* Curation is key */}
+                            {name === 'for joel' && (
+                              <span>
+                                | <a href="https://joelhooks.com">visit</a>
+                              </span>
+                            )}{' '}
                             {name === 'illustrated.dev' && (
                               <span>
                                 | <a href="https://illustrated.dev">visit</a>
