@@ -114,7 +114,7 @@ export default function Index({ data: { images, site } }) {
                             )}
                             {name === 'moonhighway.com' && (
                               <span>
-                                | <a href="https://moonhighway.com">visit</a> |{' '}
+                                | <a href="https://moonhighway.com">visit</a>
                               </span>
                             )}
                             {name === 'gatsby starter egghead blog' && (
@@ -170,29 +170,12 @@ export default function Index({ data: { images, site } }) {
             </div>
           ))}
         </div> */}
+          <br />
         </div>
         {/* <em>Man we would be all totally lost wi}thout screenshots.</em>
         Vojta
         <br />
         <p>it's all about showing process.</p> */}
-        <h2
-          css={css`
-            font-size: 15px;
-            @media (min-width: ${breakpoints.desktop}px) {
-              padding-top: 50px;
-            }
-            padding-top: 20px;
-            text-align: center;
-            a {
-              color: hsla(0, 0%, 0%, 0.8);
-              text-decoration: none;
-            }
-          `}>
-          <span role="img" aria-label="wave emoji">
-            👋
-          </span>{' '}
-          <a href="mailto:vojta@8am.design">vojta@8am.design</a>
-        </h2>
       </Main>
     </>
   )
