@@ -14,6 +14,10 @@ import gif6d from '../../content/drawer/gifs/6DIntro.gif'
 
 ReactGA.initialize('UA-135029522-1')
 
+const masonryOptions = {
+  transitionDuration: 0,
+}
+
 export default function Index({data: {images, site}}) {
   return (
     <>
@@ -62,7 +66,7 @@ export default function Index({data: {images, site}}) {
               }
             }
           `}>
-          <Masonry disableImagesLoaded={true} className={'masonry-item'}>
+          <Masonry className={'masonry-item'}>
             {images.edges.map(({node: data}) => (
               <div className="grid-item" key={data.id}>
                 <div className="grid-item-inner">
@@ -172,7 +176,7 @@ export default function Index({data: {images, site}}) {
         </div> */}
           <br />
         </div>
-        {/* <em>Man we would be all totally lost wi}thout screenshots.</em>
+        {/* <em>Man we would be all totally lost without screenshots.</em>
         Vojta
         <br />
         <p>it's all about showing process.</p> */}
@@ -250,7 +254,7 @@ export const pageQuery = graphql`
             original {
               src
             }
-            fluid(maxWidth: 800) {
+            fluid(maxWidth: 400) {
               ...GatsbyImageSharpFluid_tracedSVG
             }
           }
