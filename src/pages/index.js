@@ -1,25 +1,20 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import {graphql} from 'gatsby'
 import styled from '@emotion/styled'
 import Link from '../components/link'
 import Img from 'gatsby-image'
-import { css } from '@emotion/core'
+import {css} from '@emotion/core'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Masonry from 'react-masonry-component'
 import SEO from '../components/seo'
 import ReactGA from 'react-ga'
-import { colors, spacing, breakpoints, fonts } from '../utils/styles'
-
-// looks like I can use allImageSharp query instead of allFile and regex...
-// https://github.com/gatsbyjs/gatsby/issues/4843
-// lightbox: https://416serg.me/building-a-custom-accessible-image-lightbox-in-gatsbyjs/
-// lightbox component: https://github.com/416serg/gatsby-starter-lightbox/blob/master/src/components/Lightbox.js
+import {colors, spacing, breakpoints, fonts} from '../utils/styles'
 
 import gif6d from '../../content/drawer/gifs/6DIntro.gif'
 
 ReactGA.initialize('UA-135029522-1')
 
-export default function Index({ data: { images, site } }) {
+export default function Index({data: {images, site}}) {
   return (
     <>
       <SEO title={site.siteMetadata.title} />
@@ -67,8 +62,8 @@ export default function Index({ data: { images, site } }) {
               }
             }
           `}>
-          <Masonry className={'masonry-item'}>
-            {images.edges.map(({ node: data }) => (
+          <Masonry disableImagesLoaded={true} className={'masonry-item'}>
+            {images.edges.map(({node: data}) => (
               <div className="grid-item" key={data.id}>
                 <div className="grid-item-inner">
                   <a
@@ -209,7 +204,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    text: allMdx(filter: { fields: { collection: { eq: "drawer" } } }) {
+    text: allMdx(filter: {fields: {collection: {eq: "drawer"}}}) {
       edges {
         node {
           id
@@ -224,11 +219,8 @@ export const pageQuery = graphql`
       }
     }
     gifs: allFile(
-      filter: {
-        extension: { regex: "/gif/" }
-        sourceInstanceName: { eq: "drawer" }
-      }
-      sort: { order: DESC, fields: relativePath }
+      filter: {extension: {regex: "/gif/"}, sourceInstanceName: {eq: "drawer"}}
+      sort: {order: DESC, fields: relativePath}
     ) {
       edges {
         node {
@@ -242,10 +234,10 @@ export const pageQuery = graphql`
     }
     images: allFile(
       filter: {
-        extension: { regex: "/(jpeg|jpg|png)/" }
-        sourceInstanceName: { eq: "drawer" }
+        extension: {regex: "/(jpeg|jpg|png)/"}
+        sourceInstanceName: {eq: "drawer"}
       }
-      sort: { order: DESC, fields: relativePath }
+      sort: {order: DESC, fields: relativePath}
     ) {
       edges {
         node {
