@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
-import { MDXProvider } from '@mdx-js/tag'
+import {css} from '@emotion/core'
+import {MDXProvider} from '@mdx-js/react'
 import mdxComponents from './mdx'
 
 const Heading = styled('h2')({
@@ -23,7 +23,7 @@ const Heading = styled('h2')({
 
 export default class CodeWithExample extends React.Component {
   render() {
-    const { children = [] } = this.props
+    const {children = []} = this.props
     return (
       <div>
         <div

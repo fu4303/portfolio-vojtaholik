@@ -1,14 +1,14 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import { Global, css } from '@emotion/core'
+import {useStaticQuery, graphql} from 'gatsby'
+import {Global, css} from '@emotion/core'
 import reset from '../utils/reset'
-import { MDXProvider } from '@mdx-js/tag'
+import {MDXProvider} from '@mdx-js/react'
 import mdxComponents from './mdx'
 import SEO from './seo'
 import './layout-styles.css'
-import { colors, spacing, breakpoints, fonts } from '../utils/styles'
+import {colors, spacing, breakpoints, fonts} from '../utils/styles'
 
-const Layout = ({ children, background }) => {
+const Layout = ({children, background}) => {
   const data = useStaticQuery(graphql`
     query LayoutQuery {
       site {

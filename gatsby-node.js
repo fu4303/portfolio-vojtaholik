@@ -1,11 +1,11 @@
-const { createFilePath } = require('gatsby-source-filesystem')
+const {createFilePath} = require('gatsby-source-filesystem')
 const _ = require('lodash')
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode = ({node, actions, getNode}) => {
+  const {createNodeField} = actions
 
   if (node.internal.type === 'Mdx') {
-    const value = createFilePath({ node, getNode })
+    const value = createFilePath({node, getNode})
     const parent = getNode(_.get(node, 'parent'))
     createNodeField({
       name: 'slug',
@@ -25,16 +25,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 const path = require('path')
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+exports.createPages = ({graphql, actions}) => {
+  const {createPage} = actions
   return new Promise((resolve, reject) => {
     resolve(
       graphql(
         `
           {
             articles: allMdx(
-              sort: { order: ASC, fields: fields___slug }
-              filter: { fields: { collection: { eq: "articles" } } }
+              sort: {order: ASC, fields: fields___slug}
+              filter: {fields: {collection: {eq: "articles"}}}
             ) {
               edges {
                 node {
@@ -57,8 +57,8 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
             projects: allMdx(
-              sort: { order: ASC, fields: fields___slug }
-              filter: { fields: { collection: { eq: "projects" } } }
+              sort: {order: ASC, fields: fields___slug}
+              filter: {fields: {collection: {eq: "projects"}}}
             ) {
               edges {
                 node {
@@ -80,33 +80,10 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
-            cheatsheets: allMdx(
-              sort: { order: ASC, fields: fields___slug }
-              filter: { fields: { collection: { eq: "cheatsheets" } } }
-            ) {
-              edges {
-                node {
-                  id
-                  parent {
-                    ... on File {
-                      name
-                      sourceInstanceName
-                    }
-                  }
-                  excerpt(pruneLength: 250)
-                  fields {
-                    collection
-                    slug
-                  }
-                  frontmatter {
-                    title
-                  }
-                }
-              }
-            }
+
             drawer: allMdx(
-              sort: { order: ASC, fields: fields___slug }
-              filter: { fields: { collection: { eq: "drawer" } } }
+              sort: {order: ASC, fields: fields___slug}
+              filter: {fields: {collection: {eq: "drawer"}}}
             ) {
               edges {
                 node {
@@ -144,46 +121,34 @@ exports.createPages = ({ graphql, actions }) => {
           return e.node.parent.sourceInstanceName === 'projects'
         })
 
-        const cheatsheets = result.data.projects.edges.filter(e => {
-          return e.node.parent.sourceInstanceName === 'cheatsheets'
-        })
-
         const drawer = result.data.drawer.edges.filter(e => {
           return e.node.parent.sourceInstanceName === 'drawer'
         })
 
-        articles.forEach(({ node }) => {
+        articles.forEach(({node}) => {
           createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/article.js`),
-            context: { id: node.id },
+            context: {id: node.id},
           })
         })
 
-        drawer.forEach(({ node }) => {
+        drawer.forEach(({node}) => {
           createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/drawer-template.js`),
-            context: { id: node.id },
+            context: {id: node.id},
           })
         })
 
-        cheatsheets.forEach(({ node }) => {
-          createPage({
-            path: node.fields.slug,
-            component: path.resolve(`./src/templates/article.js`),
-            context: { id: node.id },
-          })
-        })
-
-        projects.forEach(({ node }, index) => {
+        projects.forEach(({node}, index) => {
           const previous =
             index === projects.length - 1 ? null : projects[index + 1].node
           const next = index === 0 ? null : projects[index - 1].node
           createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/project.js`),
-            context: { id: node.id, previous, next },
+            context: {id: node.id, previous, next},
           })
         })
       })

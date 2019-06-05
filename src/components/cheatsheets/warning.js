@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
-import { MDXProvider } from '@mdx-js/tag'
+import {css} from '@emotion/core'
+import {MDXProvider} from '@mdx-js/react'
 import mdxComponents from '../mdx'
 
 const WarningStyled = styled.div({
@@ -26,7 +26,7 @@ const WarningStyled = styled.div({
 
 export default class Warning extends React.Component {
   render() {
-    const { children } = this.props
+    const {children} = this.props
     return (
       <WarningStyled>
         <span>!</span> {children}
