@@ -129,14 +129,14 @@ export default function Index({data: {images, site}}) {
                                 </a>
                               </span>
                             )}
-                            {name === 'disruptive' && (
+                            {/* {name === 'disruptive' && (
                               <span>
                                 |{' '}
                                 <a href="https://6dacademy.com/disruptive/">
                                   visit
                                 </a>
                               </span>
-                            )}
+                            )} */}
                             {name === 'track' && (
                               <span>
                                 |{' '}
@@ -154,8 +154,13 @@ export default function Index({data: {images, site}}) {
                 </div>
               </div>
             ))}
-            <div className="grid-item">
-              <img alt="6d gif" src={gif6d} />
+            <div className="grid-item image-name">
+              <a href="https://www.6dacademy.com/">
+                <img alt="6d gif" src={gif6d} css={css({marginBottom: 8})} />
+              </a>
+              <span>
+                <a href="https://www.6dacademy.com/">visit 6dacademy.com</a>
+              </span>
             </div>
           </Masonry>
           {/* <div>
