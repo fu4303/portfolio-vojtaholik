@@ -20,11 +20,8 @@ export default function Index({data: {images, site}}) {
   )
   // Measure the width of the container element
   const [bind, {width}] = useMeasure()
-  // Hold items and shuffle them every 2 seconds
+  // Hold items
   const [items, set] = useState(images.edges)
-
-  console.log(images.edges)
-
   //useEffect(() => void setInterval(() => set(shuffle), 2000), [])
   // Form a grid of stacked items
   let heights = new Array(columns).fill(0) // Each column gets a height starting with zero
