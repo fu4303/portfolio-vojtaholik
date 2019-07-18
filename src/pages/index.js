@@ -9,6 +9,8 @@ import ReactGA from 'react-ga'
 import './styles.css'
 import Img from 'gatsby-image'
 
+ReactGA.initialize('UA-135029522-1')
+
 export default function Index({data: {images, site}}) {
   // Tie media queries to the number of columns
   const columns = useMedia(
