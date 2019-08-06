@@ -31,7 +31,7 @@ module.exports = {
         name: `vojta.io`,
         short_name: `vojta`,
         start_url: `/`,
-        background_color: `#1AEB7C`,
+        background_color: `#0D151C`,
         theme_color: `#1AEB7C`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
