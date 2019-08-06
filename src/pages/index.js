@@ -22,10 +22,10 @@ const IndexPage = () => (
         <Box
           display="flex"
           flexDirection="column"
-          paddingTop={3}
           lineHeight="1.5"
           fontSize={["25px", "30px"]}
           alignItems="flex-start"
+          mb={5}
         >
           <Anchor to="https://twitter.com/vjthlk">Twitter</Anchor>
           <Anchor to="https://github.com/vojtaholik">Github</Anchor>
