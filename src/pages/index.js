@@ -16,7 +16,7 @@ const IndexPage = () => (
       <Box>
         <Text fontSize={["40px", "50px"]} as="h1" lineHeight={["50px", "60px"]}>
           Vojta<Text as="sup">(voy-tuh)</Text> is a designer and developer
-          living in Czechia and working remotely for{" "}
+          living in Czechia and working remotely at{" "}
           <Anchor to="https://egghead.io">egghead.io</Anchor>.
         </Text>
         <Box
