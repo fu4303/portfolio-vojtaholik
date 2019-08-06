@@ -36,7 +36,9 @@ const IndexPage = () => (
       </Box>
     </Container>
     <Container>
-      <Anchor to="mailto:vojta@8am.design">vojta@8am.design</Anchor>
+      <Anchor pb={4} to="mailto:vojta@8am.design">
+        vojta@8am.design
+      </Anchor>
     </Container>
   </>
 )
