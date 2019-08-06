@@ -1,12 +1,7 @@
-const React = require("react")
-const { ThemeProvider } = require("styled-components")
-const theme = require("./src/lib/theme").default
-const Layout = require("./src/components/layout").default
+/**
+ * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/ssr-apis/
+ */
 
-exports.wrapPageElement = ({ element, props }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Layout {...props}>{element}</Layout>
-    </ThemeProvider>
-  )
-}
+// You can delete this file if you're not using it
