@@ -11,6 +11,7 @@ function StyleReset() {
           font-size: 16px;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
+          font-display: swap;
         }
         ::selection {
           color: #fff;
