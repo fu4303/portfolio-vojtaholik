@@ -1,11 +1,14 @@
-const React = require("react")
-const { ThemeProvider } = require("emotion-theming")
-const theme = require("./src/lib/theme").default
-const Layout = require("./src/components/layout").default
+import React from "react"
+import { ThemeProvider } from "emotion-theming"
+import { Global, css } from "@emotion/core"
+import theme from "./src/lib/theme"
+import Layout from "./src/components/layout"
+import StyleReset from "./src/lib/style-reset"
 
-exports.wrapPageElement = ({ element, props }) => {
+export const wrapRootElement = ({ element, props }) => {
   return (
     <ThemeProvider theme={theme}>
+      <StyleReset />
       <Layout {...props}>{element}</Layout>
     </ThemeProvider>
   )

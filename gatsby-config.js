@@ -23,6 +23,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
     },
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

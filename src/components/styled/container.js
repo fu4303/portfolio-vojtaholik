@@ -4,7 +4,8 @@ import theme from "../../lib/theme"
 
 const Container = styled("div")(color, flexbox, space, layout, typography, {
   padding: "0 1.5rem",
-  maxWidth: theme.sizes.maxWidth[0],
+  // maxWidth: theme.sizes.maxWidth[0],
+  maxWidth: 820,
   margin: "0 auto",
 })
 

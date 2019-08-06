@@ -3,7 +3,7 @@ import { Global, css } from "@emotion/core"
 import theme from "./theme"
 import "./fonts/fonts.css"
 
-function StyleReset() {
+export default function StyleReset() {
   return (
     <Global
       styles={css`
@@ -64,5 +64,3 @@ function StyleReset() {
     />
   )
 }
-
-export default StyleReset
