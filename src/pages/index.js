@@ -28,7 +28,7 @@ const IndexPage = () => (
           mb={5}
         >
           <Anchor to="https://twitter.com/vjthlk">Twitter</Anchor>
-          <Anchor to="https://github.com/vojtaholik">GitHub</Anchor>
+          <Anchor to="https://github.com/vojtaholik">Github</Anchor>
           <Anchor to="https://dribbble.com/vjthlk">Dribbble</Anchor>
           <Anchor to="https://www.behance.net/vojtaholik">Behance</Anchor>
           <Anchor to="https://ello.co/paetos">Ello</Anchor>
