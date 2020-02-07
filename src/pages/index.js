@@ -49,7 +49,7 @@ const IndexPage = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ delat: 0.2, type: "spring", damping: 300 }}
+            transition={{ delay: 0.2, type: "spring", damping: 300 }}
           >
             <Styled.h3 sx={{ mt: 4, mb: 2 }}>Latest Posts</Styled.h3>
             <ul>
