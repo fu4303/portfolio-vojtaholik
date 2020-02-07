@@ -5,8 +5,8 @@ import { jsx } from "theme-ui"
 import { IconButton } from "@theme-ui/components"
 import { Icon } from "react-icons-kit"
 import { play2, pause, spinner8 } from "react-icons-kit/icomoon"
-import fetch from "isomorphic-fetch"
 import { motion } from "framer-motion"
+import fetch from "isomorphic-fetch"
 
 export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
@@ -18,7 +18,7 @@ export default function AnimationRenderer(props) {
     })
       .then(x => x.json())
       .then(({ msg }) => setAnimation(msg))
-  }, [setAnimation])
+  }, [])
 
   const defaultOptions = {
     loop: props.loop || true,
