@@ -54,7 +54,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       tags: [String]!
       keywords: [String]!
       excerpt: String!
-      card: File
+      card: File!
   }`)
 
   createTypes(
@@ -69,7 +69,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           type: `String!`,
         },
         card: {
-          type: `File`,
+          type: `File!`,
         },
         date: { type: `Date!`, extensions: { dateformat: {} } },
         tags: { type: `[String]!` },
