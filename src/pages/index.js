@@ -34,11 +34,11 @@ const IndexPage = ({
             . This is my personal site where I share notes and articles about
             things I'm interested in.
           </Text>
-          <Text mt="2">
+          {/* <Text mt="2">
             You can follow me on{" "}
             <StyledLink href={"https://twitter.com/vjthlk"}>Twitter</StyledLink>
             .
-          </Text>
+          </Text> */}
         </motion.div>
 
         <motion.div
