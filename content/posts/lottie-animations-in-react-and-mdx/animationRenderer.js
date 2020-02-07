@@ -18,7 +18,7 @@ export default function AnimationRenderer(props) {
     })
       .then(x => x.json())
       .then(({ msg }) => setAnimation(msg))
-  }, [])
+  }, [setAnimation])
 
   const defaultOptions = {
     loop: props.loop || true,
