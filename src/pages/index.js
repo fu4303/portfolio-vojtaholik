@@ -28,7 +28,11 @@ const IndexPage = ({
             My name is {siteMetadata.author} and I'm a designer and coder at{" "}
             <StyledLink href={"https://egghead.io/"}>egghead.io</StyledLink>. I
             live and work remotely from{" "}
-            <StyledLink href={"https://en.wikipedia.org/wiki/Brno"}>
+            <StyledLink
+              href={
+                "https://en.wikipedia.org/wiki/Brno-City_District#/media/File:Brno_View_from_Spilberk_128.JPG"
+              }
+            >
               Brno
             </StyledLink>
             . This is my personal site where I share notes and articles about
