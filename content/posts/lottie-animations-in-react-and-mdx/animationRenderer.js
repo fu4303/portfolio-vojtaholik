@@ -6,21 +6,20 @@ import { IconButton } from "@theme-ui/components"
 import { Icon } from "react-icons-kit"
 import { play2, pause, spinner8 } from "react-icons-kit/icomoon"
 import { motion } from "framer-motion"
-import fetch from "isomorphic-fetch"
 import { createfetchUnlessCached } from "fetch-unless-cached"
 
-const cachedFetch = createfetchUnlessCached(300)
+const cachedFetch = createfetchUnlessCached(300) // minutes
 
 export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
   const [animation, setAnimation] = React.useState()
 
   React.useEffect(() => {
-    cachedFetch("/.netlify/functions/node-fetch", {
+    cachedFetch("/.netlify/functions/lottie-animation", {
       headers: { accept: "Accept: application/json" },
     })
       .then(response => response)
-      .then(({ msg }) => setAnimation(msg))
+      .then(({ lottieAnimation }) => setAnimation(lottieAnimation))
   }, [])
 
   const defaultOptions = {

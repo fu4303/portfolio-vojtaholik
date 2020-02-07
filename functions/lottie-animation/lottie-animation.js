@@ -2,7 +2,7 @@
 const fetch = require("node-fetch")
 exports.handler = async function(event, context) {
   try {
-    const response = await fetch("https://vojta.io/transform-animation.json", {
+    const response = await fetch("https://vojta.io/lottie-animation.json", {
       headers: { Accept: "application/json" },
     })
     if (!response.ok) {
@@ -13,13 +13,13 @@ exports.handler = async function(event, context) {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ msg: data }),
+      body: JSON.stringify({ lottieAnimation: data }),
     }
   } catch (err) {
     console.log(err) // output to netlify function log
     return {
       statusCode: 500,
-      body: JSON.stringify({ msg: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
+      body: JSON.stringify({ lottieAnimation: err.message }), // Could be a custom message or object i.e. JSON.stringify(err)
     }
   }
 }
