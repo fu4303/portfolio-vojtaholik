@@ -12,6 +12,7 @@
     "@theme-ui/prism": "^0.3.0",
     "@theme-ui/typography": "^0.3.0",
     "deepmerge": "^4.2.2",
+    "fetch-unless-cached": "^2.0.2",
     "focus-visible": "^5.0.2",
     "framer-motion": "^1.8.4",
     "gatsby": "^2.19.12",

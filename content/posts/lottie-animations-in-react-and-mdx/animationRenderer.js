@@ -7,16 +7,19 @@ import { Icon } from "react-icons-kit"
 import { play2, pause, spinner8 } from "react-icons-kit/icomoon"
 import { motion } from "framer-motion"
 import fetch from "isomorphic-fetch"
+import { createfetchUnlessCached } from "fetch-unless-cached"
+
+const cachedFetch = createfetchUnlessCached(300)
 
 export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
   const [animation, setAnimation] = React.useState()
 
   React.useEffect(() => {
-    fetch("/.netlify/functions/node-fetch", {
+    cachedFetch("/.netlify/functions/node-fetch", {
       headers: { accept: "Accept: application/json" },
     })
-      .then(x => x.json())
+      .then(response => response)
       .then(({ msg }) => setAnimation(msg))
   }, [])
 
@@ -28,7 +31,7 @@ export default function AnimationRenderer(props) {
       preserveAspectRatio: "xMidYMid slice",
     },
   }
-  \
+
   return props.animation && animation ? (
     <div sx={{ display: "flex", alignItems: "flex-end", marginBottom: 40 }}>
       <Lottie
