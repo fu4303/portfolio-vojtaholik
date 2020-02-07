@@ -10,15 +10,6 @@ export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
   const [isLoaded, setLoaded] = React.useState(false)
 
-  async function getAnimationData() {
-    fetch(props.animation)
-      .then(res => res)
-      .then(data => setLoaded(true))
-      .catch(error => console.log("error: ", error))
-  }
-
-  getAnimationData()
-
   const defaultOptions = {
     loop: props.loop || true,
     autoplay: props.autoplay || true,
@@ -27,17 +18,17 @@ export default function AnimationRenderer(props) {
       preserveAspectRatio: "xMidYMid slice",
     },
   }
-  // const eventListeners = [
-  //   {
-  //     eventName: "data_ready",
-  //     callback: () => setLoaded(true),
-  //   },
-  // ]
+  const eventListeners = [
+    {
+      eventName: "data_ready",
+      callback: () => setLoaded(true),
+    },
+  ]
 
   return props.animation && isLoaded ? (
     <div style={{ display: "flex", alignItems: "flex-end", marginBottom: 40 }}>
       <Lottie
-        // eventListeners={eventListeners}
+        eventListeners={eventListeners}
         options={defaultOptions}
         width={props.width || "100%"}
         height={props.height || "100%"}
@@ -59,7 +50,7 @@ export default function AnimationRenderer(props) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        height: 400,
+        height: 480,
       }}
     >
       Missing animation data
@@ -70,10 +61,11 @@ export default function AnimationRenderer(props) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        height: 400,
+        height: 480,
       }}
     >
       <motion.div
+        initial={{ rotate: 0 }}
         animate={{ rotate: [0, 360] }}
         transition={{
           loop: Infinity,
