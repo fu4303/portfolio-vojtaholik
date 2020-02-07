@@ -24,7 +24,7 @@ export default function Layout(props) {
   `)
   return (
     <>
-      <SEO {...props} card={props.card} />
+      <SEO {...props} card={props.card} description={props.excerpt} />
       <Header title={data.site.siteMetadata.title} />
       <div
         sx={{
