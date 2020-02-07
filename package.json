@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-egghead-blog",
+  "name": "vojta-io",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Personal blog of Vojta Holik.",
   "version": "0.1.0",
   "author": "Vojta Holik <vojta@8am.design>",
   "dependencies": {

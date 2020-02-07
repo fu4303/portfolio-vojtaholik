@@ -10,10 +10,9 @@ import { motion } from "framer-motion"
 
 export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
-  const [isLoaded, setLoaded] = React.useState(false)
-
   const [animation, setAnimation] = React.useState()
-  React.useEffect(() => {
+
+  React.useMemo(() => {
     fetch("/.netlify/functions/node-fetch", {
       headers: { accept: "Accept: application/json" },
     })
