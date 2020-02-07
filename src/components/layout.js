@@ -22,6 +22,7 @@ export default function Layout(props) {
       }
     }
   `)
+
   return (
     <>
       <SEO {...props} card={props.card} description={props.excerpt} />
