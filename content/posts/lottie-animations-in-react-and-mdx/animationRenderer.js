@@ -12,13 +12,13 @@ export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
   const [animation, setAnimation] = React.useState()
 
-  React.useMemo(() => {
+  React.useEffect(() => {
     fetch("/.netlify/functions/node-fetch", {
       headers: { accept: "Accept: application/json" },
     })
       .then(x => x.json())
       .then(({ msg }) => setAnimation(msg))
-  }, [])
+  }, [animation, setAnimation])
 
   const defaultOptions = {
     loop: props.loop || true,

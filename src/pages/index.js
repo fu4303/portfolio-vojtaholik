@@ -29,7 +29,7 @@ const IndexPage = ({
             <StyledLink href={"https://egghead.io/"}>egghead.io</StyledLink>. I
             live and work remotely from{" "}
             <StyledLink href={"https://en.wikipedia.org/wiki/Brno"}>
-              Brno, Czech Republic
+              Brno
             </StyledLink>
             . This is my personal site where I share notes and articles about
             things I'm interested in.

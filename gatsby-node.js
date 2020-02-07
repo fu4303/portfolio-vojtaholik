@@ -54,7 +54,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       tags: [String]!
       keywords: [String]!
       excerpt: String!
-      card: File!
+      card: File! @fileByRelativePath
   }`)
 
   createTypes(
