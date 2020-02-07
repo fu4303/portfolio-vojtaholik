@@ -18,7 +18,7 @@ export default function AnimationRenderer(props) {
     })
       .then(x => x.json())
       .then(({ msg }) => setAnimation(msg))
-  }, [animation, setAnimation])
+  }, [])
 
   const defaultOptions = {
     loop: props.loop || true,
@@ -28,7 +28,7 @@ export default function AnimationRenderer(props) {
       preserveAspectRatio: "xMidYMid slice",
     },
   }
-
+  \
   return props.animation && animation ? (
     <div sx={{ display: "flex", alignItems: "flex-end", marginBottom: 40 }}>
       <Lottie
