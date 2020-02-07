@@ -2,11 +2,15 @@ import React from "react"
 import Lottie from "react-lottie"
 import { IconButton } from "@theme-ui/components"
 import { Icon } from "react-icons-kit"
-import { play2, pause } from "react-icons-kit/icomoon"
+import { play2, pause, spinner8 } from "react-icons-kit/icomoon"
 
 export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
   const [isLoaded, setLoaded] = React.useState(false)
+  fetch(props.animation)
+    .then(res => res)
+    .then(data => setLoaded(true))
+    .catch(error => console.log("error: ", error))
   const defaultOptions = {
     loop: props.loop || true,
     autoplay: props.autoplay || true,
@@ -18,10 +22,10 @@ export default function AnimationRenderer(props) {
   const eventListeners = [
     {
       eventName: "data_ready",
-      callback: () => (setLoaded(true), console.log("domloaded")),
+      callback: () => (setLoaded(true), console.log("downloaded")),
     },
   ]
-  return props.animation ? (
+  return props.animation && isLoaded ? (
     <div style={{ display: "flex", alignItems: "flex-end", marginBottom: 40 }}>
       <Lottie
         options={defaultOptions}
@@ -40,7 +44,27 @@ export default function AnimationRenderer(props) {
         )}
       </IconButton>
     </div>
+  ) : isLoaded ? (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: 400,
+      }}
+    >
+      Missing animation data
+    </div>
   ) : (
-    "Missing animation data"
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        height: 400,
+      }}
+    >
+      <Icon size={32} icon={spinner8} />
+    </div>
   )
 }
