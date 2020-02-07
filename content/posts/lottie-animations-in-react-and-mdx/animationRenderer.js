@@ -8,7 +8,7 @@ import fetch from "isomorphic-unfetch"
 
 export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
-  const [isLoaded, setLoaded] = React.useState(false)
+  const [isLoaded, setLoaded] = React.useState(true)
 
   const defaultOptions = {
     loop: props.loop || true,
