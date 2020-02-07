@@ -5,7 +5,7 @@ import { jsx } from "theme-ui"
 import { IconButton } from "@theme-ui/components"
 import { Icon } from "react-icons-kit"
 import { play2, pause, spinner8 } from "react-icons-kit/icomoon"
-import fetch from "isomorphic-unfetch"
+import fetch from "isomorphic-fetch"
 import { motion } from "framer-motion"
 
 export default function AnimationRenderer(props) {
