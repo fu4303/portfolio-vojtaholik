@@ -1,0 +1,87 @@
+---
+title: Use animations from After Effects in React and MDX with react-lottie
+date: 2020-02-06
+description: This is a post description
+card: './card-lottie.png'
+---
+import AnimationRenderer from './animationRenderer'
+import TransformAnimation from './transform-animation'
+import FileStructure from './file-structure@2x.png'
+
+<div style={{maxWidth: 500, margin: '0 auto'}}>
+<AnimationRenderer animation={TransformAnimation} width={'100%'} height={'100%'} />
+</div>
+
+Lottie is a library developed by Airbnb that parses Adobe After Effects animations exported as json with [Bodymovin](https://aescripts.com/bodymovin/) and renders them natively on mobile and on the web. 
+
+This blog uses [MDX](https://mdxjs.com/), which means that I can import and use React components in Markdown files. It's especially useful when I want to embed some interactive content without leaving The Markdown World.
+
+Let's combine the two. Start by adding [react-lottie](https://www.npmjs.com/package/react-lottie) dependency to your project:
+
+```bash
+yarn add react-lottie
+```
+
+### Create a reusable component 
+
+e.g. `components/animationRenderer.js`:
+
+```js
+import React from "react"
+import Lottie from "react-lottie"
+
+export default function AnimationRenderer(props) {
+  const [isPaused, setPaused] = React.useState(false)
+
+  const defaultOptions = {
+    loop: props.loop || true,
+    autoplay: props.autoplay || true,
+    animationData: props.animation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  }
+
+  return props.animation ? (
+    <>
+      <Lottie
+        options={defaultOptions}
+        width={props.width || "100%"}
+        height={props.height || "100%"}
+        isClickToPauseDisabled={true}
+        isPaused={isPaused}
+      />
+      <button onClick={() => setPaused(!isPaused)}>
+        {isPaused ? "resume" : "pause"}
+      </button>
+    </>
+  ) : (
+    "No animation data provided."
+  )
+}
+```
+
+Check out [react-lottie docs](https://github.com/chenqingspring/react-lottie#readme) for more.
+
+### Usage
+
+I think it's nice to store all the assets for given post in one folder, so my structure usually looks like this:
+
+![./file-structure@2x.png](./file-structure@2x.png)
+
+
+`index.mdx`:
+
+```md
+import AnimationRenderer from '../components/animationRenderer'
+import CoolIntroAnimation from './coolIntroAnimation.json'
+
+<AnimationRenderer animation={CoolIntroAnimation} />
+
+# Markdown...
+
+```
+
+### Resources
+
+- [lottiefiles.com](https://lottiefiles.com/)

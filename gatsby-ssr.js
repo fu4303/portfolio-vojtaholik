@@ -1,15 +1,7 @@
-import React from "react"
-import { ThemeProvider } from "emotion-theming"
-import { Global, css } from "@emotion/core"
-import theme from "./src/lib/theme"
-import Layout from "./src/components/layout"
-import StyleReset from "./src/lib/style-reset"
+/**
+ * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/ssr-apis/
+ */
 
-export const wrapRootElement = ({ element, props }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <StyleReset />
-      <Layout {...props}>{element}</Layout>
-    </ThemeProvider>
-  )
-}
+// You can delete this file if you're not using it

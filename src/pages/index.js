@@ -1,46 +1,90 @@
-import React from "react"
+/** @jsx jsx */
+import { graphql } from "gatsby"
 import { Link } from "gatsby"
-import Image from "../components/image"
+import { jsx, Styled } from "theme-ui"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { Box, Container, Text, Anchor } from "../components/styled"
+import { Link as StyledLink, Text } from "@theme-ui/components"
+import { motion, AnimatePresence } from "framer-motion"
 
-const IndexPage = () => (
-  <>
-    <SEO title="Home" />
-    <Container
-      minHeight="90vh"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-    >
-      <Box>
-        <Text fontSize={["40px", "50px"]} as="h1" lineHeight={["50px", "60px"]}>
-          Vojta<Text as="sup">(voy-tuh)</Text> is a designer and developer
-          living in Czechia and working remotely at{" "}
-          <Anchor to="https://egghead.io">egghead.io</Anchor>.
-        </Text>
-        <Box
-          display="flex"
-          flexDirection="column"
-          lineHeight="1.5"
-          fontSize={["25px", "30px"]}
-          alignItems="flex-start"
-          mb={5}
-        >
-          <Anchor to="https://twitter.com/vjthlk">Twitter</Anchor>
-          <Anchor to="https://github.com/vojtaholik">Github</Anchor>
-          <Anchor to="https://dribbble.com/vjthlk">Dribbble</Anchor>
-          <Anchor to="https://www.behance.net/vojtaholik">Behance</Anchor>
-          <Anchor to="https://ello.co/paetos">Ello</Anchor>
-        </Box>
-      </Box>
-    </Container>
-    <Container>
-      <Anchor pb={4} to="mailto:vojta@8am.design">
-        vojta@8am.design
-      </Anchor>
-    </Container>
-  </>
-)
+const IndexPage = ({
+  data: {
+    site: { siteMetadata },
+    allBlogPost,
+  },
+}) => {
+  return (
+    <Styled.root>
+      <SEO title="Welcome" />
+      <Layout {...siteMetadata} title="Welcome">
+        <AnimatePresence>
+          <motion.div
+            initial={{ y: -10 }}
+            animate={{ y: 0 }}
+            exit={{ y: -10 }}
+            transition={{ type: "spring", damping: 300 }}
+          >
+            <Styled.h1>Hi there,</Styled.h1>
+            <Text>
+              My name is {siteMetadata.author} and I'm a designer and coder at{" "}
+              <StyledLink href={"https://egghead.io/"}>egghead.io</StyledLink>.
+              I live and work remotely from{" "}
+              <StyledLink href={"https://en.wikipedia.org/wiki/Brno"}>
+                Brno, Czech Republic
+              </StyledLink>
+              . This is my personal site where I share notes and articles about
+              things I'm interested in.
+            </Text>
+            <Text mt="2">
+              You can follow me on{" "}
+              <StyledLink href={"https://twitter.com/vjthlk"}>
+                Twitter
+              </StyledLink>
+              .
+            </Text>
+          </motion.div>
+        </AnimatePresence>
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ delat: 0.2, type: "spring", damping: 300 }}
+          >
+            <Styled.h3 sx={{ mt: 4, mb: 2 }}>Latest Posts</Styled.h3>
+            <ul>
+              {allBlogPost.nodes.map(post => (
+                <li key={post.id}>
+                  <StyledLink as={Link} to={post.slug}>
+                    {post.title}
+                  </StyledLink>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </AnimatePresence>
+      </Layout>
+    </Styled.root>
+  )
+}
+
+export const homepageQuery = graphql`
+  {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
+    allBlogPost(sort: { fields: date, order: ASC }) {
+      nodes {
+        title
+        slug
+        id
+      }
+    }
+  }
+`
 
 export default IndexPage

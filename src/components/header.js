@@ -1,42 +1,216 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
+/** @jsx jsx */
 import React from "react"
+import { Link } from "gatsby"
+import { jsx, Container } from "theme-ui"
+import { Box, Flex, Link as StyledLink } from "@theme-ui/components"
+import { useColorMode, useThemeUI } from "theme-ui"
+import { invert } from "@theme-ui/color"
+import {
+  motion,
+  AnimatePresence,
+  useViewportScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
+const Header = ({ title }) => {
+  const [colorMode, setColorMode] = useColorMode()
+  const context = useThemeUI()
+  const { theme } = context
+
+  function template({ rotate, x }) {
+    return `rotate(${rotate}deg) translateX(${x}px)`
+  }
+
+  const { scrollYProgress } = useViewportScroll()
+  const rotateRange = useTransform(scrollYProgress, value => value * 90)
+  const rotate = useSpring(rotateRange, { stiffness: 400, damping: 90 })
+
+  return (
     <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
+      sx={{
+        py: [2, 3, 4],
+        px: [2, 3, 4],
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        position: ["block", "block", "block", "fixed"],
       }}
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+      <motion.div
+        style={{ rotate: rotate }}
+        // animate={{ rotate: "0.5turn" }}
+        // </div>transformTemplate={rotate => `rotateX(${rotate}turn)`}
+      >
+        <header>
+          <StyledLink
+            as={Link}
+            to="/"
+            sx={{
+              textDecoration: "none",
+              fontSize: 2,
+              fontWeight: 700,
+              display: "flex",
+              alignItems: "center",
+              borderRadius: "50%",
+              width: 50,
+              justifyContent: "center",
+              height: 50,
+              color: "text",
+              borderColor: "text",
+              border: "2px solid",
+              textAlign: "center",
+              pt: "3px",
+            }}
+          >
+            V
+          </StyledLink>
+        </header>
+      </motion.div>
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+      <nav>
+        {/* <ColorModeToggle
+          colorMode={colorMode}
+          setColorMode={setColorMode}
+          theme={theme}
+        /> */}
+      </nav>
+    </div>
+  )
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
+const ColorModeToggle = ({ colorMode, setColorMode, theme }) => {
+  return (
+    <button
+      onClick={() => {
+        setColorMode(colorMode === "default" ? "dark" : "default")
+      }}
+      aria-label={`Activate ${colorMode === "default" ? "dark" : "light"} mode`}
+      title={`Activate ${colorMode === "default" ? "dark" : "light"} mode`}
+      sx={{
+        position: "relative",
+        alignItems: "center",
+        bg: "transparent",
+        border: 0,
+        borderRadius: "5px",
+        display: ["inline-flex", "flex"],
+        cursor: "pointer",
+        justifyContent: "center",
+        opacity: 0.6,
+        transition: "opacity 0.3s ease",
+        width: "40px",
+        height: "40px",
+        transform: "scale(0.8)",
+        ":focus": {
+          outline: "2px solid",
+          outlineColor: colorMode === "default" ? invert("text") : "text",
+          outlineOffset: "1px",
+        },
+        ":hover, :focus": {
+          opacity: "1",
+        },
+      }}
+    >
+      <div
+        sx={{
+          bg: colorMode === "default" ? invert("text") : "text",
+          borderRadius: "50%",
+          overflow: colorMode === "default" ? "hidden" : "visible",
+          position: "relative",
+          transform: `scale(${colorMode === "default" ? 1 : 0.55})`,
+          transition: "all 0.45s ease",
+          width: "24px",
+          height: "24px",
+          "&::before": {
+            bg: "background",
+            border: "2px solid ",
+            borderColor: "background",
+            borderRadius: "50%",
+            content: '""',
+            width: "24px",
+            height: "24px",
+            opacity: colorMode === "default" ? 1 : 0,
+            position: "absolute",
+            right: "-9px",
+            top: "-9px",
+            transform: `translate(${
+              colorMode === "default" ? "0, 0" : "14px, -14px"
+            })`,
+            transition: "transform 0.45s ease",
+          },
+          "&::after": {
+            borderRadius: "50%",
+            boxShadow: `0 -23px 0 ${
+              colorMode === "default"
+                ? invert(theme.colors.text)
+                : theme.colors.text
+            },
+          0 23px 0 ${
+            colorMode === "default"
+              ? invert(theme.colors.text)
+              : theme.colors.text
+          },
+          23px 0 0 ${
+            colorMode === "default"
+              ? invert(theme.colors.text)
+              : theme.colors.text
+          },
+          -23px 0 0 ${
+            colorMode === "default"
+              ? invert(theme.colors.text)
+              : theme.colors.text
+          },
+          15px 15px 0 ${
+            colorMode === "default"
+              ? invert(theme.colors.text)
+              : theme.colors.text
+          },
+          -15px 15px 0 ${
+            colorMode === "default"
+              ? invert(theme.colors.text)
+              : theme.colors.text
+          },
+          15px -15px 0 ${
+            colorMode === "default"
+              ? invert(theme.colors.text)
+              : theme.colors.text
+          },
+          -15px -15px 0 ${
+            colorMode === "default"
+              ? invert(theme.colors.text)
+              : theme.colors.text
+          }`,
+            content: '""',
+            width: "8px",
+            height: "8px",
+            left: "50%",
+            margin: "-4px 0 0 -4px",
+            position: "absolute",
+            top: "50%",
+            transform: `scale(${colorMode === "default" ? 0 : 1})`,
+            transition: "all 0.35s ease",
+          },
+        }}
+      />
+      <div
+        sx={{
+          position: "absolute",
+          right: "-1px",
+          top: "-8px",
+          height: "24px",
+          width: "24px",
+          borderRadius: "50%",
+          border: "0",
+          backgroundColor: "background",
+          transform: `translate(${
+            colorMode === "default" ? "0, 0" : "14px, -14px"
+          })`,
+          opacity: colorMode === "default" ? 1 : 0,
+          transition: "transform 0.45s ease",
+        }}
+      />
+    </button>
+  )
 }
 
 export default Header
