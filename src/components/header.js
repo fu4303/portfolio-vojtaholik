@@ -29,12 +29,12 @@ const Header = ({ title }) => {
   return (
     <div
       sx={{
-        py: [2, 3, 4],
-        px: [2, 3, 4],
+        py: [3, 3, 4],
+        px: [3, 3, 3, 4],
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        position: ["block", "block", "block", "fixed"],
+        position: ["fixed", "block", "fixed"],
       }}
     >
       <motion.div
@@ -57,6 +57,7 @@ const Header = ({ title }) => {
               justifyContent: "center",
               height: 50,
               color: "text",
+              bg: "background",
               borderColor: "text",
               border: "2px solid",
               textAlign: "center",

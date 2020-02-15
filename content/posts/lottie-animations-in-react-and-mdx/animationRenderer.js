@@ -58,13 +58,46 @@ export default function AnimationRenderer(props) {
       }}
     >
       <motion.div
-        initial={{ rotate: 0 }}
+        initial={false}
         animate={{ rotate: [0, 360] }}
         transition={{
           loop: Infinity,
+          duration: 1,
         }}
+        sx={{ width: 36, height: 36 }}
       >
-        <Icon size={32} icon={spinner8} />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          width="36"
+          height="36"
+          viewBox="0 0 46 46"
+        >
+          <defs>
+            <circle id="spinner-a" cx="23" cy="23" r="23" />
+            <mask
+              id="spinner-b"
+              width="46"
+              height="46"
+              x="0"
+              y="0"
+              fill="#fff"
+              maskContentUnits="userSpaceOnUse"
+              maskUnits="objectBoundingBox"
+            >
+              <use xlinkHref="#spinner-a" />
+            </mask>
+          </defs>
+          <use
+            fill="none"
+            fillRule="evenodd"
+            stroke="#000"
+            strokeDasharray="80 20"
+            strokeWidth="5"
+            mask="url(#spinner-b)"
+            xlinkHref="#spinner-a"
+          />
+        </svg>
       </motion.div>
     </div>
   ) : (

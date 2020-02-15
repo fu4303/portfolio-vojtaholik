@@ -35,11 +35,10 @@ export default function Layout(props) {
           minHeight: ["90vh", "90vh", "90vh", "100vh"],
         }}
       >
-        <Box
-          as="main"
-          sx={{ maxWidth: "850px", width: "100%", mx: "auto", pt: 1 }}
-        >
-          <Container sx={{ p: [2, 3, 4] }}>{props.children}</Container>
+        <Box as="main" sx={{ maxWidth: "850px", width: "100%", mx: "auto" }}>
+          <Container sx={{ p: [3, 3, 4], pt: [5, 5, 4] }}>
+            {props.children}
+          </Container>
         </Box>
         <Footer />
       </div>

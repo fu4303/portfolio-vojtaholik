@@ -22,6 +22,8 @@ export default merge(toTheme(parnassus), {
     },
   },
 
+  breakpoints: ["40em", "56em", "64em"],
+
   fonts: {
     heading: "'Inter', sans-serif",
     body: "'Inter', sans-serif",

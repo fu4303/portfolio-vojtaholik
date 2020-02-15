@@ -18,12 +18,16 @@ const IndexPage = ({
       <SEO title="Welcome" />
       <Layout {...siteMetadata} title="Welcome">
         <motion.div
-          initial={{ y: -10 }}
-          animate={{ y: 0 }}
-          exit={{ y: -10 }}
-          transition={{ type: "spring", damping: 300 }}
+          initial={false}
+          animate={{ y: [-10, 0] }}
+          transition={{
+            ease: "easeOut",
+            damping: 300,
+            duration: 0.3,
+          }}
         >
-          <Styled.h1>Hi there,</Styled.h1>
+          <Styled.h1>Hi,</Styled.h1>
+
           <Text>
             My name is {siteMetadata.author} and I'm a designer and coder at{" "}
             <StyledLink href={"https://egghead.io/"}>egghead.io</StyledLink>. I
@@ -38,18 +42,20 @@ const IndexPage = ({
             . This is my personal site where I share notes and articles about
             things I'm interested in.
           </Text>
-          {/* <Text mt="2">
+        </motion.div>
+        {/* <Text mt="2">
             You can follow me on{" "}
             <StyledLink href={"https://twitter.com/vjthlk"}>Twitter</StyledLink>
             .
           </Text> */}
-        </motion.div>
-
         <motion.div
-          initial={{ y: -5 }}
-          animate={{ y: 0 }}
-          exit={{ y: -5 }}
-          transition={{ delay: 0.2, type: "spring", damping: 300 }}
+          initial={false}
+          animate={{ y: [-10, 0] }}
+          transition={{
+            ease: "easeOut",
+            damping: 300,
+            duration: 0.6,
+          }}
         >
           <Styled.h3 sx={{ mt: 4, mb: 2 }}>Latest Posts</Styled.h3>
           <ul>

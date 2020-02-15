@@ -3,13 +3,13 @@ import { jsx, Styled } from "theme-ui"
 import Layout from "./layout"
 import { motion } from "framer-motion"
 
-export default ({
+export default function Post({
   children,
   data: {
     blogPost: { title, date, excerpt, keywords, tags, card },
   },
   ...props
-}) => {
+}) {
   return (
     <Styled.root>
       <Layout
@@ -19,10 +19,9 @@ export default ({
         card={card.childImageSharp.fixed.src}
       >
         <motion.div
-          initial={{ y: -10 }}
-          animate={{ y: 0 }}
-          exit={{ y: -10 }}
-          transition={{ type: "spring", damping: 300 }}
+          initial={false}
+          animate={{ y: [-10, 0] }}
+          transition={{ ease: "easeOut", damping: 300, duration: 0.3 }}
         >
           <Styled.h1>{title}</Styled.h1>
         </motion.div>
