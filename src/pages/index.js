@@ -28,7 +28,7 @@ const IndexPage = ({
             },
           }}
         >
-          <Styled.h1>Hi,</Styled.h1>
+          <Styled.h1 sx={{ mt: "6px" }}>Hi,</Styled.h1>
 
           <Text>
             My name is {siteMetadata.author} and I&apos;m a designer and coder
