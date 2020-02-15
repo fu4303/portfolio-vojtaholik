@@ -24,8 +24,8 @@ export default function Post({
             y: 0,
             transition: {
               ease: "easeOut",
-              duration: 0.35,
-              when: "beforeChildren",
+              duration: 0.3,
+              type: "spring",
             },
           }}
         >

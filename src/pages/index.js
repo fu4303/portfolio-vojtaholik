@@ -23,8 +23,8 @@ const IndexPage = ({
             y: 0,
             transition: {
               ease: "easeOut",
-              duration: 0.35,
-              when: "beforeChildren",
+              duration: 0.3,
+              type: "spring",
             },
           }}
         >
@@ -38,7 +38,7 @@ const IndexPage = ({
               Brno
             </StyledLink>
             . This is my personal site where I share notes and articles about
-            things I'm interested in.
+            things I&apos;m interested in.
           </Text>
         </motion.div>
         {/* <Text mt="2">
@@ -53,8 +53,8 @@ const IndexPage = ({
             transition: {
               delay: 0.1,
               ease: "easeOut",
-              duration: 0.35,
-              when: "beforeChildren",
+              duration: 0.3,
+              type: "spring",
             },
           }}
         >
