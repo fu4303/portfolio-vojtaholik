@@ -33,7 +33,7 @@ const IndexPage = ({
           <Text>
             My name is {siteMetadata.author} and I&apos;m a designer and coder
             at <StyledLink href="https://egghead.io/">egghead.io</StyledLink>. I
-            live and work remotely from{" "}
+            live in and work remotely from{" "}
             <StyledLink href="https://en.wikipedia.org/wiki/Brno-City_District#/media/File:Brno_View_from_Spilberk_128.JPG">
               Brno
             </StyledLink>
