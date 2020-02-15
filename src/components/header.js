@@ -3,28 +3,29 @@ import React from "react"
 import { Link } from "gatsby"
 import { jsx, Container } from "theme-ui"
 import { Box, Flex, Link as StyledLink } from "@theme-ui/components"
-import { useColorMode, useThemeUI } from "theme-ui"
+// import { useColorMode, useThemeUI } from "theme-ui"
 import { invert } from "@theme-ui/color"
 import {
   motion,
-  AnimatePresence,
   useViewportScroll,
   useTransform,
   useSpring,
 } from "framer-motion"
 
-const Header = ({ title }) => {
-  const [colorMode, setColorMode] = useColorMode()
-  const context = useThemeUI()
-  const { theme } = context
-
-  function template({ rotate, x }) {
-    return `rotate(${rotate}deg) translateX(${x}px)`
-  }
+const Header = props => {
+  // const context = useThemeUI()
+  // const [colorMode, setColorMode] = useColorMode()
+  // const { theme } = context
 
   const { scrollYProgress } = useViewportScroll()
   const rotateRange = useTransform(scrollYProgress, value => value * 90)
-  const rotate = useSpring(rotateRange, { stiffness: 400, damping: 90 })
+  const [rotate, setRotate] = React.useState(
+    useSpring(rotateRange, { stiffness: 400, damping: 90 })
+  )
+
+  React.useEffect(() => {
+    setRotate(0)
+  }, [])
 
   return (
     <div

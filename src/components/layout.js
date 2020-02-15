@@ -2,7 +2,7 @@
 import React from "react"
 import { jsx, Container } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
-import SEO from "./seo" // import Head from "gatsby-theme-ui-blog/src/head"
+import SEO from "./seo"
 import Header from "./header"
 import { Box } from "@theme-ui/components"
 import Footer from "./footer"
