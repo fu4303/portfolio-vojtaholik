@@ -32,7 +32,7 @@ export default function Layout(props) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          minHeight: ["90vh", "90vh", "90vh", "100vh"],
+          minHeight: "100vh",
         }}
       >
         <Box as="main" sx={{ maxWidth: "850px", width: "100%", mx: "auto" }}>
