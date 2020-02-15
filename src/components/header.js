@@ -36,6 +36,7 @@ const Header = props => {
         alignItems: "center",
         justifyContent: "space-between",
         position: ["fixed", "block", "fixed"],
+        zIndex: 999,
       }}
     >
       <motion.div
