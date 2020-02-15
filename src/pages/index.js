@@ -18,25 +18,23 @@ const IndexPage = ({
       <SEO title="Welcome" />
       <Layout {...siteMetadata} title="Welcome">
         <motion.div
-          initial={false}
-          animate={{ y: [-10, 0] }}
-          transition={{
-            ease: "easeOut",
-            damping: 300,
-            duration: 0.3,
+          initial={{ y: -10 }}
+          animate={{
+            y: 0,
+            transition: {
+              ease: "easeOut",
+              duration: 0.35,
+              when: "beforeChildren",
+            },
           }}
         >
           <Styled.h1>Hi,</Styled.h1>
 
           <Text>
-            My name is {siteMetadata.author} and I'm a designer and coder at{" "}
-            <StyledLink href={"https://egghead.io/"}>egghead.io</StyledLink>. I
+            My name is {siteMetadata.author} and I&apos;m a designer and coder
+            at <StyledLink href="https://egghead.io/">egghead.io</StyledLink>. I
             live and work remotely from{" "}
-            <StyledLink
-              href={
-                "https://en.wikipedia.org/wiki/Brno-City_District#/media/File:Brno_View_from_Spilberk_128.JPG"
-              }
-            >
+            <StyledLink href="https://en.wikipedia.org/wiki/Brno-City_District#/media/File:Brno_View_from_Spilberk_128.JPG">
               Brno
             </StyledLink>
             . This is my personal site where I share notes and articles about
@@ -49,12 +47,15 @@ const IndexPage = ({
             .
           </Text> */}
         <motion.div
-          initial={false}
-          animate={{ y: [-10, 0] }}
-          transition={{
-            ease: "easeOut",
-            damping: 300,
-            duration: 0.6,
+          initial={{ y: -10 }}
+          animate={{
+            y: 0,
+            transition: {
+              delay: 0.1,
+              ease: "easeOut",
+              duration: 0.35,
+              when: "beforeChildren",
+            },
           }}
         >
           <Styled.h3 sx={{ mt: 4, mb: 2 }}>Latest Posts</Styled.h3>

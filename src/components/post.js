@@ -19,9 +19,15 @@ export default function Post({
         card={card.childImageSharp.fixed.src}
       >
         <motion.div
-          initial={false}
-          animate={{ y: [-10, 0] }}
-          transition={{ ease: "easeOut", damping: 300, duration: 0.3 }}
+          initial={{ y: -10 }}
+          animate={{
+            y: 0,
+            transition: {
+              ease: "easeOut",
+              duration: 0.35,
+              when: "beforeChildren",
+            },
+          }}
         >
           <Styled.h1>{title}</Styled.h1>
         </motion.div>
