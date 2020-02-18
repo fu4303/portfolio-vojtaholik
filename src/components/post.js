@@ -18,7 +18,7 @@ export default function Post({
         {...props}
         card={card.childImageSharp.fixed.src}
       >
-        <motion.div
+        {/* <motion.div
           initial={{ y: -10 }}
           animate={{
             y: 0,
@@ -28,9 +28,9 @@ export default function Post({
               type: "spring",
             },
           }}
-        >
-          <Styled.h1>{title}</Styled.h1>
-        </motion.div>
+        > */}
+        <Styled.h1>{title}</Styled.h1>
+        {/* </motion.div> */}
         <div>{date}</div>
         <article sx={{ mt: 4 }}>{children}</article>
       </Layout>

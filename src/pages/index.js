@@ -17,7 +17,7 @@ const IndexPage = ({
     <Styled.root>
       <SEO title="Welcome" />
       <Layout {...siteMetadata} title="Welcome">
-        <motion.div
+        {/* <motion.div
           initial={{ y: -10 }}
           animate={{
             y: 0,
@@ -27,26 +27,26 @@ const IndexPage = ({
               type: "spring",
             },
           }}
-        >
-          <Styled.h1 sx={{ mt: "6px" }}>Hi,</Styled.h1>
+        > */}
+        <Styled.h1 sx={{ mt: "6px" }}>Hi,</Styled.h1>
 
-          <Text>
-            My name is {siteMetadata.author} and I&apos;m a designer and coder
-            at <StyledLink href="https://egghead.io/">egghead.io</StyledLink>. I
-            live in and work remotely from{" "}
-            <StyledLink href="https://en.wikipedia.org/wiki/Brno-City_District#/media/File:Brno_View_from_Spilberk_128.JPG">
-              Brno
-            </StyledLink>
-            . This is my personal site where I share notes and articles about
-            things I&apos;m interested in.
-          </Text>
-        </motion.div>
+        <Text>
+          My name is {siteMetadata.author} and I&apos;m a designer and coder at{" "}
+          <StyledLink href="https://egghead.io/">egghead.io</StyledLink>. I live
+          in and work remotely from{" "}
+          <StyledLink href="https://en.wikipedia.org/wiki/Brno-City_District#/media/File:Brno_View_from_Spilberk_128.JPG">
+            Brno
+          </StyledLink>
+          . This is my personal site where I share notes and articles about
+          things I&apos;m interested in.
+        </Text>
+        {/* </motion.div> */}
         {/* <Text mt="2">
             You can follow me on{" "}
             <StyledLink href={"https://twitter.com/vjthlk"}>Twitter</StyledLink>
             .
           </Text> */}
-        <motion.div
+        {/* <motion.div
           initial={{ y: -10 }}
           animate={{
             y: 0,
@@ -57,18 +57,18 @@ const IndexPage = ({
               type: "spring",
             },
           }}
-        >
-          <Styled.h3 sx={{ mt: 4, mb: 2 }}>Latest Posts</Styled.h3>
-          <ul>
-            {allBlogPost.nodes.map(post => (
-              <li key={post.id}>
-                <StyledLink as={Link} to={post.slug}>
-                  {post.title}
-                </StyledLink>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+        > */}
+        <Styled.h3 sx={{ mt: 4, mb: 2 }}>Latest Posts</Styled.h3>
+        <ul>
+          {allBlogPost.nodes.map(post => (
+            <li key={post.id}>
+              <StyledLink as={Link} to={post.slug}>
+                {post.title}
+              </StyledLink>
+            </li>
+          ))}
+        </ul>
+        {/* </motion.div> */}
       </Layout>
     </Styled.root>
   )
