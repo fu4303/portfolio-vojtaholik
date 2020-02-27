@@ -86,13 +86,32 @@ export default merge(toTheme(parnassus), {
       overflow: "auto",
       mx: [-2, 0],
     },
-
+    blockquote: {
+      fontStyle: "italic",
+      fontSize: "110%",
+      borderLeft: "2px solid",
+      borderColor: "black",
+      ml: 0,
+      pl: 3,
+    },
     root: {
       code: {
         bg: "#f1f1f1",
         p: "3px 7px",
         fontFamily: "monospace",
         fontSize: "90%",
+      },
+      ul: {
+        listStyleType: "disc",
+        ml: 2,
+      },
+      ol: {
+        listStyleType: "decimal",
+        ml: 2,
+        // listStylePosition: "inside",
+      },
+      "em, i": {
+        fontStyle: "italic",
       },
       color: "text",
       article: {

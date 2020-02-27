@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Vojta's Blog`,
+    title: `Blog`,
     author: `Vojta Holik`,
     description: `Designer and front-end developer.`,
     siteUrl: `https://vojta.io`,
@@ -24,7 +24,6 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              // should this be configurable by the end-user?
               maxWidth: 1380,
               linkImagesToOriginal: false,
             },
