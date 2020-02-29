@@ -1,0 +1,38 @@
+---
+title: Defining colors with color manipulation utilities
+date: 2020-03-01
+published: false
+---
+
+import { Input, Box, Button, Grid } from "@theme-ui/components"
+import { mix } from "@theme-ui/color"
+
+export const Form = () => {
+  const [color, setColor] = React.useState("primary")
+  const colors = ["primary", "secondary", "green", "orange", "purple"]
+  return (
+    <>
+      <Grid columns={[3, colors.length]} gap={1}>
+        {colors.map(c => (
+          <Button color={color === c ? 'background' : 'text'} bg={color === c ? c : '#f1f1f1'} onClick={() => setColor(c)}>
+            {c}
+          </Button>
+        ))}
+      </Grid>
+      <Box sx={{ bg: mix(color, "background", 0.05), padding: [3, 4], mt: 2, borderRadius: 5 }}>
+        <Input
+          placeholder="Type something..."
+          sx={{
+            borderColor: mix(color, "background", 0.3),
+            bg: "background",
+            outline: "none",
+            ":focus": { borderColor: mix(color, "background", 0.8) },
+          }}
+        />
+      </Box>
+    </>
+  )
+}
+
+<Form />
+

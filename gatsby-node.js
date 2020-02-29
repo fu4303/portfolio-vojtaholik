@@ -54,7 +54,8 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       tags: [String]!
       keywords: [String]!
       excerpt: String!
-      card: File! @fileByRelativePath
+      card: File @fileByRelativePath
+      published: Boolean!
   }`)
 
   createTypes(
@@ -69,7 +70,10 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           type: `String!`,
         },
         card: {
-          type: `File!`,
+          type: `File`,
+        },
+        published: {
+          type: `Boolean!`,
         },
         date: { type: `Date!`, extensions: { dateformat: {} } },
         tags: { type: `[String]!` },
@@ -141,6 +145,7 @@ exports.onCreateNode = async (
       date: node.frontmatter.date,
       keywords: node.frontmatter.keywords || [],
       card: node.frontmatter.card,
+      published: node.frontmatter.published,
     }
 
     const mdxBlogPostId = createNodeId(`${node.id} >>> MdxBlogPost`)

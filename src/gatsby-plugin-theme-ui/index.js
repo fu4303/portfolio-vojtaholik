@@ -4,6 +4,7 @@ import nightOwl from "@theme-ui/prism/presets/night-owl.json"
 import parnassus from "typography-theme-parnassus"
 import merge from "deepmerge"
 import { toTheme } from "@theme-ui/typography"
+import { mix, darken, lighten } from "@theme-ui/color"
 
 export default merge(toTheme(parnassus), {
   // ...base,
@@ -11,11 +12,12 @@ export default merge(toTheme(parnassus), {
   // useCustomProperties: true,
   colors: {
     primary: "#326AFF",
+    secondary: "#7790CC",
     text: "hsl(0, 0%, 10%)",
     background: "white",
     modes: {
       dark: {
-        primary: "#0FAF7B",
+        primary: "#326AFF",
         text: "hsl(255, 0%,95%)",
         background: "hsl(0, 0%, 5%)",
       },

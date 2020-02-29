@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import React from "react"
-import { jsx, Container } from "theme-ui"
+import { jsx, Container, Styled } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 import SEO from "./seo"
 import Header from "./header"
@@ -24,7 +24,7 @@ export default function Layout(props) {
   `)
 
   return (
-    <>
+    <Styled.root>
       <SEO
         {...props}
         card={props.card}
@@ -47,6 +47,6 @@ export default function Layout(props) {
         </Box>
         <Footer />
       </div>
-    </>
+    </Styled.root>
   )
 }
