@@ -86,7 +86,8 @@ export default merge(toTheme(parnassus), {
     },
     pre: {
       overflow: "auto",
-      mx: [-2, 0],
+      mx: [-3, 0],
+      borderRadius: [0, 3],
     },
     blockquote: {
       fontStyle: "italic",
@@ -98,6 +99,7 @@ export default merge(toTheme(parnassus), {
     },
     root: {
       code: {
+        color: "text",
         bg: "#f1f1f1",
         p: "3px 7px",
         fontFamily: "monospace",

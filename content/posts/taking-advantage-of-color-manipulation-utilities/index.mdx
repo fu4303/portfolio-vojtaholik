@@ -7,15 +7,15 @@ published: false
 import { Input, Box, Button, Grid, Label } from "@theme-ui/components"
 import { mix } from "@theme-ui/color"
 import Prism from "@theme-ui/prism"
-import CodeBlock from '../../../src/components/codeBlock'
+import CodeBlock from "../../../src/components/codeBlock"
 
 export const Form = ({ children }) => {
   const [color, setColor] = React.useState("#0984e3")
-    const colors = [
-    {"label": "blue", "code": '#0984e3'},
-    {"label": "green", "code": '#00a383'},
-    {"label": "pink", "code": '#fd79a8'},
-    {"label": "purple", "code": '#6c5ce7'},
+  const colors = [
+    { label: "blue", code: "#0984e3" },
+    { label: "green", code: "#00a383" },
+    { label: "pink", code: "#fd79a8" },
+    { label: "purple", code: "#6c5ce7" },
   ]
   return (
     <>
@@ -26,9 +26,10 @@ export const Form = ({ children }) => {
             color={color === c.code ? "background" : "text"}
             key={c.label}
             sx={{
-          bg: color === c.code ? c.code : mix(c.code, "background", 0.1),
-          color: color === c.code ? 'background' : mix(c.code, "text", 0.7)
-          }}
+              py: 1,
+              bg: color === c.code ? c.code : mix(c.code, "background", 0.1),
+              color: color === c.code ? "background" : mix(c.code, "text", 0.7),
+            }}
           >
             {c.label}
           </Button>
@@ -62,7 +63,6 @@ export const Form = ({ children }) => {
           }}
         />
       </Box>
-      
       {children(color, colors)}
     </>
   )
@@ -74,7 +74,9 @@ export const Form = ({ children }) => {
       {`
 export default {
   colors: {
-    primary: "${color}", // ${colors.filter(c => c.code === color).map(c => c.label)}
+    primary: "${color}", // ${colors
+        .filter(c => c.code === color)
+        .map(c => c.label)}
     text: "hsl(0, 0%, 10%)",
     background: "white",
   }

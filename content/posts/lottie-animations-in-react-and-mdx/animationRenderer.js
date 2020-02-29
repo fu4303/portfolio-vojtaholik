@@ -4,7 +4,7 @@ import Lottie from "react-lottie"
 import { jsx } from "theme-ui"
 import { IconButton } from "@theme-ui/components"
 import { Icon } from "react-icons-kit"
-import { play2, pause, spinner8 } from "react-icons-kit/icomoon"
+import { play2, pause } from "react-icons-kit/icomoon"
 import { motion } from "framer-motion"
 import { createfetchUnlessCached } from "fetch-unless-cached"
 
