@@ -60,11 +60,11 @@ export const Form = ({ children }) => {
           borderRadius: 5,
         }}
       >
-        <Label sx={{ color: mix(color, textColor, 0.3) }} htmlFor="username">
-          Username
+        <Label sx={{ color: mix(color, textColor, 0.3) }} htmlFor="label">
+          Label
         </Label>
         <Input
-          name="username"
+          name="label"
           placeholder="Type something..."
           sx={{
             bg: bgColor,
@@ -94,14 +94,23 @@ export default {
         .filter(c => c.code === color)
         .map(c => c.label)}
     text: "hsl(0, 0%, 10%)",
-    background: "white"
+    background: "white",
+    modes: {
+      dark: {
+        primary: "${color}", // ${colors
+        .filter(c => c.code === color)
+        .map(c => c.label)}
+        text: "hsl(255, 0%,95%)",
+        background: "hsl(0, 0%, 5%)",
+      },
+    },
   },
   forms: {
     input: {
       bg: "background",
       borderColor: mix("primary", "background", 0.3),
       color: mix("primary", "text", 0.35),
-      outline: "none",
+      outline: "none", // this is bad A11Y, but we replace it with border on next line
       ":focus": { borderColor: mix("primary", "background", 0.8) },
       "::placeholder": {
         color: mix("primary", "text", 0.5),
