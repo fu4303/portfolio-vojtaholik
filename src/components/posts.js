@@ -8,7 +8,7 @@ export default ({ posts, ...props }) => {
   console.log(posts)
   return (
     <Layout title="Posts" {...props}>
-      <Styled.h1>All Posts</Styled.h1>
+      <Styled.h1 sx={{ mt: "6px" }}>All Posts</Styled.h1>
       <ul>
         {posts.map(post => (
           <li key={post.id}>

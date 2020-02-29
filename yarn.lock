@@ -10964,6 +10964,11 @@ prism-react-renderer@^1.0.2:
   resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.0.2.tgz#3bb9a6a42f76fc049b03266298c7068fdd4b7ea9"
   integrity sha512-0++pJyRfu4v2OxI/Us/5RLui9ESDkTiLkVCtKuPZYdpB8UQWJpnJQhPrWab053XtsKW3oM0sD69uJ6N9exm1Ag==
 
+prism-theme-night-owl@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/prism-theme-night-owl/-/prism-theme-night-owl-1.2.0.tgz#44e65b4305b56243dcd0cd9d0778b9f0b8b20ad5"
+  integrity sha512-Q4h5MqDYnpuNtrlkTT/v7g/FCPRaOSjnlSg0XbMfsUrauNJlptPC49gKTH2JM/ci59Qos3zznytFx9d8qmEW+Q==
+
 private@^0.1.6:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/private/-/private-0.1.8.tgz#2381edb3689f7a53d653190060fcf822d2f368ff"

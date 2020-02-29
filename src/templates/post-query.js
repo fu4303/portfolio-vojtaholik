@@ -32,6 +32,7 @@ export const query = graphql`
       title
       tags
       keywords
+      published
       date(formatString: "MMMM DD, YYYY")
     }
     previous: blogPost(id: { eq: $previousId }) {
