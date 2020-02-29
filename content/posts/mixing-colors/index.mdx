@@ -1,0 +1,127 @@
+---
+title: Mixing colors
+date: 2020-03-01
+published: false
+---
+
+import { Input, Box, Button, Grid, Label } from "@theme-ui/components"
+import { mix } from "@theme-ui/color"
+import Prism from "@theme-ui/prism"
+import CodeBlock from "../../../src/components/codeBlock"
+
+export const Form = ({ children }) => {
+  const [color, setColor] = React.useState("#0984e3")
+  const [colorMode, setColorMode] = React.useState(false)
+  const bgColor = colorMode ? "#0d0d0d" : "white"
+  const textColor = colorMode ? "white" : "#0d0d0d"
+  const colors = [
+    { label: "blue", code: "#0984e3" },
+    { label: "green", code: "#00a383" },
+    { label: "pink", code: "#fd79a8" },
+    { label: "purple", code: "#6c5ce7" },
+  ]
+  return (
+    <>
+      <Grid columns={[2, colors.length + 1]} gap={1}>
+        {colors.map(c => (
+          <Button
+            onClick={() => setColor(c.code)}
+            color={color === c.code ? bgColor : textColor}
+            key={c.label}
+            sx={{
+              py: 1,
+              // bg: color === c.code ? c.code : mix(c.code, "background", 0.1),
+              // color: color === c.code ? "background" : mix(c.code, "text", 0.7),
+              bg:
+                color === c.code
+                  ? c.code
+                  : mix(color, colorMode ? textColor : bgColor, 0.05),
+              color:
+                color === c.code
+                  ? colorMode
+                    ? textColor
+                    : bgColor
+                  : colorMode
+                  ? bgColor
+                  : textColor,
+            }}
+          >
+            {c.label}
+          </Button>
+        ))}
+        <Button sx={{fontSize: 15}} onClick={() => setColorMode(!colorMode)}>{colorMode ? 'Light' : 'Dark'} Mode</Button>
+      </Grid>
+      <Box
+        as="form"
+        sx={{
+          bg: mix(color, bgColor, 0.05),
+          padding: [3, 4],
+          my: 1,
+          borderRadius: 5,
+        }}
+      >
+        <Label sx={{ color: mix(color, textColor, 0.3) }} htmlFor="username">
+          Username
+        </Label>
+        <Input
+          name="username"
+          placeholder="Type something..."
+          sx={{
+            bg: bgColor,
+            borderColor: mix(color, bgColor, 0.3),
+            color: mix(color, textColor, 0.35),
+            outline: "none",
+            ":focus": { borderColor: mix(color, bgColor, 0.8) },
+            "::placeholder": {
+              color: mix(color, textColor, 0.5),
+              opacity: 0.3,
+            },
+          }}
+        />
+      </Box>
+      {children(color, colors)}
+    </>
+  )
+}
+
+<Form>
+  {(color, colors) => (
+    <CodeBlock className="js">
+      {`
+export default {
+  colors: {
+    primary: "${color}", // ${colors
+        .filter(c => c.code === color)
+        .map(c => c.label)}
+    text: "hsl(0, 0%, 10%)",
+    background: "white"
+  },
+  forms: {
+    input: {
+      bg: "background",
+      borderColor: mix("primary", "background", 0.3),
+      color: mix("primary", "text", 0.35),
+      outline: "none",
+      ":focus": { borderColor: mix("primary", "background", 0.8) },
+      "::placeholder": {
+        color: mix("primary", "text", 0.5),
+        opacity: 0.3
+      },
+    },
+    label: {
+      color: mix("primary", "text", 0.3)
+    }
+  }
+}`}
+    </CodeBlock>
+  )}
+</Form>
+
+> Mixes the two provided colors together by calculating the average of each of the RGB components weighted to the first color by the provided weight.
+
+- https://theme-ui.com/packages/color#mix
+- https://polished.js.org/docs/#mix
+
+```js
+import { mix } from "@theme-ui/color"
+```
