@@ -5,7 +5,7 @@ published: false
 ---
 
 import { Input, Box, Flex, Button, Grid, Label } from "@theme-ui/components"
-import { mix, rotate } from "@theme-ui/color"
+import { mix, darken, desaturate } from "@theme-ui/color"
 import Prism from "@theme-ui/prism"
 import CodeBlock from "../../../src/components/codeBlock"
 import { TwitterPicker, SketchPicker } from "react-color"
@@ -21,6 +21,10 @@ export const Form = ({ children }) => {
     { title: "pink", color: "#fd79a8" },
     { title: "purple", color: "#6c5ce7" },
   ]
+  const [borderColor, setBorderColor] = React.useState(mix(color, bgColor, 0.5))
+  React.useEffect(() => {
+    setBorderColor(mix(color, bgColor, 0.5))
+  }, [color, colorMode])
   return (
     <>
       <Grid
@@ -71,7 +75,7 @@ export const Form = ({ children }) => {
           placeholder="Type something..."
           sx={{
             bg: bgColor,
-            borderColor: mix(color, bgColor, 0.3),
+            borderColor: desaturate(borderColor, 0.6),
             color: mix(color, textColor, 0.35),
             outline: "none",
             ":focus": { borderColor: mix(color, bgColor, 0.8) },
@@ -79,24 +83,30 @@ export const Form = ({ children }) => {
               color: mix(color, textColor, 0.5),
               opacity: 0.3,
             },
+            // transition: 'border 150ms ease-in-out'
           }}
         />
       </Box>
-      <Flex sx={{alignItems: 'flex-start', width: '100%', justifyContent: 'space-between'}}>
+      <Flex
+        sx={{
+          alignItems: "flex-start",
+          width: "100%",
+          justifyContent: "space-between",
+        }}
+      >
         <SketchPicker
           color={color}
           onChangeComplete={color => setColor(color.hex)}
           presetColors={colors}
         />
-      <Button sx={{ fontSize: 15 }} onClick={() => setColorMode(!colorMode)}>
-        {colorMode ? "Light" : "Dark"} Mode
-      </Button>
+        <Button sx={{ fontSize: 15 }} onClick={() => setColorMode(!colorMode)}>
+          {colorMode ? "Light" : "Dark"} Mode
+        </Button>
       </Flex>
       {children(color, colors)}
     </>
   )
 }
-
 
 <Form>
   {(color, colors) => (
