@@ -4,10 +4,11 @@ date: 2020-03-01
 published: false
 ---
 
-import { Input, Box, Button, Grid, Label } from "@theme-ui/components"
-import { mix } from "@theme-ui/color"
+import { Input, Box, Flex, Button, Grid, Label } from "@theme-ui/components"
+import { mix, rotate } from "@theme-ui/color"
 import Prism from "@theme-ui/prism"
 import CodeBlock from "../../../src/components/codeBlock"
+import { TwitterPicker, SketchPicker } from "react-color"
 
 export const Form = ({ children }) => {
   const [color, setColor] = React.useState("#0984e3")
@@ -15,29 +16,32 @@ export const Form = ({ children }) => {
   const bgColor = colorMode ? "#0d0d0d" : "white"
   const textColor = colorMode ? "white" : "#0d0d0d"
   const colors = [
-    { label: "blue", code: "#0984e3" },
-    { label: "green", code: "#00a383" },
-    { label: "pink", code: "#fd79a8" },
-    { label: "purple", code: "#6c5ce7" },
+    { title: "blue", color: "#0984e3" },
+    { title: "green", color: "#00a383" },
+    { title: "pink", color: "#fd79a8" },
+    { title: "purple", color: "#6c5ce7" },
   ]
   return (
     <>
-      <Grid columns={[2, colors.length + 1]} gap={1}>
-        {colors.map(c => (
+      <Grid
+        // columns={[2, colors.length + 1]}
+        columns={[2, "auto 200px"]}
+        rows={1}
+        gap={1}
+      >
+        {/* {colors.map(c => (
           <Button
-            onClick={() => setColor(c.code)}
-            color={color === c.code ? bgColor : textColor}
-            key={c.label}
+            onClick={() => setColor(c.color)}
+            color={color === c.color ? bgColor : textColor}
+            key={c.title}
             sx={{
               py: 1,
-              // bg: color === c.code ? c.code : mix(c.code, "background", 0.1),
-              // color: color === c.code ? "background" : mix(c.code, "text", 0.7),
               bg:
-                color === c.code
-                  ? c.code
+                color === c.color
+                  ? c.color
                   : mix(color, colorMode ? textColor : bgColor, 0.05),
               color:
-                color === c.code
+                color === c.color
                   ? colorMode
                     ? textColor
                     : bgColor
@@ -46,10 +50,9 @@ export const Form = ({ children }) => {
                   : textColor,
             }}
           >
-            {c.label}
+            {c.title}
           </Button>
-        ))}
-        <Button sx={{fontSize: 15}} onClick={() => setColorMode(!colorMode)}>{colorMode ? 'Light' : 'Dark'} Mode</Button>
+        ))} */}
       </Grid>
       <Box
         as="form"
@@ -60,11 +63,11 @@ export const Form = ({ children }) => {
           borderRadius: 5,
         }}
       >
-        <Label sx={{ color: mix(color, textColor, 0.3) }} htmlFor="label">
-          Label
+        <Label sx={{ color: mix(color, textColor, 0.3) }} htmlFor="title">
+          Title
         </Label>
         <Input
-          name="label"
+          name="title"
           placeholder="Type something..."
           sx={{
             bg: bgColor,
@@ -79,10 +82,21 @@ export const Form = ({ children }) => {
           }}
         />
       </Box>
+      <Flex sx={{alignItems: 'flex-start', width: '100%', justifyContent: 'space-between'}}>
+        <SketchPicker
+          color={color}
+          onChangeComplete={color => setColor(color.hex)}
+          presetColors={colors}
+        />
+      <Button sx={{ fontSize: 15 }} onClick={() => setColorMode(!colorMode)}>
+        {colorMode ? "Light" : "Dark"} Mode
+      </Button>
+      </Flex>
       {children(color, colors)}
     </>
   )
 }
+
 
 <Form>
   {(color, colors) => (
@@ -91,15 +105,15 @@ export const Form = ({ children }) => {
 export default {
   colors: {
     primary: "${color}", // ${colors
-        .filter(c => c.code === color)
-        .map(c => c.label)}
+        .filter(c => c.color === color)
+        .map(c => c.title)}
     text: "hsl(0, 0%, 10%)",
     background: "white",
     modes: {
       dark: {
         primary: "${color}", // ${colors
-        .filter(c => c.code === color)
-        .map(c => c.label)}
+        .filter(c => c.color === color)
+        .map(c => c.title)}
         text: "hsl(255, 0%,95%)",
         background: "hsl(0, 0%, 5%)",
       },
@@ -117,7 +131,7 @@ export default {
         opacity: 0.3
       },
     },
-    label: {
+    title: {
       color: mix("primary", "text", 0.3)
     }
   }
