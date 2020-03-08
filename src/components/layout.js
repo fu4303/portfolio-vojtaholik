@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react"
 import { jsx, Container, Styled } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 import SEO from "./seo"
@@ -7,8 +6,8 @@ import Header from "./header"
 import { Box } from "@theme-ui/components"
 import Footer from "./footer"
 import "./reset.css"
-import "focus-visible"
 import "../fonts/inter.css"
+import "focus-visible"
 
 export default function Layout(props) {
   const data = useStaticQuery(graphql`

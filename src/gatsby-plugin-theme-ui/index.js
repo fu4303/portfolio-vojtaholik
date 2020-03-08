@@ -1,27 +1,14 @@
-// shadow src/gatsby-plugin-theme-ui/index.js
-// import base from "gatsby-theme-ui-blog/src/gatsby-plugin-theme-ui"
-import nightOwl from "@theme-ui/prism/presets/night-owl.json"
+import nightOwl from "@theme-ui/prism/presets/night-owl"
 import parnassus from "typography-theme-parnassus"
 import merge from "deepmerge"
 import { toTheme } from "@theme-ui/typography"
-import { mix, darken, lighten } from "@theme-ui/color"
 
 export default merge(toTheme(parnassus), {
-  // ...base,
-  // useColorSchemeMediaQuery: true,
-  // useCustomProperties: true,
   colors: {
     primary: "#326AFF",
     secondary: "#7790CC",
     text: "hsl(0, 0%, 10%)",
     background: "white",
-    modes: {
-      dark: {
-        primary: "#326AFF",
-        text: "hsl(255, 0%,95%)",
-        background: "hsl(0, 0%, 5%)",
-      },
-    },
   },
 
   breakpoints: ["40em", "56em", "64em"],

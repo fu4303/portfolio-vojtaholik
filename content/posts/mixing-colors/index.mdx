@@ -1,13 +1,12 @@
 ---
-title: Mixing colors
+title: Computing Complementary UI Colors From Primary Color
 date: 2020-03-01
 published: false
 ---
 
 import { Input, Box, Flex, Button, Grid, Label } from "@theme-ui/components"
 import { mix, darken, desaturate } from "@theme-ui/color"
-import Prism from "@theme-ui/prism"
-import CodeBlock from "../../../src/components/codeBlock"
+import CodeBlock from "../../../src/components/code-block"
 import { TwitterPicker, SketchPicker } from "react-color"
 
 export const Form = ({ children }) => {
@@ -96,8 +95,8 @@ export const Form = ({ children }) => {
       >
         <SketchPicker
           color={color}
-          onChangeComplete={color => setColor(color.hex)}
           presetColors={colors}
+          onChangeComplete={color => setColor(color.hex)}
         />
         <Button sx={{ fontSize: 15 }} onClick={() => setColorMode(!colorMode)}>
           {colorMode ? "Light" : "Dark"} Mode
