@@ -111,6 +111,7 @@ module.exports = {
               {
                 allBlogPost(
                   sort: { fields: [date, title], order: DESC }
+                  filter: { published: { eq: true } }
                 ) {
                   edges {
                     node {
