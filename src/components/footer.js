@@ -2,7 +2,7 @@
 import { jsx, Container } from "theme-ui"
 import { Link as StyledLink } from "@theme-ui/components"
 import { Icon } from "react-icons-kit"
-import { rss, github, mail } from "react-icons-kit/feather"
+import { rss, github, mail, twitter } from "react-icons-kit/feather"
 
 export default function Footer() {
   return (
@@ -15,24 +15,26 @@ export default function Footer() {
           py: [2, 3, 4],
           px: [2, 3, 4],
           display: "flex",
+          flexWrap: "wrap",
           flexDirection: ["column", "row"],
           alignItems: ["flex-start", "center"],
           a: {
             mr: 4,
             pt: [1, 0],
           },
-          // display: "grid",
-          // gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
         }}
       >
         <StyledLink href="https://github.com/vojtaholik/vojta-io">
           <Icon size={16} icon={github} /> This site on Github
         </StyledLink>
-        <StyledLink href="/rss.xml">
-          <Icon size={16} icon={rss} /> RSS
+        <StyledLink href="https://twitter.com/vjthlk">
+          <Icon size={16} icon={twitter} /> Follow me
         </StyledLink>
         <StyledLink href="mailto:vojta@8am.design">
           <Icon size={16} icon={mail} /> Email me
+        </StyledLink>
+        <StyledLink href="/rss.xml">
+          <Icon size={16} icon={rss} /> RSS
         </StyledLink>
       </footer>
     </Container>

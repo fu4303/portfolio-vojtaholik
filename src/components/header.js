@@ -3,7 +3,6 @@ import React from "react"
 import { Link } from "gatsby"
 import { jsx } from "theme-ui"
 import { Link as StyledLink } from "@theme-ui/components"
-// import { invert } from "@theme-ui/color"
 import {
   motion,
   useViewportScroll,
