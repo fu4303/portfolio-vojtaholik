@@ -1,11 +1,12 @@
 /** @jsx jsx */
-import React from "react"
 import { jsx, Styled } from "theme-ui"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import "prism-theme-night-owl"
 
-const CodeBlock = ({ children, className }) => {
-  const language = className ? className.replace(/language-/, "") : ""
+const CodeBlock = ({ children, ...props }) => {
+  const language = props.className
+    ? props.className.replace(/language-/, "")
+    : ""
 
   return (
     <Highlight

@@ -6,7 +6,7 @@ import { Text } from "@theme-ui/components"
 export default function Post({
   children,
   data: {
-    blogPost: { title, date, excerpt, keywords, tags, card, published },
+    blogPost: { title, date, excerpt, card, published },
   },
   ...props
 }) {

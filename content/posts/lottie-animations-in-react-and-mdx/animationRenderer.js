@@ -113,24 +113,3 @@ export default function AnimationRenderer(props) {
     </div>
   )
 }
-
-{
-  /* <div
-style={{
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  height: props.height || "100%",
-}}
->
-<motion.div
-  initial={{ rotate: 0 }}
-  animate={{ rotate: [0, 360] }}
-  transition={{
-    loop: Infinity,
-  }}
->
-  <Icon size={32} icon={spinner8} />
-</motion.div>
-</div> */
-}

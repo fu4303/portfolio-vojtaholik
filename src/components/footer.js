@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react"
 import { jsx, Container } from "theme-ui"
 import { Link as StyledLink } from "@theme-ui/components"
 import { Icon } from "react-icons-kit"
