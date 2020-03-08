@@ -97,6 +97,7 @@ module.exports = {
                   {},
                   edge.node,
                   {
+                    title: edge.node.title,
                     description: edge.node.excerpt,
                     date: edge.node.date,
                     url: site.siteMetadata.siteUrl + edge.node.slug,
