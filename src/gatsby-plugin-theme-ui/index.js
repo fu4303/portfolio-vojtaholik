@@ -64,6 +64,13 @@ export default merge(toTheme(parnassus), {
       alignItems: "center",
       mr: 2,
     },
+    footerLink: {
+      display: "flex",
+      alignItems: "center",
+      color: "primary",
+      textDecoration: "none",
+      svg: { mr: 1 },
+    },
   },
 
   styles: {

@@ -3,8 +3,7 @@ import React from "react"
 import Lottie from "react-lottie"
 import { jsx } from "theme-ui"
 import { IconButton } from "@theme-ui/components"
-import { Icon } from "react-icons-kit"
-import { play2, pause } from "react-icons-kit/icomoon"
+import { IoIosPlay, IoIosPause } from "react-icons/io"
 import { motion } from "framer-motion"
 import { createfetchUnlessCached } from "fetch-unless-cached"
 
@@ -31,7 +30,7 @@ export default function AnimationRenderer(props) {
     },
   }
 
-  return props.animation && animation ? (
+  return props.animation && !animation ? (
     <div sx={{ display: "flex", alignItems: "flex-end", marginBottom: 40 }}>
       <Lottie
         options={defaultOptions}
@@ -40,12 +39,20 @@ export default function AnimationRenderer(props) {
         isPaused={isPaused}
         isClickToPauseDisabled={true}
       />
-      <IconButton opacity={0.6} onClick={() => setPaused(!isPaused)}>
-        {isPaused ? (
-          <Icon size={24} icon={play2} />
-        ) : (
-          <Icon size={24} icon={pause} />
-        )}
+      <IconButton
+        opacity={0.6}
+        aria-label={`${isPaused ? "Play" : "Stop"} animation`}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          border: "1px solid",
+          borderColor: "rgba(0,0,0,0.3)",
+          borderRadius: "50%",
+        }}
+        onClick={() => setPaused(!isPaused)}
+      >
+        {isPaused ? <IoIosPlay sx={{ ml: "2px" }} /> : <IoIosPause />}
       </IconButton>
     </div>
   ) : props.animation ? (

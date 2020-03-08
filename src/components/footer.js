@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx, Container } from "theme-ui"
 import { Link as StyledLink } from "@theme-ui/components"
-import { Icon } from "react-icons-kit"
-import { rss, github, mail, twitter } from "react-icons-kit/feather"
+import { FiRss, FiMail, FiGithub, FiTwitter } from "react-icons/fi"
 
 export default function Footer() {
   return (
@@ -24,17 +23,20 @@ export default function Footer() {
           },
         }}
       >
-        <StyledLink href="https://github.com/vojtaholik/vojta-io">
-          <Icon size={16} icon={github} /> This site on Github
+        <StyledLink
+          variant="footerLink"
+          href="https://github.com/vojtaholik/vojta-io"
+        >
+          <FiGithub size={16} /> This site on Github
         </StyledLink>
-        <StyledLink href="https://twitter.com/vjthlk">
-          <Icon size={16} icon={twitter} /> Follow me
+        <StyledLink variant="footerLink" href="/rss.xml">
+          <FiRss size={16} /> RSS
         </StyledLink>
-        <StyledLink href="mailto:vojta@8am.design">
-          <Icon size={16} icon={mail} /> Email me
+        <StyledLink variant="footerLink" href="https://twitter.com/vjthlk">
+          <FiTwitter size={16} /> Twitter
         </StyledLink>
-        <StyledLink href="/rss.xml">
-          <Icon size={16} icon={rss} /> RSS
+        <StyledLink variant="footerLink" href="mailto:vojta@8am.design">
+          <FiMail size={16} /> Email me
         </StyledLink>
       </footer>
     </Container>
