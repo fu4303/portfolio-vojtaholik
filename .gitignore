@@ -72,3 +72,5 @@ yarn-error.log
 *.sketch
 # Local Netlify folder
 .netlify
+# Drafts folder
+/drafts

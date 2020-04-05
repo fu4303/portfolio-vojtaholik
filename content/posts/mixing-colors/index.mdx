@@ -95,7 +95,7 @@ export const Form = ({ children }) => {
         <SketchPicker
           color={color}
           presetColors={colors}
-          onChangeComplete={color => setColor(color.hex)}
+          onChangeComplete={(color) => setColor(color.hex)}
         />
         <Button sx={{ fontSize: 15 }} onClick={() => setColorMode(!colorMode)}>
           {colorMode ? "Light" : "Dark"} Mode
@@ -113,15 +113,15 @@ export const Form = ({ children }) => {
 export default {
   colors: {
     primary: "${color}", // ${colors
-        .filter(c => c.color === color)
-        .map(c => c.title)}
+        .filter((c) => c.color === color)
+        .map((c) => c.title)}
     text: "hsl(0, 0%, 10%)",
     background: "white",
     modes: {
       dark: {
         primary: "${color}", // ${colors
-        .filter(c => c.color === color)
-        .map(c => c.title)}
+        .filter((c) => c.color === color)
+        .map((c) => c.title)}
         text: "hsl(255, 0%,95%)",
         background: "hsl(0, 0%, 5%)",
       },
@@ -148,11 +148,11 @@ export default {
   )}
 </Form>
 
-> Mixes the two provided colors together by calculating the average of each of the RGB components weighted to the first color by the provided weight.
+<!-- > Mixes the two provided colors together by calculating the average of each of the RGB components weighted to the first color by the provided weight. -->
 
-- https://theme-ui.com/packages/color#mix
-- https://polished.js.org/docs/#mix
+- [https://theme-ui.com/packages/color](https://theme-ui.com/packages/color)
+- [https://polished.js.org/docs](https://polished.js.org/docs)
 
-```js
+<!-- ```js
 import { mix } from "@theme-ui/color"
-```
+``` -->

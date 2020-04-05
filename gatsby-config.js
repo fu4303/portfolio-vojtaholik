@@ -10,7 +10,7 @@ module.exports = {
         url: `https://twitter.com/vjthlk`,
       },
       {
-        name: `GitHub`,
+        name: `Github`,
         url: `https://github.com/vojtaholik`,
       },
     ],
@@ -26,6 +26,8 @@ module.exports = {
             options: {
               maxWidth: 1380,
               linkImagesToOriginal: false,
+              tracedSVG: true,
+              wrapperStyle: { marginBottom: "30rem" },
             },
           },
           { resolve: `gatsby-remark-copy-linked-files` },
@@ -92,7 +94,7 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allBlogPost } }) => {
-              return allBlogPost.edges.map(edge => {
+              return allBlogPost.edges.map((edge) => {
                 return (
                   {},
                   edge.node,
