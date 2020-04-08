@@ -17,7 +17,7 @@ export default function AnimationRenderer(props) {
     cachedFetch("/.netlify/functions/lottie-animation", {
       headers: { accept: "Accept: application/json" },
     })
-      .then(response => response)
+      .then((response) => response)
       .then(({ lottieAnimation }) => setAnimation(lottieAnimation))
   }, [])
 
@@ -30,7 +30,7 @@ export default function AnimationRenderer(props) {
     },
   }
 
-  return props.animation && !animation ? (
+  return animation ? (
     <div sx={{ display: "flex", alignItems: "flex-end", marginBottom: 40 }}>
       <Lottie
         options={defaultOptions}
@@ -55,7 +55,7 @@ export default function AnimationRenderer(props) {
         {isPaused ? <IoIosPlay sx={{ ml: "2px" }} /> : <IoIosPause />}
       </IconButton>
     </div>
-  ) : props.animation ? (
+  ) : (
     <div
       sx={{
         display: "flex",
@@ -106,17 +106,6 @@ export default function AnimationRenderer(props) {
           />
         </svg>
       </motion.div>
-    </div>
-  ) : (
-    <div
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        height: props.height || "100%",
-      }}
-    >
-      Missing animation data
     </div>
   )
 }
