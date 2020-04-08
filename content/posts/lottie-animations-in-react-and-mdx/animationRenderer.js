@@ -7,7 +7,7 @@ import { IoIosPlay, IoIosPause } from "react-icons/io"
 import { motion } from "framer-motion"
 import { createfetchUnlessCached } from "fetch-unless-cached"
 
-const cachedFetch = createfetchUnlessCached(300) // minutes
+const cachedFetch = createfetchUnlessCached(1440) // minutes
 
 export default function AnimationRenderer(props) {
   const [isPaused, setPaused] = React.useState(false)
