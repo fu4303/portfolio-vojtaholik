@@ -22,9 +22,9 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "react-hooks"],
   rules: {
-    "import/no-unresolved": "off",
+    "import/no-unresolved": "warn",
     "react/prop-types": "off",
     "react/jsx-pascal-case": "off",
     "import/order": "off",
@@ -33,5 +33,7 @@ module.exports = {
     "max-lines-per-function": "off",
     "babel/quotes": "off",
     "consistent-return": "off",
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
   },
 }

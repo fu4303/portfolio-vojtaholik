@@ -1,19 +1,19 @@
 ---
 title: Logomarks for Friends
 date: 2020-04-01
-published: false
+published: true
 ---
 
-import { Image, Flex, Box, Grid } from "@theme-ui/components"
+import { Image, Flex, Box, Grid, Link } from "@theme-ui/components"
 import EpicReactLogo from "./assets/epicreact"
 
-Logotypes and branding projects have never been my primary field of focus. But whenever I get a chance, I enjoy helping folks who are starting a new business, or are passionate about what they do. This is a collection of selected marks I got to design for them.
+Logotypes and branding projects have never been my primary field of focus. But whenever I get a chance, I enjoy helping folks who are starting a new business or are passionate about what they do. Here’s a collection of selected marks I got to design for them.
 
 <br />
 
 ## Modular logomark for GAP
 
-[GAP / Galerie a Prostor](https://galerieaprostor.cz), or Gallery and Space in english, is a project by Art to Znojmo association, which combines gallery of conterporary art with a coffee shop. It's situated in historical city centre of Znojmo.
+[GAP / Galerie a Prostor](https://galerieaprostor.cz), or Gallery and Space in English, is a project by Art to Znojmo association, which combines a gallery of contemporary art with a coffee shop, situated in the historical city center of Znojmo.
 
 <Grid columns={2} my={3}>
 
@@ -43,59 +43,92 @@ Logotypes and branding projects have never been my primary field of focus. But w
 
 ## Moon Highway
 
-[Alex Banks](https://twitter.com/moontahoe) and [Eve Porcello](https://twitter.com/eveporcello) are instructors, curriculum designers, and authors. They create amazing technical content for egghead.io, O'Reilly Media, and LinkedIn Learning. [moonhighway.com](https://moonhighway.com)
+[Alex Banks](https://twitter.com/moontahoe) and [Eve Porcello](https://twitter.com/eveporcello) are instructors, curriculum designers, and authors. They create amazing technical content for egghead.io, O’Reilly Media, and LinkedIn Learning.
 
-<Grid columns={2} sx={{width: '100%', span: {maxWidth: '150px'}, alignItems: 'center', img: {mb:0}}}>
-
-<Flex
-  sx={{
-    py: 4,
-    border: "1px solid #f1f1f1",
-    alignItems: "center",
-    justifyContent: "center",
-    img: { mb: 0 },
-  }}
->
-  <Image src="./assets/moonhighway.svg" width="120px" height="120px" />
-</Flex>
+<Grid columns={2} my={3}>
 
 <Flex
   sx={{
-    py: 4,
+    py: 3,
     border: "1px solid #f1f1f1",
     alignItems: "center",
     justifyContent: "center",
+    width: "100%",
+    img: { m: 0 },
   }}
 >
-  <Image src="./assets/moonhighway@2x.gif" width="240px" />
-</Flex>
 
+<Image src="./assets/moonhighway@2x.gif" width="240px" />
+
+</Flex>
+<Flex
+  sx={{
+    py: 3,
+    border: "1px solid #f1f1f1",
+    alignItems: "center",
+    justifyContent: "center",
+    img: { m: 0 },
+   
+  }}
+>
+
+<Image src="./assets/moonhighway.svg" width="120px" height="120px" />
+
+</Flex>
 </Grid>
 
-<br />
-<br />
+<Box sx={{p: { m:0 }, mb: 4}}>
 
-## Mark for [Joel's Digital Garden](https://joelhooks.com)
+![./assets/moonhighway@2x.png](./assets/moonhighway@2x.png)
 
-Joel is a co-founder of [egghead.io](https://egghead.io) and you should definitely check out his [Digital Garden](https://joelhooks.com) and [Twitter](https://twitter.com/jhooks).
+<Link href="https://moonhighway.com">
 
-<Grid sx={{span: {maxWidth: '290px'}, py: 5, alignItems: 'center', justifyContent: 'center'}}>
+moonhighway.com
+
+</Link>
+</Box>
+
+## Joel's [Digital Garden](https://joelhooks.com)
+
+Joel Hooks is a co-founder of [egghead.io](https://egghead.io). Go check out his [Digital Garden](https://joelhooks.com) and [follow him on Twitter](https://twitter.com/jhooks).
+
+<Grid sx={{py: 5, alignItems: 'center', justifyContent: 'center', border: '1px solid #f1f1f1', mb: 4}}>
 
 <Img src="./assets/joel2.svg" />
 
 </Grid>
 
-## Epic React
+## [Epic React](https://epicreact.dev/) by Kent C. Dodds
 
-<Box sx={{span: {maxWidth: '260px'}, py: 5}}>
+<Grid columns={2} gap={2} mb={4}>
 
-<Image src="./assets/epicreact@2x.png" />
+<Flex
+  sx={{
+    py: 3,
+    border: "1px solid #f1f1f1",
+    alignItems: "center",
+    justifyContent: "center",
+    img: { m: 0 },
+  }}
+>
 
 <EpicReactLogo />
 
-</Box>
+</Flex>
 
-## 6D
+<Box
+  sx={{
+    py: 3,
+    border: "1px solid #f1f1f1",
+    span: {maxWidth: '240px', m: 0}, p: {m: 0}
+}}>
+
+![./assets/epicreact@2x.png](./assets/epicreact@2x.png)
+
+</Box>
+</Grid>
+
+## [6D Academy](https://6dacademy.com/en)
 
 <Grid columns={2} sx={{span: {maxWidth: '150px'}, alignItems: 'center'}}>
 
@@ -104,13 +137,3 @@ Joel is a co-founder of [egghead.io](https://egghead.io) and you should definite
 <Image src="./assets/6d@2x.gif" width="300px" />
 
 </Grid>
-
-<Box sx={{mt: 5}}>
-
-<i>
-  Thanks for checking by,
-  <br />
-  Vojta
-</i>
-
-</Box>
