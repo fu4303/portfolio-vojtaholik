@@ -6,11 +6,12 @@ import { motion } from "framer-motion"
 export default function EpicReactLogo() {
   const [play, setPlay] = React.useState(true)
 
-  React.useLayoutEffect(() => {
-    if (play) {
-      setTimeout(() => setPlay(false), 2500)
-    } else setPlay(true)
-  }, [setPlay, play])
+  React.useEffect(() => {
+    const timer = play ? setTimeout(() => setPlay(false), 2500) : setPlay(true)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [play])
   return (
     <div
       sx={{
