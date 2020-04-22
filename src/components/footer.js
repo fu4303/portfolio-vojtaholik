@@ -2,6 +2,7 @@
 import { jsx, Container } from "theme-ui"
 import { Link as StyledLink } from "@theme-ui/components"
 import { FiRss, FiMail, FiGithub, FiTwitter } from "react-icons/fi"
+import { FaDribbble } from "react-icons/fa"
 
 export default function Footer() {
   return (
@@ -17,25 +18,24 @@ export default function Footer() {
           flexWrap: "wrap",
           flexDirection: ["column", "row"],
           alignItems: ["flex-start", "center"],
-          a: {
-            mr: 4,
-            pt: [1, 0],
-          },
         }}
       >
         <StyledLink
-          variant="footerLink"
+          variant="socialLink"
           href="https://github.com/vojtaholik/vojta-io"
         >
           <FiGithub size={16} /> This site on Github
         </StyledLink>
-        <StyledLink variant="footerLink" href="/rss.xml">
+        <StyledLink variant="socialLink" href="/rss.xml">
           <FiRss size={16} /> RSS
         </StyledLink>
-        <StyledLink variant="footerLink" href="https://twitter.com/vjthlk">
+        <StyledLink variant="socialLink" href="https://twitter.com/vjthlk">
           <FiTwitter size={16} /> Twitter
         </StyledLink>
-        <StyledLink variant="footerLink" href="mailto:vojta@8am.design">
+        <StyledLink variant="socialLink" href="https://dribbble.com/vjthlk">
+          <FaDribbble size={16} /> Dribbble
+        </StyledLink>
+        <StyledLink variant="socialLink" href="mailto:vojta@8am.design">
           <FiMail size={16} /> Email me
         </StyledLink>
       </footer>

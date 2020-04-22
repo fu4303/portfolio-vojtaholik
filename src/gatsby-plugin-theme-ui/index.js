@@ -64,11 +64,13 @@ export default merge(toTheme(parnassus), {
       alignItems: "center",
       mr: 2,
     },
-    footerLink: {
+    socialLink: {
       display: "flex",
       alignItems: "center",
       color: "primary",
       textDecoration: "none",
+      mr: "45px",
+      pt: [1, 0],
       svg: { mr: 1 },
     },
   },
