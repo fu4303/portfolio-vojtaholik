@@ -15,8 +15,6 @@ export default function Layout(props) {
       site {
         siteMetadata {
           title
-          description
-          author
         }
       }
     }
@@ -29,6 +27,8 @@ export default function Layout(props) {
         card={props.card}
         description={props.excerpt}
         title={props.title}
+        type={props.type}
+        url={props.url}
       />
       <Header title={data.site.siteMetadata.title} />
       <div

@@ -6,7 +6,7 @@ import { Text } from "@theme-ui/components"
 export default function Post({
   children,
   data: {
-    blogPost: { title, date, excerpt, card, published },
+    blogPost: { title, slug, date, excerpt, card, published },
   },
   ...props
 }) {
@@ -16,6 +16,8 @@ export default function Post({
       excerpt={excerpt}
       {...props}
       card={card && card.childImageSharp.fixed.src}
+      type="article"
+      url={`https://vojta.io${slug}`}
     >
       <Styled.h1 sx={{ mt: "6px" }}>{title}</Styled.h1>
       {!published && (
