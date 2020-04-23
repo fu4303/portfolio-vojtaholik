@@ -2,3 +2,5 @@
   command = "yarn build && cd functions/lottie-animation && yarn"
   functions = "functions"
   publish = "public"
+[[plugins]]
+  package = "netlify-plugin-subfont"
