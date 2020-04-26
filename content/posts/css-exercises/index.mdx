@@ -10,7 +10,7 @@ import { navigate } from "gatsby-link"
 
 export const Overlay = () => {
   const [state, setState] = React.useState({})
-  const [isSolutionVisible, setSolutionVisible] = React.useState(true)
+  const [isSolutionVisible, setSolutionVisible] = React.useState(false)
   function encode(data) {
     return Object.keys(data)
       .map(
@@ -92,12 +92,26 @@ export const Overlay = () => {
       <Button my={2} onClick={() => setSolutionVisible(!isSolutionVisible)}>
         {isSolutionVisible ? "Hide" : "Show me"} the solution
       </Button>
-      {isSolutionVisible && (
-        <>
-          <br />
-          <h3>Solution:</h3>
-          <CodeBlock className="language-js" live disabled>
-            {`
+      <form
+        onSubmit={handleSubmit}
+        name="css-overlay"
+        method="post"
+        data-netlify="true"
+        action="/posts/css-exercises"
+        data-netlify-honeypot="bot-field"
+      >
+        <input
+          type="hidden"
+          name="form-name"
+          value="css-overlay"
+          onChange={handleChange}
+        />
+        {isSolutionVisible && (
+          <>
+            <br />
+            <h3>Solution:</h3>
+            <CodeBlock className="language-js" live disabled>
+              {`
 <div style={{width: 300, height: 300, position: 'relative'}}>
   <img
     style={{position: 'absolute'}}
@@ -117,21 +131,7 @@ export const Overlay = () => {
   </div>
 </div>
       `}
-          </CodeBlock>
-          <form
-            onSubmit={handleSubmit}
-            name="css-overlay"
-            method="post"
-            data-netlify="true"
-            action="/posts/css-exercises"
-            data-netlify-honeypot="bot-field"
-          >
-            <input
-              type="hidden"
-              name="form-name"
-              value="contact"
-              onChange={handleChange}
-            />
+            </CodeBlock>
             <fieldset
               name="Answer[]"
               multiple
@@ -158,9 +158,9 @@ export const Overlay = () => {
             >
               Submit
             </Button>
-          </form>
-        </>
-      )}
+          </>
+        )}
+      </form>
     </>
   )
 }
