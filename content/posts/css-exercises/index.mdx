@@ -4,8 +4,8 @@ date: 2020-04-25
 published: false
 ---
 
-import { Box, Flex, Button, Grid } from "@theme-ui/components"
-import CodeBlock from "../../src/components/code-block"
+import { Box, Flex, Button, Grid, Radio, Label } from "@theme-ui/components"
+import CodeBlock from "../../../src/components/code-block"
 
 export const Overlay = () => {
   const [state, setState] = React.useState(false)
@@ -87,6 +87,32 @@ export const Overlay = () => {
 </div>
       `}
           </CodeBlock>
+          <form name="css-overlay" method="POST" data-netlify="true">
+            <fieldset
+              style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}
+            >
+              <legend>My solution was:</legend>
+              <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
+                <Radio name="My solution" value="wrong" />
+                Wrong
+              </Label>
+              <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
+                <Radio name="My solution" value="close" />
+                Close
+              </Label>
+              <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
+                <Radio name="My solution" value="correct" />
+                Correct
+              </Label>
+            </fieldset>
+            <Button
+              variant="secondary"
+              type="submit"
+              sx={{ py: 1, px: 2, cursor: "pointer" }}
+            >
+              Submit
+            </Button>
+          </form>
         </>
       )}
     </>
