@@ -10,7 +10,7 @@ import { navigate } from "gatsby-link"
 
 export const Overlay = () => {
   const [state, setState] = React.useState({})
-  const [isSolutionVisible, setSolutionVisible] = React.useState(false)
+  const [isSolutionVisible, setSolutionVisible] = React.useState(true)
   function encode(data) {
     return Object.keys(data)
       .map(
