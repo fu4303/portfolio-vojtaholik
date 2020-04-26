@@ -15,6 +15,7 @@ const BrowserWindowWrapper = (props) => {
         width: "100%",
         borderRadius: 5,
         bg: "#fafafa",
+        px: [2, 0],
       }}
     >
       <Box
@@ -75,6 +76,7 @@ export default function CodeBlock(props) {
           fontSize: "95%",
           textarea: { fontFamily: "monospace" },
           ...props.sx,
+          mx: !props.hideEditor && [-3, 0],
         }}
       >
         <LiveProvider
@@ -90,7 +92,7 @@ export default function CodeBlock(props) {
               <LivePreview />
             </BrowserWindowWrapper>
           )}
-          {!props.hideEditor && <LiveEditor />}
+          {!props.hideEditor && <LiveEditor sx={{ borderRadius: [0, 3] }} />}
           <LiveError />
         </LiveProvider>
       </div>
