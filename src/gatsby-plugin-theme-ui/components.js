@@ -1,7 +1,8 @@
-// src/gatsby-plugin-theme-ui/components.js
-import Prism from "@theme-ui/prism"
+import codeBlock from "../components/code-block"
 
-export default {
-  pre: props => props.children,
-  code: Prism,
+const Components = {
+  pre: (props) => props.children,
+  code: (props) => codeBlock(props),
 }
+
+export default Components

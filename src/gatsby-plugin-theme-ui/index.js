@@ -16,7 +16,7 @@ export default merge(toTheme(parnassus), {
   fonts: {
     heading: "'Inter', sans-serif",
     body: "'Inter', sans-serif",
-    monospace: "monospace",
+    monospace: "Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace",
   },
 
   text: {
@@ -95,12 +95,13 @@ export default merge(toTheme(parnassus), {
     },
     root: {
       code: {
-        color: "text",
-        bg: "#f1f1f1",
-        p: "3px 7px",
         fontFamily: "monospace",
-        fontSize: "90%",
+        bg: "#f1f1f1",
+        color: "text",
+        padding: "2px 4px",
+        fontSize: "85%",
       },
+
       ul: {
         listStyleType: "disc",
         ml: 2,

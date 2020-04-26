@@ -3,6 +3,11 @@
   color: white;
 }
 
+textarea::selection {
+  background: #326aff;
+  color: white;
+}
+
 a::selection {
   background: #326aff;
   color: white;
