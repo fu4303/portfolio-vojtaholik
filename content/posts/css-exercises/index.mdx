@@ -6,11 +6,35 @@ published: false
 
 import { Box, Flex, Button, Grid, Radio, Label } from "@theme-ui/components"
 import CodeBlock from "../../../src/components/code-block"
+import { navigate } from "gatsby-link"
 
 export const Overlay = () => {
-  const [state, setState] = React.useState(false)
+  const [state, setState] = React.useState({})
   const [isSolutionVisible, setSolutionVisible] = React.useState(false)
-  const styles = { position: state ? "relative" : "static" }
+  function encode(data) {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
+      )
+      .join("&")
+  }
+  const handleChange = (e) => {
+    setState({ ...state, [e.target.name]: e.target.value })
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const form = e.target
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...state,
+      }),
+    })
+      .then(() => navigate(form.getAttribute("action")))
+      .catch((error) => alert(error))
+  }
   return (
     <>
       Center text inside the image so that it looks like this:
@@ -88,9 +112,11 @@ export const Overlay = () => {
       `}
           </CodeBlock>
           <form
+            onSubmit={handleSubmit}
             name="css-overlay"
             method="post"
             data-netlify="true"
+            action="/posts/css-exercises"
             data-netlify-honeypot="bot-field"
           >
             <input type="hidden" name="form-name" value="css-overlay" />
@@ -99,15 +125,27 @@ export const Overlay = () => {
             >
               <legend>My solution was:</legend>
               <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
-                <Radio name="My solution" value="wrong" />
+                <Radio
+                  name="My solution"
+                  value="wrong"
+                  onChange={handleChange}
+                />
                 Wrong
               </Label>
               <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
-                <Radio name="My solution" value="close" />
+                <Radio
+                  name="My solution"
+                  value="close"
+                  onChange={handleChange}
+                />
                 Close
               </Label>
               <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
-                <Radio name="My solution" value="correct" />
+                <Radio
+                  name="My solution"
+                  value="correct"
+                  onChange={handleChange}
+                />
                 Correct
               </Label>
             </fieldset>
