@@ -11,6 +11,7 @@ import { navigate } from "gatsby-link"
 export const Overlay = () => {
   const [state, setState] = React.useState({})
   const [isSolutionVisible, setSolutionVisible] = React.useState(false)
+  const [isSubmitted, setIsSubmitted] = React.useState(false)
   function encode(data) {
     return Object.keys(data)
       .map(
@@ -39,7 +40,10 @@ export const Overlay = () => {
         ...state,
       }),
     })
-      .then(() => navigate(form.getAttribute("action")))
+      .then(
+        () => setIsSubmitted(true)
+        // navigate(form.getAttribute("action"))
+      )
       .catch((error) => alert(error))
   }
   return (
@@ -175,13 +179,16 @@ export const Overlay = () => {
                 Correct
               </Label>
             </fieldset>
-            <Button
-              variant="secondary"
-              type="submit"
-              sx={{ py: 1, px: 2, cursor: "pointer" }}
-            >
-              Submit
-            </Button>
+            {!isSubmitted && (
+              <Button
+                variant="secondary"
+                type="submit"
+                sx={{ py: 1, px: 2, cursor: "pointer" }}
+              >
+                Submit
+              </Button>
+            )}
+            {isSubmitted && "Submitted"}
           </>
         )}
       </form>
