@@ -106,9 +106,30 @@ export const Overlay = () => {
           value="css-overlay"
           onChange={handleChange}
         />
-        <Radio type="hidden" name="Answer" value="wrong" onChange={handleChange} />
-                <Radio type="hidden name="Answer" value="close" onChange={handleChange} />
-                <Radio type="hidden name="Answer" value="correct" onChange={handleChange} />
+        <Box sx={{ visibility: "hidden" }}>
+          <Label
+            sx={{
+              alignItems: "center",
+              svg: { mr: "4px" },
+            }}
+          >
+            <Radio
+              type="hidden"
+              name="Answer"
+              value="wrong"
+              onChange={handleChange}
+            />
+            Wrong
+          </Label>
+          <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
+            <Radio name="Answer" value="close" onChange={handleChange} />
+            Close
+          </Label>
+          <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
+            <Radio name="Answer" value="correct" onChange={handleChange} />
+            Correct
+          </Label>
+        </Box>
         {isSolutionVisible && (
           <>
             <br />
@@ -142,6 +163,7 @@ export const Overlay = () => {
             >
               <legend>My solution was:</legend>
               <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
+                <Radio name="Answer" value="wrong" onChange={handleChange} />
                 Wrong
               </Label>
               <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
@@ -166,5 +188,7 @@ export const Overlay = () => {
     </>
   )
 }
+
 ## Overlay
+
 <Overlay />
