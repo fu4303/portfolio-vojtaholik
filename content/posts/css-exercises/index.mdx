@@ -20,10 +20,17 @@ export const Overlay = () => {
   }
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value })
+    console.log({ ...state, [e.target.name]: e.target.value })
   }
   const handleSubmit = (e) => {
     e.preventDefault()
     const form = e.target
+    console.log(
+      encode({
+        "form-name": form.getAttribute("name"),
+        ...state,
+      })
+    )
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -119,33 +126,28 @@ export const Overlay = () => {
             action="/posts/css-exercises"
             data-netlify-honeypot="bot-field"
           >
-            <input type="hidden" name="form-name" value="css-overlay" />
+            <input
+              type="hidden"
+              name="form-name"
+              value="css-overlay"
+              onChange={handleChange}
+            />
             <fieldset
+              name="Answer[]"
+              multiple
               style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}
             >
               <legend>My solution was:</legend>
               <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
-                <Radio
-                  name="My solution"
-                  value="wrong"
-                  onChange={handleChange}
-                />
+                <Radio name="Answer" value="wrong" onChange={handleChange} />
                 Wrong
               </Label>
               <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
-                <Radio
-                  name="My solution"
-                  value="close"
-                  onChange={handleChange}
-                />
+                <Radio name="Answer" value="close" onChange={handleChange} />
                 Close
               </Label>
               <Label sx={{ alignItems: "center", svg: { mr: "4px" } }}>
-                <Radio
-                  name="My solution"
-                  value="correct"
-                  onChange={handleChange}
-                />
+                <Radio name="Answer" value="correct" onChange={handleChange} />
                 Correct
               </Label>
             </fieldset>
