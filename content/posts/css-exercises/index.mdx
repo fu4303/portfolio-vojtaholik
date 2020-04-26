@@ -6,7 +6,7 @@ published: false
 
 import { Box, Flex, Button, Grid, Radio, Label } from "@theme-ui/components"
 import CodeBlock from "../../../src/components/code-block"
-import { navigate } from "gatsby-link"
+// import { navigate } from "gatsby-link"
 
 export const Overlay = () => {
   const [state, setState] = React.useState({})
@@ -21,17 +21,10 @@ export const Overlay = () => {
   }
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value })
-    console.log({ ...state, [e.target.name]: e.target.value })
   }
   const handleSubmit = (e) => {
     e.preventDefault()
     const form = e.target
-    console.log(
-      encode({
-        "form-name": form.getAttribute("name"),
-        ...state,
-      })
-    )
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
