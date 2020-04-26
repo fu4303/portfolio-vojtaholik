@@ -77,7 +77,7 @@ export const Overlay = () => {
       <h3>Exercise:</h3>
       <CodeBlock className="language-js" live>
         {`
-<div style={{width: 300, height: 300}}>
+<div style={{width: 350, height: '350'}}>
   <img 
     style={{}}
     src="https://picsum.photos/id/10/300?blur=2&grayscale"
@@ -106,7 +106,7 @@ export const Overlay = () => {
           value="css-overlay"
           onChange={handleChange}
         />
-        <Box sx={{ visibility: "hidden" }}>
+        <Box sx={{ visibility: "hidden", display: "none" }}>
           <Label
             sx={{
               alignItems: "center",
