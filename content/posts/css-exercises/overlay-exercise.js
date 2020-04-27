@@ -170,7 +170,8 @@ export default function OverlayExercise() {
         {isSolutionVisible && (
           <>
             <br />
-            <h3>Solution:</h3>
+            <Styled.h3>Solution:</Styled.h3>
+            <p>Todo: Describe why & how...</p>
             <CodeBlock className="language-js">
               {`
 <div 
@@ -221,17 +222,17 @@ export default function OverlayExercise() {
               <Button
                 variant="secondary"
                 type="submit"
-                sx={{ py: 1, px: 2, cursor: "pointer" }}
+                sx={{ mt: 2, py: 1, px: 2, cursor: "pointer" }}
               >
                 Submit Answer
               </Button>
             )}
-            {!isSubmitted &&
-              " Submitting your answer helps me to improve the exercises."}
+            {!isSubmitted && " Your answer helps me to improve the exercise."}
             {isSubmitted && "Answer submitted, thanks!"}
           </>
         )}
       </form>
+      {isSolutionVisible && <hr sx={{ my: 2 }} />}
       {started && (
         <>
           {!isSolutionVisible && `When you're done: `}
