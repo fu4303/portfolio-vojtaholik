@@ -114,7 +114,8 @@ export default function OverlayExercise() {
             sx={{
               position: "absolute",
               top: 0,
-              width: "100%",
+              left: [-3, 0],
+              width: ["calc(100% + 60px)", "100%"],
               height: "100%",
               display: "flex",
               alignItems: "center",
