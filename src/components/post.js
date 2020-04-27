@@ -1,7 +1,6 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Text } from "theme-ui"
 import Layout from "./layout"
-import { Text } from "@theme-ui/components"
 
 export default function Post({
   children,

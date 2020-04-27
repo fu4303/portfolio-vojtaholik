@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import React from "react"
 import { Link } from "gatsby"
-import { jsx } from "theme-ui"
-import { Link as StyledLink } from "@theme-ui/components"
+import { jsx, Link as StyledLink } from "theme-ui"
 import {
   motion,
   useViewportScroll,
@@ -12,7 +11,7 @@ import {
 
 const Header = () => {
   const { scrollYProgress } = useViewportScroll()
-  const rotateRange = useTransform(scrollYProgress, value => value * 90)
+  const rotateRange = useTransform(scrollYProgress, (value) => value * 90)
   const [rotate, setRotate] = React.useState(
     useSpring(rotateRange, { stiffness: 400, damping: 90 })
   )

@@ -1,11 +1,9 @@
 /** @jsx jsx */
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Box } from "theme-ui"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import "prism-theme-night-owl"
 import nightOwl from "prism-react-renderer/themes/nightOwl"
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live"
-
-import { Box } from "@theme-ui/components"
 
 const BrowserWindowWrapper = (props) => {
   return (
@@ -16,6 +14,7 @@ const BrowserWindowWrapper = (props) => {
         borderRadius: 5,
         bg: "#fafafa",
         px: [2, 0],
+        pb: 4,
       }}
     >
       <Box
@@ -85,9 +84,7 @@ export default function CodeBlock(props) {
           theme={nightOwl}
           {...props}
         >
-          {props.hideEditor ? (
-            <LivePreview />
-          ) : (
+          {!props.hidePreview && (
             <BrowserWindowWrapper>
               <LivePreview />
             </BrowserWindowWrapper>

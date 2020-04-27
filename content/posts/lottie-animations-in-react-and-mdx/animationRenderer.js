@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import React from "react"
 import Lottie from "react-lottie"
-import { jsx } from "theme-ui"
-import { IconButton } from "@theme-ui/components"
+import { jsx, IconButton } from "theme-ui"
 import { IoIosPlay, IoIosPause } from "react-icons/io"
 import { motion } from "framer-motion"
 import { createfetchUnlessCached } from "fetch-unless-cached"

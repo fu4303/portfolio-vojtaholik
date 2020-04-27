@@ -1,6 +1,5 @@
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
-import { Link as StyledLink } from "@theme-ui/components"
+import { jsx, Container, Link as StyledLink } from "theme-ui"
 import { FiRss, FiMail, FiGithub, FiTwitter } from "react-icons/fi"
 import { FaDribbble } from "react-icons/fa"
 

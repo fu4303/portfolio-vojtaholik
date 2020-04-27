@@ -1,9 +1,8 @@
 /** @jsx jsx */
-import { jsx, Container, Styled } from "theme-ui"
+import { jsx, Container, Styled, Box } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 import SEO from "./seo"
 import Header from "./header"
-import { Box } from "@theme-ui/components"
 import Footer from "./footer"
 import "./reset.css"
 import "../fonts/inter.css"

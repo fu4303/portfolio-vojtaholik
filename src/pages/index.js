@@ -1,9 +1,7 @@
 /** @jsx jsx */
 import { Link, graphql } from "gatsby"
-import { jsx, Styled } from "theme-ui"
+import { jsx, Styled, Link as StyledLink, Text } from "theme-ui"
 import Layout from "../components/layout"
-
-import { Link as StyledLink, Text } from "@theme-ui/components"
 
 const IndexPage = ({
   data: {
@@ -26,7 +24,7 @@ const IndexPage = ({
       </Text>
       <Styled.h3 sx={{ mt: 4, mb: 2 }}>Latest Posts</Styled.h3>
       <ul>
-        {allBlogPost.nodes.map(post => (
+        {allBlogPost.nodes.map((post) => (
           <li key={post.id} sx={{ lineHeight: 1.25, my: 1 }}>
             <StyledLink as={Link} to={post.slug}>
               {post.title}
