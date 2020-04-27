@@ -56,7 +56,15 @@ export default function OverlayExercise() {
             // sx={{ transform: "scale(0.78)" }}
           >
             {`
-  <div style={{width: 300, height: 300, position: 'relative'}}>
+  <div 
+    style={{
+      width: 300, 
+      height: 300, 
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+  }}>
     <img
       style={{position: 'absolute'}}
       src="https://picsum.photos/id/10/300?blur=2&grayscale"
@@ -65,11 +73,7 @@ export default function OverlayExercise() {
     <div
       style={{
         position: 'absolute',
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+        background: 'white'
       }}
     >
       {'Center me inside the image'}
@@ -97,7 +101,9 @@ export default function OverlayExercise() {
     src="https://picsum.photos/id/10/300?blur=2&grayscale"
   />
   {/* center this div on top of the image */}
-  <div style={{}}>
+  <div style={{
+    background: 'white'
+  }}>
     {'Center me inside the image'}
   </div>
 </div>
@@ -113,6 +119,7 @@ export default function OverlayExercise() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              backdropFilter: "blur(2px)",
             }}
           >
             <Button variant="secondary" onClick={() => setStarted(true)}>
@@ -183,6 +190,7 @@ export default function OverlayExercise() {
   <div
     style={{
       position: 'absolute',
+      background: 'white'
     }}>
     {'Center me inside the image'}
   </div>

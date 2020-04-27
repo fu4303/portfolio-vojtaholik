@@ -39,6 +39,9 @@ export default merge(toTheme(parnassus), {
       color: "background",
       cursor: "pointer",
     },
+    secondary: {
+      cursor: "pointer",
+    },
     icon: {
       "&:hover": {
         opacity: 1,
