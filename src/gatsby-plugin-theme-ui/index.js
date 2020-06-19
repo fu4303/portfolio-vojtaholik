@@ -118,11 +118,7 @@ export default merge(toTheme(parnassus), {
         fontStyle: "italic",
       },
       color: "text",
-      article: {
-        a: {
-          textDecoration: "underline",
-        },
-      },
+      article: {},
     },
     ul: {
       ml: 0,

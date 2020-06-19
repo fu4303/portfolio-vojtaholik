@@ -34,7 +34,6 @@ module.exports = {
           { resolve: `gatsby-remark-smartypants` },
         ],
         remarkPlugins: [require(`remark-slug`)],
-        // globalScope: `import {Box} from 'theme-ui'`
       },
     },
     {

@@ -11,7 +11,7 @@ const IndexPage = ({
 }) => {
   return (
     <Layout {...siteMetadata}>
-      <Styled.h1 sx={{ mt: "6px" }}>Hi,</Styled.h1>
+      <Styled.h1 sx={{ mt: "6px" }}>Hi!</Styled.h1>
       <Text>
         My name is {siteMetadata.author} and I&apos;m a designer and coder at{" "}
         <StyledLink href="https://egghead.io/">egghead.io</StyledLink>. I live
