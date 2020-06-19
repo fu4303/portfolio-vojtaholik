@@ -58,7 +58,7 @@ Logotypes and branding projects have never been my primary field of focus. But w
   }}
 >
 
-<Image src="./assets/moonhighway@2x.gif" width="240px" />
+<Image src="./assets/moonhighway@2x.gif" width="240px" alt="moonhighway.com" />
 
 </Flex>
 <Flex
@@ -72,7 +72,12 @@ Logotypes and branding projects have never been my primary field of focus. But w
   }}
 >
 
-<Image src="./assets/moonhighway.svg" width="120px" height="120px" />
+<Image
+  src="./assets/moonhighway.svg"
+  width="120px"
+  height="120px"
+  alt="moonhighway.com"
+/>
 
 </Flex>
 </Grid>
@@ -94,7 +99,7 @@ Joel Hooks is a co-founder of [egghead.io](https://egghead.io). Go check out his
 
 <Grid sx={{py: 5, alignItems: 'center', justifyContent: 'center', border: '1px solid #f1f1f1', mb: 4}}>
 
-<Img src="./assets/joel2.svg" />
+<Img src="./assets/joel2.svg" alt="joelhooks.com" />
 
 </Grid>
 
@@ -120,20 +125,28 @@ Joel Hooks is a co-founder of [egghead.io](https://egghead.io). Go check out his
   sx={{
     py: 3,
     border: "1px solid #f1f1f1",
-    span: {maxWidth: '240px', m: 0}, p: {m: 0}
+    img: {width: '200px', height: 'auto', m: 0}, p: {m: 0},
+    '.gatsby-resp-image-wrapper': {
+      width: 245
+    }
 }}>
 
-![./assets/epicreact@2x.png](./assets/epicreact@2x.png)
+<Image src="./assets/epicreact@2x.png" alt="epicreact.dev" />
 
 </Box>
 </Grid>
 
 ## [6D Academy](https://6dacademy.com/en)
 
-<Grid columns={[1, 2]} sx={{span: {maxWidth: '150px'}, alignItems: 'center'}}>
+<Grid
+  columns={[1, 2]}
+  sx={{  alignItems: "center", justifyContent: 'center', '.gatsby-resp-image-wrapper': {
+    width: 130
+  } }}
+>
 
 ![./assets/6d@2x.png](./assets/6d@2x.png)
 
-<Image src="./assets/6d@2x.gif" width="300px" />
+<Image src="./assets/6d@2x.gif" width="300px" alt="6D Academy" />
 
 </Grid>
