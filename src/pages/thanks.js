@@ -37,7 +37,7 @@ const ThanksPage = ({
     <Layout {...siteMetadata}>
       {meeting.date ? (
         <>
-          <Styled.h1 sx={{ mt: "6px" }}>Booyah, {meeting.firstName}!</Styled.h1>
+          <Styled.h1 sx={{ mt: "6px" }}>Thanks, {meeting.firstName}!</Styled.h1>
           <Styled.p>
             Our {decodeURI(meeting.event)} is scheduled for{" "}
             <Styled.strong>
@@ -47,7 +47,7 @@ const ThanksPage = ({
             . The meeting is via{" "}
             <Styled.a href="https://zoom.us/">Zoom</Styled.a>, and you should
             receive all the details on your email at any time now. I&apos;m
-            looking forward to it. See you there!
+            looking forward to it! 😊
           </Styled.p>
         </>
       ) : (
